@@ -17,6 +17,10 @@ fun TextyStyle.get() = when (this) {
         brush = Brush.linearGradient(colors = Gradients.textGradient)
     )
 
+    TextyStyle.DISPLAY_STYLE_DEMO_TEXT -> MaterialTheme.typography.displayMedium.copy(
+        color = MaterialTheme.colorScheme.onBackground
+    )
+
     TextyStyle.CODE_LABEL -> TextStyle(
         fontWeight = FontWeight.Medium,
         color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -24,7 +28,9 @@ fun TextyStyle.get() = when (this) {
 
     TextyStyle.COPY_BUTTON_STYLE -> TextStyle(color = MaterialTheme.colorScheme.onBackground)
 
-    TextyStyle.DISPLAY_STYLE_VARIATION_NAME -> MaterialTheme.typography.titleMedium
+    TextyStyle.DISPLAY_STYLE_VARIATION_NAME -> MaterialTheme.typography.titleMedium.copy(
+        color = MaterialTheme.colorScheme.onBackground
+    )
 
     TextyStyle.DISPLAY_CARD_TITLE -> MaterialTheme.typography.displayMedium.copy(
         color = MaterialTheme.colorScheme.onBackground,
@@ -48,6 +54,7 @@ fun TextyStyle.get() = when (this) {
 enum class TextyStyle {
     TOP_BAR_TITLE,
     CLICKABLE_TEXT,
+    DISPLAY_STYLE_DEMO_TEXT,
     CODE_LABEL,
     COPY_BUTTON_STYLE,
     DISPLAY_STYLE_VARIATION_NAME,
