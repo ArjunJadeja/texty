@@ -17,7 +17,7 @@ class TextyTest {
         composeTestRule.setContent {
             Texty(
                 text = "Hello, World!",
-                displayStyle = DisplayStyle.Default {
+                displayStyle = DisplayStyle.Basic {
                     callbackCalled = true
                 }
             )

@@ -1,13 +1,9 @@
-package com.arjunjadeja.texty.theme
+package com.arjunjadeja.texty.design_system.properties
 
-import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
-import androidx.compose.runtime.*
 
-private val lightScheme = lightColorScheme(
+val lightScheme = lightColorScheme(
     primary = primaryLight,
     onPrimary = onPrimaryLight,
     primaryContainer = primaryContainerLight,
@@ -45,7 +41,7 @@ private val lightScheme = lightColorScheme(
     surfaceContainerHighest = surfaceContainerHighestLight,
 )
 
-private val darkScheme = darkColorScheme(
+val darkScheme = darkColorScheme(
     primary = primaryDark,
     onPrimary = onPrimaryDark,
     primaryContainer = primaryContainerDark,
@@ -82,26 +78,3 @@ private val darkScheme = darkColorScheme(
     surfaceContainerHigh = surfaceContainerHighDark,
     surfaceContainerHighest = surfaceContainerHighestDark,
 )
-
-internal val LocalThemeIsDark = compositionLocalOf { mutableStateOf(true) }
-
-@Composable
-internal fun AppTheme(
-    content: @Composable () -> Unit
-) {
-    val systemIsDark = isSystemInDarkTheme()
-    val isDarkState = remember { mutableStateOf(systemIsDark) }
-    CompositionLocalProvider(
-        LocalThemeIsDark provides isDarkState
-    ) {
-        val isDark by isDarkState
-        SystemAppearance(!isDark)
-        MaterialTheme(
-            colorScheme = if (isDark) darkScheme else lightScheme,
-            content = { Surface(content = content) }
-        )
-    }
-}
-
-@Composable
-internal expect fun SystemAppearance(isDark: Boolean)

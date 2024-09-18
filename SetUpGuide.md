@@ -1,9 +1,8 @@
-# Texty
+# Guide to setup for various platforms
 
 ## Before running!
  - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
  - install JDK 17 or higher on your machine
- - add `local.properties` file to the project root and set a path to Android SDK there
 
 ### Android
 To run the application on android device/emulator:  
@@ -25,10 +24,9 @@ To run the application on iPhone device/simulator:
 Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
 
 ### JS Browser (Experimental)
-Run the browser application: `./gradlew :composeApp:jsBrowserDevelopmentRun --continue`
+Run the browser application: `./gradlew :sample:composeApp:jsBrowserDevelopmentRun --continue`
 Run browser UI tests: `./gradlew :composeApp:jsBrowserTest`
 
 ### Wasm Browser (Alpha)
-Run the browser application: `./gradlew :composeApp:wasmJsBrowserDevelopmentRun --continue`
+Run the browser application: `./gradlew :sample:composeApp:wasmJsBrowserDevelopmentRun --continue`
 Run browser UI tests: `./gradlew :composeApp:wasmJsBrowserTest`
-

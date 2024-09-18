@@ -1,10 +1,16 @@
-package com.arjunjadeja.texty.theme
+package com.arjunjadeja.texty.design_system.properties
 
 import androidx.compose.ui.graphics.Color
 
 val black = Color(0xFF000000)
 val white = Color(0xFFFFFFFF)
 val grey = Color(0xFF808080)
+
+val accentColor = Color(0xFF7F52FF)
+
+val primaryGradientColor = Color(0xE6FF4081)
+val secondaryGradientColor = Color(0xE69C27B0)
+val tertiaryGradientColor = Color(0xE6673AB7)
 
 val primaryLight = Color(0xFF000000)
 val onPrimaryLight = Color(0xFFFFFFFF)
