@@ -7,6 +7,7 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.internal.styles.Basic
+import com.arjunjadeja.texty.internal.styles.Blinking
 import com.arjunjadeja.texty.internal.styles.Typing
 
 @Composable
@@ -47,5 +48,20 @@ fun Texty(
         minLines = minLines,
         color = color,
         onTextDisplayed = displayStyle.onTextDisplayed
+    )
+
+    is DisplayStyle.Blinking -> Blinking(
+        text = text,
+        blinkInterval = displayStyle.blinkInterval,
+        repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onBlink = displayStyle.onBlink
     )
 }

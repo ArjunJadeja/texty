@@ -13,4 +13,12 @@ sealed interface DisplayStyle {
         override fun toString(): String = "Typing"
     }
 
+    data class Blinking(
+        val blinkInterval: Long = 500L,
+        val repeat: Repeat = Repeat.Infinite,
+        val onBlink: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString(): String = "Blinking"
+    }
+
 }
