@@ -34,18 +34,16 @@ internal fun App() = AppTheme {
                 )
             )
     ) {
+        Navigator(screen = MainScreen()) { navigator ->
+            SlideTransition(navigator)
+        }
         Surface(
-            color = MaterialTheme.colorScheme.background.copy(alpha = 0.3f),
+            color = MaterialTheme.colorScheme.background.copy(alpha = 0.8f),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(WindowInsets.safeDrawing.asPaddingValues().calculateTopPadding())
                 .align(Alignment.TopCenter)
         ) {}
-
-        Navigator(screen = MainScreen()) { navigator ->
-            SlideTransition(navigator)
-        }
-
         Surface(
             color = MaterialTheme.colorScheme.background.copy(alpha = 0.3f),
             modifier = Modifier
