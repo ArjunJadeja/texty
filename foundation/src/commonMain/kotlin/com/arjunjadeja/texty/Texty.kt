@@ -8,6 +8,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.internal.styles.Basic
 import com.arjunjadeja.texty.internal.styles.Blinking
+import com.arjunjadeja.texty.internal.styles.Fading
 import com.arjunjadeja.texty.internal.styles.Typing
 
 @Composable
@@ -63,5 +64,20 @@ fun Texty(
         minLines = minLines,
         color = color,
         onBlink = displayStyle.onBlink
+    )
+
+    is DisplayStyle.Fading -> Fading(
+        text = text,
+        type = displayStyle.type,
+        durationInMillis = displayStyle.durationInMillis,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
     )
 }

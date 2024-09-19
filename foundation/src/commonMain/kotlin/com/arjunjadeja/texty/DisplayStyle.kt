@@ -21,4 +21,12 @@ sealed interface DisplayStyle {
         override fun toString(): String = "Blinking"
     }
 
+    data class Fading(
+        val type: FadingType,
+        val durationInMillis: Long = 1000L,
+        val onComplete: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString(): String = "Fading"
+    }
+
 }
