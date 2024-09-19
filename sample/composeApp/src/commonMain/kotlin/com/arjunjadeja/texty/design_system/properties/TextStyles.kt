@@ -28,7 +28,7 @@ fun TextyStyle.get() = when (this) {
 
     TextyStyle.COPY_BUTTON_STYLE -> TextStyle(color = MaterialTheme.colorScheme.onBackground)
 
-    TextyStyle.DISPLAY_STYLE_VARIATION_NAME -> MaterialTheme.typography.titleMedium.copy(
+    TextyStyle.DISPLAY_STYLE_VARIATION_NAME -> MaterialTheme.typography.titleLarge.copy(
         color = MaterialTheme.colorScheme.onBackground
     )
 

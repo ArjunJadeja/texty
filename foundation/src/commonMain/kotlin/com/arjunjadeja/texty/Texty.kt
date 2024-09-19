@@ -9,6 +9,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.internal.styles.Basic
 import com.arjunjadeja.texty.internal.styles.Blinking
 import com.arjunjadeja.texty.internal.styles.Fading
+import com.arjunjadeja.texty.internal.styles.Revealing
 import com.arjunjadeja.texty.internal.styles.Typing
 
 @Composable
@@ -80,4 +81,22 @@ fun Texty(
         color = color,
         onComplete = displayStyle.onComplete
     )
+
+    is DisplayStyle.Revealing -> Revealing(
+        text = text,
+        delayBeforeRevealing = displayStyle.delayBeforeRevealing,
+        revealPattern = displayStyle.revealPattern,
+        revealType = displayStyle.revealType,
+        revealCover = displayStyle.revealCover,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
 }

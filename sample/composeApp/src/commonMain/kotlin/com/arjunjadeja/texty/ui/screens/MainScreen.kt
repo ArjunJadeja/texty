@@ -28,6 +28,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
 import com.arjunjadeja.texty.display_style_cards.BasicStyleCard
 import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
 import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
+import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
 
 class MainScreen : Screen {
@@ -53,7 +54,8 @@ class MainScreen : Screen {
                     DisplayStyle.Basic(),
                     DisplayStyle.Typing(),
                     DisplayStyle.Blinking(),
-                    DisplayStyle.Fading(type = FadingType.IN)
+                    DisplayStyle.Fading(type = FadingType.IN),
+                    DisplayStyle.Revealing()
                 )
 
                 items(displayStyles) { displayStyle ->
@@ -90,6 +92,11 @@ private fun DisplayStyle(
     )
 
     is DisplayStyle.Fading -> FadingStyleCard(
+        displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+
+    is DisplayStyle.Revealing -> RevealingStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
