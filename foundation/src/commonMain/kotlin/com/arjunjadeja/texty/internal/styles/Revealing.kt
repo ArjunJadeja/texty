@@ -21,9 +21,9 @@ import kotlinx.coroutines.delay
 internal fun Revealing(
     text: String,
     delayBeforeRevealing: Long,
-    revealPattern: RevealPattern,
-    revealType: RevealType,
-    revealCover: RevealCover,
+    pattern: RevealPattern,
+    type: RevealType,
+    cover: RevealCover,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
@@ -34,15 +34,15 @@ internal fun Revealing(
     color: ColorProducer? = null,
     onComplete: () -> Unit = {}
 ) {
-    val coverText = when (revealCover) {
+    val coverText = when (cover) {
         is RevealCover.Default -> "⣿".getFullCover(text.length)
         is RevealCover.Custom -> {
-            if (revealCover.cover.length == 1) revealCover.cover.getFullCover(text.length)
+            if (cover.cover.length == 1) cover.cover.getFullCover(text.length)
             else {
-                 require(revealCover.cover.length == text.length) {
+                 require(cover.cover.length == text.length) {
                     "Custom cover text must either be a single character or the same length as the text."
                  }
-                revealCover.cover
+                cover.cover
             }
         }
     }
@@ -50,15 +50,15 @@ internal fun Revealing(
     var displayedText by remember { mutableStateOf(coverText) }
     val totalCharacters = text.length
 
-    val calculatedDelay = when (revealType) {
-        is RevealType.ByEachCharacter -> revealType.delayInMillis
-        is RevealType.ByTotalTime -> revealType.durationInMillis / totalCharacters
+    val calculatedDelay = when (type) {
+        is RevealType.ByEachCharacter -> type.delayInMillis
+        is RevealType.ByTotalTime -> type.durationInMillis / totalCharacters
     }
 
-    LaunchedEffect(text, revealPattern, revealType) {
+    LaunchedEffect(text, pattern, type) {
         delay(delayBeforeRevealing)
 
-        when (revealPattern) {
+        when (pattern) {
             RevealPattern.START_TO_END -> {
                 for (i in text.indices) {
                     delay(calculatedDelay)

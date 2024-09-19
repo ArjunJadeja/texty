@@ -16,7 +16,7 @@ import com.arjunjadeja.texty.design_system.properties.get
 fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) =
     TextyDisplayStyleCard(
         displayStyle = displayStyle,
-        styleDescription = "A dynamic style that makes text blink with versatile options: blink once, infinitely, for a set time, or a specified count. The blink delay is customizable for added flexibility.",
+        styleDescription = "An engaging style where text is revealed character by character or by total time. Offers configurable options for reveal patterns, delays, and cover text, with a callback when the animation completes. Perfect for adding suspense or a gradual reveal effect.",
         variations = listOf(
             DisplayStyleVariation(
                 name = "Default Revealing",
@@ -40,7 +40,7 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.END_TO_START
+                            pattern = RevealPattern.END_TO_START
                         )
                     )
                     """.trimIndent(),
@@ -48,7 +48,7 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.END_TO_START
+                            pattern = RevealPattern.END_TO_START
                         ),
                         textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                     )
@@ -60,8 +60,8 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.CENTER_TO_SIDES,
-                            revealType = RevealType.ByTotalTime(durationInMillis = 1000L)
+                            pattern = RevealPattern.CENTER_TO_SIDES,
+                            type = RevealType.ByTotalTime(durationInMillis = 1000L)
                         )
                     )
                     """.trimIndent(),
@@ -69,8 +69,8 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.CENTER_TO_SIDES,
-                            revealType = RevealType.ByTotalTime(durationInMillis = 1000L)
+                            pattern = RevealPattern.CENTER_TO_SIDES,
+                            type = RevealType.ByTotalTime(durationInMillis = 1000L)
                         ),
                         textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                     )
@@ -82,7 +82,8 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.SIDES_TO_CENTER
+                            pattern = RevealPattern.SIDES_TO_CENTER,
+                            cover = RevealCover.Custom(cover = "*")
                         )
                     )
                     """.trimIndent(),
@@ -90,8 +91,8 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     Texty(
                         text = "Revealing Text",
                         displayStyle = DisplayStyle.Revealing(
-                            revealPattern = RevealPattern.SIDES_TO_CENTER,
-                            revealCover = RevealCover.Custom(cover = "*")
+                            pattern = RevealPattern.SIDES_TO_CENTER,
+                            cover = RevealCover.Custom(cover = "*")
                         ),
                         textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                     )

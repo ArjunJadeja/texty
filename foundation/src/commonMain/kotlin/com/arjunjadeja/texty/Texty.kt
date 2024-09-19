@@ -85,9 +85,9 @@ fun Texty(
     is DisplayStyle.Revealing -> Revealing(
         text = text,
         delayBeforeRevealing = displayStyle.delayBeforeRevealing,
-        revealPattern = displayStyle.revealPattern,
-        revealType = displayStyle.revealType,
-        revealCover = displayStyle.revealCover,
+        pattern = displayStyle.pattern,
+        type = displayStyle.type,
+        cover = displayStyle.cover,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,

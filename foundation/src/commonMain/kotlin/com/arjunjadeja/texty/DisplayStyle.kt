@@ -33,9 +33,9 @@ sealed interface DisplayStyle {
 
     data class Revealing(
         val delayBeforeRevealing: Long = 500L,
-        val revealPattern: RevealPattern = RevealPattern.START_TO_END,
-        val revealType: RevealType = RevealType.ByEachCharacter(delayInMillis = 80L),
-        val revealCover: RevealCover = RevealCover.Default,
+        val pattern: RevealPattern = RevealPattern.START_TO_END,
+        val type: RevealType = RevealType.ByEachCharacter(delayInMillis = 80L),
+        val cover: RevealCover = RevealCover.Default,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString(): String = "Revealing"
