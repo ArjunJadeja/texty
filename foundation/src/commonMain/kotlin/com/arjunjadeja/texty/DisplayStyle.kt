@@ -17,7 +17,7 @@ sealed interface DisplayStyle {
 
     data class Blinking(
         val blinkInterval: Long = 500L,
-        val repeat: Repeat = Repeat.Infinite,
+        val repeat: Repeat = Repeat.Continuous,
         val onBlink: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString(): String = "Blinking"

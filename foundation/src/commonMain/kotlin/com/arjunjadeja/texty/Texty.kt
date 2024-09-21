@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import com.arjunjadeja.texty.internal.styles.list.Motion
 import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Blinking
 import com.arjunjadeja.texty.internal.styles.normal.Fading
@@ -100,7 +101,35 @@ fun Texty(
         color = color,
         onComplete = displayStyle.onComplete
     )
+}
 
+@Composable
+fun Texty(
+    textList: List<String>,
+    displayStyle: ListDisplayStyle,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = TextStyle.Default,
+    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
+    overflow: TextOverflow = TextOverflow.Clip,
+    softWrap: Boolean = true,
+    maxLines: Int = Int.MAX_VALUE,
+    minLines: Int = 1,
+    color: ColorProducer? = null
+) = when (displayStyle) {
+    is ListDisplayStyle.Motion -> Motion(
+        frames = textList,
+        frameDisplayDelay = displayStyle.frameDisplayDelay,
+        repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
 }
 
 @Composable

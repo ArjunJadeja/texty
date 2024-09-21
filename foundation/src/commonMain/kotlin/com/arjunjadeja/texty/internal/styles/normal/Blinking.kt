@@ -41,7 +41,7 @@ internal fun Blinking(
                 if (isVisible) onBlink()
             }
 
-            Repeat.Infinite -> {
+            Repeat.Continuous -> {
                 do {
                     delay(timeMillis = blinkInterval / 2)
                     isVisible = !isVisible

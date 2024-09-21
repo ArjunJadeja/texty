@@ -19,8 +19,10 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.FadingType
+import com.arjunjadeja.texty.ListDisplayStyle
 import com.arjunjadeja.texty.Utility
 import com.arjunjadeja.texty.base.DisplayStyleHandler
+import com.arjunjadeja.texty.base.ListDisplayStyleHandler
 import com.arjunjadeja.texty.base.StyleType
 import com.arjunjadeja.texty.base.UtilityHandler
 import com.arjunjadeja.texty.design_system.components.FootNotes
@@ -32,6 +34,7 @@ import com.arjunjadeja.texty.display_style_cards.BasicStyleCard
 import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
 import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
+import com.arjunjadeja.texty.display_style_cards.MotionStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
@@ -63,7 +66,11 @@ class MainScreen : Screen {
                     DisplayStyle.Revealing()
                 )
 
-                val utilities: List<Utility> = listOf(
+                val listDisplayStyles = listOf(
+                    ListDisplayStyle.Motion()
+                )
+
+                val utilities = listOf(
                     Utility.Loading(),
                     Utility.TimeKeeping()
                 )
@@ -75,6 +82,19 @@ class MainScreen : Screen {
                             navigator?.push(
                                 SampleScreen(
                                     styleType = StyleType.DisplayStyleType(displayStyle = it)
+                                )
+                            )
+                        }
+                    )
+                }
+
+                items(listDisplayStyles) { displayStyle ->
+                    DisplayStyle(
+                        displayStyle = displayStyle,
+                        onViewSampleClicked = {
+                            navigator?.push(
+                                SampleScreen(
+                                    styleType = StyleType.ListDisplayStyleType(displayStyle = it)
                                 )
                             )
                         }
@@ -126,6 +146,17 @@ private fun DisplayStyle(
     )
 
     is DisplayStyle.Revealing -> RevealingStyleCard(
+        displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+}
+
+@Composable
+private fun DisplayStyle(
+    displayStyle: ListDisplayStyle,
+    onViewSampleClicked: ListDisplayStyleHandler
+) = when (displayStyle) {
+    is ListDisplayStyle.Motion -> MotionStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
