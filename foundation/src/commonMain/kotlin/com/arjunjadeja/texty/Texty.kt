@@ -12,6 +12,7 @@ import com.arjunjadeja.texty.internal.styles.normal.Fading
 import com.arjunjadeja.texty.internal.styles.normal.Revealing
 import com.arjunjadeja.texty.internal.styles.normal.Typing
 import com.arjunjadeja.texty.internal.styles.utility.Loading
+import com.arjunjadeja.texty.internal.styles.utility.TimeKeeping
 
 @Composable
 fun Texty(
@@ -116,6 +117,20 @@ fun Texty(
 ) = when (utility) {
     is Utility.Loading -> Loading(
         loadingType = utility.type,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color
+    )
+
+    is Utility.TimeKeeping -> TimeKeeping(
+        format = utility.format,
+        liveUpdate = utility.liveUpdate,
+        updateInterval = utility.updateInterval,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,

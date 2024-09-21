@@ -33,6 +33,7 @@ import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
 import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
+import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
 
 class MainScreen : Screen {
@@ -63,7 +64,8 @@ class MainScreen : Screen {
                 )
 
                 val utilities: List<Utility> = listOf(
-                    Utility.Loading()
+                    Utility.Loading(),
+                    Utility.TimeKeeping()
                 )
 
                 items(displayStyles) { displayStyle ->
@@ -135,6 +137,11 @@ private fun DisplayUtility(
     onViewSampleClicked: UtilityHandler
 ) = when (utility) {
     is Utility.Loading -> LoadingStyleCard(
+        utility = utility,
+        onViewSampleClicked = onViewSampleClicked
+    )
+
+    is Utility.TimeKeeping -> TimeKeepingStyleCard(
         utility = utility,
         onViewSampleClicked = onViewSampleClicked
     )
