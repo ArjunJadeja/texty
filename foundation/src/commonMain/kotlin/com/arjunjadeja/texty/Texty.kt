@@ -6,11 +6,12 @@ import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import com.arjunjadeja.texty.internal.styles.Basic
-import com.arjunjadeja.texty.internal.styles.Blinking
-import com.arjunjadeja.texty.internal.styles.Fading
-import com.arjunjadeja.texty.internal.styles.Revealing
-import com.arjunjadeja.texty.internal.styles.Typing
+import com.arjunjadeja.texty.internal.styles.normal.Basic
+import com.arjunjadeja.texty.internal.styles.normal.Blinking
+import com.arjunjadeja.texty.internal.styles.normal.Fading
+import com.arjunjadeja.texty.internal.styles.normal.Revealing
+import com.arjunjadeja.texty.internal.styles.normal.Typing
+import com.arjunjadeja.texty.internal.styles.utility.Loading
 
 @Composable
 fun Texty(
@@ -99,4 +100,29 @@ fun Texty(
         onComplete = displayStyle.onComplete
     )
 
+}
+
+@Composable
+fun Texty(
+    utility: Utility,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = TextStyle.Default,
+    onTextLayout: ((TextLayoutResult) -> Unit)? = null,
+    overflow: TextOverflow = TextOverflow.Clip,
+    softWrap: Boolean = true,
+    maxLines: Int = Int.MAX_VALUE,
+    minLines: Int = 1,
+    color: ColorProducer? = null
+) = when (utility) {
+    is Utility.Loading -> Loading(
+        loadingType = utility.type,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color
+    )
 }

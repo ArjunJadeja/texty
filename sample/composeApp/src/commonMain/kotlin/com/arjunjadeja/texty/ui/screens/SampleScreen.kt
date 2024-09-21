@@ -23,14 +23,14 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
-import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Texty
+import com.arjunjadeja.texty.base.StyleType
 import com.arjunjadeja.texty.design_system.properties.Gradients.backgroundGradient
 import com.arjunjadeja.texty.design_system.components.SampleScreenTopBar
 import com.arjunjadeja.texty.design_system.properties.AppDimens.mediumSpacer
 import kotlinx.coroutines.launch
 
-data class SampleScreen(val displayStyle: DisplayStyle) : Screen {
+data class SampleScreen(val styleType: StyleType) : Screen {
 
     @Composable
     override fun Content() {
@@ -60,7 +60,7 @@ data class SampleScreen(val displayStyle: DisplayStyle) : Screen {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 SampleScreenTopBar(
-                    title = "$displayStyle Style Samples",
+                    title = "$styleType Style Samples",
                     onBackClick = { navigator?.pop() },
                     onTitleClick = {
                         coroutineScope.launch {

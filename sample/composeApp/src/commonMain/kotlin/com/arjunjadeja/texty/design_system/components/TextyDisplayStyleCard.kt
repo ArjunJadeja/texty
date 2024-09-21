@@ -21,9 +21,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ClickHandler
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.properties.AppDimens.displayStyleCardMinHeight
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
@@ -32,17 +32,11 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.squareCardCorner
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
 
-data class DisplayStyleVariation(
-    val name: String,
-    val code: String,
-    val demoContent: @Composable () -> Unit
-)
-
 @Composable
 fun TextyDisplayStyleCard(
-    displayStyle: DisplayStyle,
-    styleDescription: String,
-    variations: List<DisplayStyleVariation>,
+    title: String,
+    description: String,
+    variations: List<StyleVariation>,
     onViewSampleClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -53,9 +47,9 @@ fun TextyDisplayStyleCard(
         elevationType = CardElevationType.MEDIUM
     ) {
         Column(modifier = Modifier.padding(all = paddingBig).animateContentSize()) {
-            Title(title = displayStyle.toString()) { expanded = !expanded }
+            Title(title = title) { expanded = !expanded }
             Spacer(modifier = Modifier.height(height = mediumSpacer))
-            Description(description = styleDescription)
+            Description(description = description)
             Spacer(modifier = Modifier.height(height = bigSpacer))
             if (expanded) {
                 ShowStyleVariations(variations)
@@ -68,7 +62,7 @@ fun TextyDisplayStyleCard(
 }
 
 @Composable
-private fun ShowStyleVariations(variations: List<DisplayStyleVariation>) = variations
+private fun ShowStyleVariations(variations: List<StyleVariation>) = variations
     .forEachIndexed { index, variation ->
         var showDemo by remember { mutableStateOf(false) }
         if (variations.size > 1) {

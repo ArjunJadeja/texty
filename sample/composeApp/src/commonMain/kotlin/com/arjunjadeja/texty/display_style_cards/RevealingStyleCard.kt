@@ -7,7 +7,7 @@ import com.arjunjadeja.texty.RevealPattern
 import com.arjunjadeja.texty.RevealType
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.design_system.components.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -15,10 +15,10 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) =
     TextyDisplayStyleCard(
-        displayStyle = displayStyle,
-        styleDescription = "An engaging style where text is revealed character by character or by total time. Offers configurable options for reveal patterns, delays, and cover text, with a callback when the animation completes. Perfect for adding suspense or a gradual reveal effect.",
+        title = displayStyle.toString(),
+        description = "An engaging style where text is revealed character by character or by total time. Offers configurable options for reveal patterns, delays, and cover text, with a callback when the animation completes. Perfect for adding suspense or a gradual reveal effect.",
         variations = listOf(
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Default Revealing",
                 code = """
                     Texty(
@@ -34,7 +34,7 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Revealing from end",
                 code = """
                     Texty(
@@ -54,7 +54,7 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Revealing from centre to sides in 1 second",
                 code = """
                     Texty(
@@ -76,7 +76,7 @@ fun RevealingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Revealing from sides to centre with * as cover",
                 code = """
                     Texty(

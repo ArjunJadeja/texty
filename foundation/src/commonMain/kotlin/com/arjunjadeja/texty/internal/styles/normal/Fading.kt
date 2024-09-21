@@ -1,4 +1,4 @@
-package com.arjunjadeja.texty.internal.styles
+package com.arjunjadeja.texty.internal.styles.normal
 
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.design_system.components.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -12,10 +12,10 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun TypingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) {
     TextyDisplayStyleCard(
-        displayStyle = displayStyle,
-        styleDescription = "A typewriter-inspired style that mimics the appearance of text being typed. Ideal for creating a dynamic, real-time effect.",
+        title = displayStyle.toString(),
+        description = "A typewriter-inspired style that mimics the appearance of text being typed. Ideal for creating a dynamic, real-time effect.",
         variations = listOf(
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Default Typing",
                 code = """
                     Texty(
@@ -31,7 +31,7 @@ fun TypingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyl
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Custom Typing Delay",
                 code = """
                     Texty(

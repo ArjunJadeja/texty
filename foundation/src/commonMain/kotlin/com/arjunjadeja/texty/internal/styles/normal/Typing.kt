@@ -1,16 +1,23 @@
-package com.arjunjadeja.texty.internal.styles
+package com.arjunjadeja.texty.internal.styles.normal
 
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import kotlinx.coroutines.delay
 
 @Composable
-internal fun Basic(
+internal fun Typing(
     text: String,
+    typingDelayPerChar: Long,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
@@ -21,8 +28,19 @@ internal fun Basic(
     color: ColorProducer? = null,
     onTextDisplayed: () -> Unit = {}
 ) {
+    var displayedText by remember { mutableStateOf("") }
+    LaunchedEffect(text) {
+        val stringBuilder = StringBuilder()
+        text.forEach {
+            stringBuilder.append(it)
+            displayedText = stringBuilder.toString()
+            delay(typingDelayPerChar)
+        }
+        delay(typingDelayPerChar)
+        onTextDisplayed()
+    }
     BasicText(
-        text = text,
+        text = displayedText,
         modifier = modifier,
         style = textStyle,
         onTextLayout = onTextLayout,
@@ -32,5 +50,4 @@ internal fun Basic(
         minLines = minLines,
         color = color
     )
-    onTextDisplayed()
 }

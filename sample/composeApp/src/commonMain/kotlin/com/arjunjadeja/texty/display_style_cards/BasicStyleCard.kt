@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.design_system.components.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -12,10 +12,10 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun BasicStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) {
     TextyDisplayStyleCard(
-        displayStyle = displayStyle,
-        styleDescription = "A clean, minimalist style that focuses on readability with simple, unadorned typography. Ideal for clear and straightforward text presentation.",
+        title = displayStyle.toString(),
+        description = "A clean, minimalist style that focuses on readability with simple, unadorned typography. Ideal for clear and straightforward text presentation.",
         variations = listOf(
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Basic",
                 code = """
                     Texty(text = "Basic Text")

@@ -19,7 +19,10 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.FadingType
+import com.arjunjadeja.texty.Utility
 import com.arjunjadeja.texty.base.DisplayStyleHandler
+import com.arjunjadeja.texty.base.StyleType
+import com.arjunjadeja.texty.base.UtilityHandler
 import com.arjunjadeja.texty.design_system.components.FootNotes
 import com.arjunjadeja.texty.design_system.components.MainScreenTopBar
 import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
@@ -28,6 +31,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
 import com.arjunjadeja.texty.display_style_cards.BasicStyleCard
 import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
 import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
+import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
 
@@ -58,10 +62,33 @@ class MainScreen : Screen {
                     DisplayStyle.Revealing()
                 )
 
+                val utilities: List<Utility> = listOf(
+                    Utility.Loading()
+                )
+
                 items(displayStyles) { displayStyle ->
                     DisplayStyle(
                         displayStyle = displayStyle,
-                        onViewSampleClicked = { navigator?.push(SampleScreen(displayStyle = it)) }
+                        onViewSampleClicked = {
+                            navigator?.push(
+                                SampleScreen(
+                                    styleType = StyleType.DisplayStyleType(displayStyle = it)
+                                )
+                            )
+                        }
+                    )
+                }
+
+                items(utilities) { utility ->
+                    DisplayUtility(
+                        utility = utility,
+                        onViewSampleClicked = {
+                            navigator?.push(
+                                SampleScreen(
+                                    styleType = StyleType.UtilityType(utility = it)
+                                )
+                            )
+                        }
                     )
                 }
 
@@ -98,6 +125,17 @@ private fun DisplayStyle(
 
     is DisplayStyle.Revealing -> RevealingStyleCard(
         displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+}
+
+@Composable
+private fun DisplayUtility(
+    utility: Utility,
+    onViewSampleClicked: UtilityHandler
+) = when (utility) {
+    is Utility.Loading -> LoadingStyleCard(
+        utility = utility,
         onViewSampleClicked = onViewSampleClicked
     )
 }

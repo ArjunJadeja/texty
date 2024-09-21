@@ -5,7 +5,7 @@ import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.FadingType
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.design_system.components.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -13,10 +13,10 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun FadingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) =
     TextyDisplayStyleCard(
-        displayStyle = displayStyle,
-        styleDescription = "A smooth transition style where text fades in and out. Configurable options include fade duration and fade type, with a callback when the fade completes, allowing for seamless integration into various animations.",
+        title = displayStyle.toString(),
+        description = "A smooth transition style where text fades in and out. Configurable options include fade duration and fade type, with a callback when the fade completes, allowing for seamless integration into various animations.",
         variations = listOf(
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Fading In",
                 code = """
                     Texty(        
@@ -38,7 +38,7 @@ fun FadingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyl
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Fading Out",
                 code = """
                     Texty(        

@@ -9,7 +9,7 @@ import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.design_system.components.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -17,10 +17,10 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun BlinkingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayStyleHandler) =
     TextyDisplayStyleCard(
-        displayStyle = displayStyle,
-        styleDescription = "A dynamic style that makes text blink with versatile options: blink once, infinitely, for a set time, or a specified count. The blink delay is customizable for added flexibility.",
+        title = displayStyle.toString(),
+        description = "A dynamic style that makes text blink with versatile options: blink once, infinitely, for a set time, or a specified count. The blink delay is customizable for added flexibility.",
         variations = listOf(
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Default Blinking",
                 code = """
                     Texty(
@@ -36,7 +36,7 @@ fun BlinkingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplaySt
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Blink Once",
                 code = """
                     Texty(
@@ -58,7 +58,7 @@ fun BlinkingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplaySt
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Blink Ten Times",
                 code = """
                     var count by remember { mutableStateOf(0) }
@@ -90,7 +90,7 @@ fun BlinkingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplaySt
                     )
                 }
             ),
-            DisplayStyleVariation(
+            StyleVariation(
                 name = "Blinking for 10 seconds",
                 code = """
                     Texty(
