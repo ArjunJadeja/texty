@@ -36,6 +36,7 @@ import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.MotionStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
+import com.arjunjadeja.texty.display_style_cards.StickAndRevealStyleCard
 import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
 import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
 
@@ -63,7 +64,8 @@ class MainScreen : Screen {
                     DisplayStyle.Typing(),
                     DisplayStyle.Blinking(),
                     DisplayStyle.Fading(type = FadingType.IN),
-                    DisplayStyle.Revealing()
+                    DisplayStyle.Revealing(),
+                    DisplayStyle.StickAndReveal()
                 )
 
                 val listDisplayStyles = listOf(
@@ -146,6 +148,11 @@ private fun DisplayStyle(
     )
 
     is DisplayStyle.Revealing -> RevealingStyleCard(
+        displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+
+    is DisplayStyle.StickAndReveal -> StickAndRevealStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )

@@ -11,6 +11,7 @@ import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Blinking
 import com.arjunjadeja.texty.internal.styles.normal.Fading
 import com.arjunjadeja.texty.internal.styles.normal.Revealing
+import com.arjunjadeja.texty.internal.styles.normal.StickAndReveal
 import com.arjunjadeja.texty.internal.styles.normal.Typing
 import com.arjunjadeja.texty.internal.styles.utility.Loading
 import com.arjunjadeja.texty.internal.styles.utility.TimeKeeping
@@ -90,6 +91,25 @@ fun Texty(
         delayBeforeRevealing = displayStyle.delayBeforeRevealing,
         pattern = displayStyle.pattern,
         type = displayStyle.type,
+        cover = displayStyle.cover,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
+    is DisplayStyle.StickAndReveal -> StickAndReveal(
+        frame = text,
+        stickingDelay = displayStyle.stickingDelay,
+        revealingDelay = displayStyle.revealingDelay,
+        delayBeforeReveal = displayStyle.delayBeforeReveal,
+        stickingDirection = displayStyle.stickingDirection,
+        revealingDirection = displayStyle.revealingDirection,
         cover = displayStyle.cover,
         modifier = modifier,
         textStyle = textStyle,

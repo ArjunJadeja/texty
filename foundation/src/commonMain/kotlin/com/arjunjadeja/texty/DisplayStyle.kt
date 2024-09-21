@@ -41,4 +41,16 @@ sealed interface DisplayStyle {
         override fun toString(): String = "Revealing"
     }
 
+    data class StickAndReveal(
+        val stickingDelay: Long = 80L,
+        val revealingDelay: Long = 70L,
+        val delayBeforeReveal: Long = 1000L,
+        val stickingDirection: SlidingDirection = SlidingDirection.TOP_TO_BOTTOM,
+        val revealingDirection: SlidingDirection = SlidingDirection.BOTTOM_TO_TOP,
+        val cover: String? = null,
+        val onComplete: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString() = "Stick and Reveal"
+    }
+
 }
