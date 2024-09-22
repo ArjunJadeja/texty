@@ -8,6 +8,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.internal.styles.list.Motion
 import com.arjunjadeja.texty.internal.styles.list.OneByOne
+import com.arjunjadeja.texty.internal.styles.list.ScrollingList
+import com.arjunjadeja.texty.internal.styles.list.SlidingList
 import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Blinking
 import com.arjunjadeja.texty.internal.styles.normal.Fading
@@ -192,6 +194,40 @@ fun Texty(
         displayDuration = displayStyle.displayDuration,
         transitionInDuration = displayStyle.transitionInDuration,
         transitionOutDuration = displayStyle.transitionOutDuration,
+        repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
+    is ListDisplayStyle.SlidingList -> SlidingList(
+        textList = textList,
+        separator = displayStyle.separator,
+        slidingDirection = displayStyle.slidingDirection,
+        slideDuration = displayStyle.slideDuration,
+        repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
+    is ListDisplayStyle.ScrollingList -> ScrollingList(
+        textList = textList,
+        spacing = displayStyle.spacing,
+        scrollingDirection = displayStyle.scrollingDirection,
+        scrollDuration = displayStyle.scrollDuration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,

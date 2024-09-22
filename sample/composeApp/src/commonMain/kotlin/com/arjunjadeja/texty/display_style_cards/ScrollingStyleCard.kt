@@ -23,10 +23,12 @@ fun ScrollingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
             StyleVariation(
                 name = "Default Scrolling",
                 code = """
-                    Texty(
-                        text = "Scrolling Text",
-                        displayStyle = DisplayStyle.Scrolling()
-                    )
+                    Box(modifier = Modifier.height(256.dp)) {
+                        Texty(
+                            text = "Scrolling Text",
+                            displayStyle = DisplayStyle.Scrolling()
+                        )
+                    }
                     """.trimIndent(),
                 demoContent = {
                     Box(modifier = Modifier.height(256.dp)) {
@@ -40,12 +42,14 @@ fun ScrollingStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: DisplayS
             ), StyleVariation(
                 name = "Sliding Down",
                 code = """
-                    Texty(
-                        text = "Scrolling Text",
-                        displayStyle = DisplayStyle.Scrolling(
-                            scrollingDirection = ScrollingDirection.TowardsBottom
+                    Box(modifier = Modifier.height(256.dp)) {
+                        Texty(
+                            text = "Scrolling Text",
+                            displayStyle = DisplayStyle.Scrolling(
+                                scrollingDirection = ScrollingDirection.TowardsBottom
+                            )
                         )
-                    )
+                    }
                     """.trimIndent(),
                 demoContent = {
                     Box(modifier = Modifier.height(256.dp)) {
