@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import com.arjunjadeja.texty.SlidingDirection
+import com.arjunjadeja.texty.TransitionDirection
 import kotlinx.coroutines.delay
 
 @Composable
@@ -16,8 +16,8 @@ internal fun StickAndReveal(
     stickingDelay: Long,
     revealingDelay: Long,
     delayBeforeReveal: Long,
-    stickingDirection: SlidingDirection,
-    revealingDirection: SlidingDirection,
+    stickingDirection: TransitionDirection,
+    revealingDirection: TransitionDirection,
     cover: String? = null,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -41,14 +41,14 @@ internal fun StickAndReveal(
 
         // Sticking phase
         when (stickingDirection) {
-            SlidingDirection.TOP_TO_BOTTOM -> {
+            TransitionDirection.TOP_TO_BOTTOM -> {
                 for (line in coveredLines) {
                     displayedText += line.padEnd(maxWidth) + "\n"
                     delay(stickingDelay)
                 }
             }
 
-            SlidingDirection.BOTTOM_TO_TOP -> {
+            TransitionDirection.BOTTOM_TO_TOP -> {
                 displayedText = "\n".repeat(lines.size)
                 delay(stickingDelay)
                 for (i in lines.indices.reversed()) {
@@ -59,7 +59,7 @@ internal fun StickAndReveal(
                 }
             }
 
-            SlidingDirection.LEFT_TO_RIGHT -> {
+            TransitionDirection.LEFT_TO_RIGHT -> {
                 displayedText = lines.joinToString("\n") { " ".repeat(maxWidth) }
                 for (col in 0 until maxWidth) {
                     val currentLines = displayedText.lines().toMutableList()
@@ -77,7 +77,7 @@ internal fun StickAndReveal(
                 }
             }
 
-            SlidingDirection.RIGHT_TO_LEFT -> {
+            TransitionDirection.RIGHT_TO_LEFT -> {
                 displayedText = lines.joinToString("\n") { " ".repeat(maxWidth) }
                 for (col in maxWidth - 1 downTo 0) {
                     val currentLines = displayedText.lines().toMutableList()
@@ -100,7 +100,7 @@ internal fun StickAndReveal(
 
         // Revealing phase
         when (revealingDirection) {
-            SlidingDirection.TOP_TO_BOTTOM -> {
+            TransitionDirection.TOP_TO_BOTTOM -> {
                 for (i in lines.indices) {
                     delay(revealingDelay)
                     val currentLines = displayedText.lines().toMutableList()
@@ -109,7 +109,7 @@ internal fun StickAndReveal(
                 }
             }
 
-            SlidingDirection.BOTTOM_TO_TOP -> {
+            TransitionDirection.BOTTOM_TO_TOP -> {
                 for (i in lines.indices.reversed()) {
                     delay(revealingDelay)
                     val currentLines = displayedText.lines().toMutableList()
@@ -118,7 +118,7 @@ internal fun StickAndReveal(
                 }
             }
 
-            SlidingDirection.LEFT_TO_RIGHT -> {
+            TransitionDirection.LEFT_TO_RIGHT -> {
                 for (col in 0 until maxWidth) {
                     delay(revealingDelay)
                     val currentLines = displayedText.lines().toMutableList()
@@ -135,7 +135,7 @@ internal fun StickAndReveal(
                 }
             }
 
-            SlidingDirection.RIGHT_TO_LEFT -> {
+            TransitionDirection.RIGHT_TO_LEFT -> {
                 for (col in maxWidth - 1 downTo 0) {
                     delay(revealingDelay)
                     val currentLines = displayedText.lines().toMutableList()

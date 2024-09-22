@@ -2,7 +2,7 @@ package com.arjunjadeja.texty.display_style_cards
 
 import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.DisplayStyle
-import com.arjunjadeja.texty.SlidingDirection
+import com.arjunjadeja.texty.TransitionDirection
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
 import com.arjunjadeja.texty.base.StyleVariation
@@ -53,8 +53,8 @@ fun StickAndRevealStyleCard(displayStyle: DisplayStyle, onViewSampleClicked: Dis
                             stickingDelay = 30L,
                             revealingDelay = 30L,
                             delayBeforeReveal = 100L,
-                            stickingDirection = SlidingDirection.LEFT_TO_RIGHT,
-                            revealingDirection = SlidingDirection.RIGHT_TO_LEFT
+                            stickingDirection = TransitionDirection.LEFT_TO_RIGHT,
+                            revealingDirection = TransitionDirection.RIGHT_TO_LEFT
                         ),
                         textStyle = TextyStyle.CODE_LABEL.get()
                     )

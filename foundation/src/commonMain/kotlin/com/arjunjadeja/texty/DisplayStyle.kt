@@ -45,12 +45,21 @@ sealed interface DisplayStyle {
         val stickingDelay: Long = 80L,
         val revealingDelay: Long = 70L,
         val delayBeforeReveal: Long = 1000L,
-        val stickingDirection: SlidingDirection = SlidingDirection.TOP_TO_BOTTOM,
-        val revealingDirection: SlidingDirection = SlidingDirection.BOTTOM_TO_TOP,
+        val stickingDirection: TransitionDirection = TransitionDirection.TOP_TO_BOTTOM,
+        val revealingDirection: TransitionDirection = TransitionDirection.BOTTOM_TO_TOP,
         val cover: String? = null,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString() = "Stick and Reveal"
+    }
+
+    data class Sliding(
+        val slidingDirection: SlidingDirection = SlidingDirection.TowardsStart,
+        val slideDuration: Long = 3000L,
+        val repeat: Repeat = Repeat.Continuous,
+        val onComplete: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString() = "Sliding"
     }
 
 }
