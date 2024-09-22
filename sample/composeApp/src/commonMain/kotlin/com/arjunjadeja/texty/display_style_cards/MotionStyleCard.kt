@@ -50,7 +50,7 @@ fun MotionStyleCard(
                             frame_six, frame_seven, frame_eight
                         ),
                         displayStyle = ListDisplayStyle.Motion(
-                            frameDisplayDelay = 500L,
+                            delayBeforeNext = 500L,
                             repeat = Repeat.TimeBound(
                                 durationInMillis = 10_000L,
                                 showAfterComplete = true
@@ -65,7 +65,7 @@ fun MotionStyleCard(
                             frame_six, frame_seven, frame_eight
                         ),
                         displayStyle = ListDisplayStyle.Motion(
-                            frameDisplayDelay = 500L,
+                            delayBeforeNext = 500L,
                             repeat = Repeat.TimeBound(
                                 durationInMillis = 10_000L,
                                 showAfterComplete = true

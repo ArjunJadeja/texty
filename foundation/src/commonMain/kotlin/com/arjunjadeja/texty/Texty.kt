@@ -7,6 +7,7 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.internal.styles.list.Motion
+import com.arjunjadeja.texty.internal.styles.list.OneByOne
 import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Blinking
 import com.arjunjadeja.texty.internal.styles.normal.Fading
@@ -138,7 +139,25 @@ fun Texty(
 ) = when (displayStyle) {
     is ListDisplayStyle.Motion -> Motion(
         frames = textList,
-        frameDisplayDelay = displayStyle.frameDisplayDelay,
+        delayBeforeNext = displayStyle.delayBeforeNext,
+        repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
+    is ListDisplayStyle.OneByOne -> OneByOne(
+        textList = textList,
+        transitionEffect = displayStyle.transitionEffect,
+        displayDuration = displayStyle.displayDuration,
+        transitionInDuration = displayStyle.transitionInDuration,
+        transitionOutDuration = displayStyle.transitionOutDuration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,

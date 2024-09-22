@@ -19,7 +19,7 @@ import kotlinx.datetime.Clock
 @Composable
 internal fun Motion(
     frames: List<String>,
-    frameDisplayDelay: Long,
+    delayBeforeNext: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -38,7 +38,7 @@ internal fun Motion(
             Repeat.Once -> {
                 for (i in frames.indices) {
                     currentFrame = frames[i]
-                    delay(frameDisplayDelay)
+                    delay(delayBeforeNext)
                 }
                 onComplete()
             }
@@ -47,7 +47,7 @@ internal fun Motion(
                 while (true) {
                     for (i in frames.indices) {
                         currentFrame = frames[i]
-                        delay(frameDisplayDelay)
+                        delay(delayBeforeNext)
                     }
                 }
             }
@@ -57,7 +57,7 @@ internal fun Motion(
                 while (Clock.System.now().toEpochMilliseconds() < endTime) {
                     for (i in frames.indices) {
                         currentFrame = frames[i]
-                        delay(frameDisplayDelay)
+                        delay(delayBeforeNext)
                         if (Clock.System.now().toEpochMilliseconds() >= endTime) break
                     }
                 }
@@ -70,7 +70,7 @@ internal fun Motion(
                 while (repeatCount < repeat.repeatCount) {
                     for (i in frames.indices) {
                         currentFrame = frames[i]
-                        delay(frameDisplayDelay)
+                        delay(delayBeforeNext)
                     }
                     repeatCount++
                 }

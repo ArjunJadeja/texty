@@ -35,6 +35,7 @@ import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
 import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.MotionStyleCard
+import com.arjunjadeja.texty.display_style_cards.OneByOneStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
 import com.arjunjadeja.texty.display_style_cards.StickAndRevealStyleCard
 import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
@@ -69,7 +70,8 @@ class MainScreen : Screen {
                 )
 
                 val listDisplayStyles = listOf(
-                    ListDisplayStyle.Motion()
+                    ListDisplayStyle.Motion(),
+                    ListDisplayStyle.OneByOne()
                 )
 
                 val utilities = listOf(
@@ -164,6 +166,11 @@ private fun DisplayStyle(
     onViewSampleClicked: ListDisplayStyleHandler
 ) = when (displayStyle) {
     is ListDisplayStyle.Motion -> MotionStyleCard(
+        displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+
+    is ListDisplayStyle.OneByOne -> OneByOneStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
