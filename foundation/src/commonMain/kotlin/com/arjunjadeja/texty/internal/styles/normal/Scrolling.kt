@@ -18,16 +18,17 @@ import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.IntOffset
 import com.arjunjadeja.texty.Repeat
-import com.arjunjadeja.texty.SlidingDirection
+import com.arjunjadeja.texty.ScrollingDirection
 import kotlinx.datetime.Clock
 import kotlin.math.roundToInt
 
 @Composable
-internal fun Sliding(
+internal fun Scrolling(
     text: String,
-    slidingDirection: SlidingDirection,
-    slideDuration: Long,
+    scrollingDirection: ScrollingDirection,
+    scrollDuration: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -42,12 +43,12 @@ internal fun Sliding(
     val progress = remember { Animatable(initialValue = 0f) }
     var showFinalPosition by remember { mutableStateOf(false) }
 
-    LaunchedEffect(slidingDirection, repeat) {
+    LaunchedEffect(scrollingDirection, repeat) {
         when (repeat) {
             Repeat.Once -> {
                 progress.animateTo(
                     targetValue = 1f,
-                    animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                    animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
                 )
                 onComplete()
             }
@@ -56,7 +57,7 @@ internal fun Sliding(
                 progress.animateTo(
                     targetValue = 1f,
                     animationSpec = infiniteRepeatable(
-                        animation = tween(slideDuration.toInt(), easing = LinearEasing),
+                        animation = tween(scrollDuration.toInt(), easing = LinearEasing),
                         repeatMode = RepeatMode.Restart
                     )
                 )
@@ -69,7 +70,7 @@ internal fun Sliding(
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
                     )
                     onComplete()
                 } while (Clock.System.now().toEpochMilliseconds() < endTime)
@@ -82,7 +83,7 @@ internal fun Sliding(
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
                     )
                     repeatCount++
                     onComplete()
@@ -92,31 +93,31 @@ internal fun Sliding(
         }
     }
 
-    val slideModifier = modifier.layout { measurable, constraints ->
+    val scrollModifier = modifier.layout { measurable, constraints ->
         val placeable = measurable.measure(constraints)
-        layout(constraints.maxWidth, placeable.height) {
-            val xOffset = if (showFinalPosition) {
-                when (slidingDirection) {
-                    SlidingDirection.TowardsEnd -> constraints.maxWidth - placeable.width
-                    SlidingDirection.TowardsStart -> 0
+        layout(placeable.width, constraints.maxHeight) {
+            val yOffset = if (showFinalPosition) {
+                when (scrollingDirection) {
+                    ScrollingDirection.TowardsBottom -> constraints.maxHeight - placeable.height
+                    ScrollingDirection.TowardsTop -> 0
                 }
             } else {
-                when (slidingDirection) {
-                    SlidingDirection.TowardsEnd -> {
-                        ((progress.value * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
+                when (scrollingDirection) {
+                    ScrollingDirection.TowardsBottom -> {
+                        ((progress.value * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
 
-                    SlidingDirection.TowardsStart -> {
-                        (((1f - progress.value) * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
+                    ScrollingDirection.TowardsTop -> {
+                        (((1f - progress.value) * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
                 }
             }
-            placeable.place(x = xOffset, y = 0)
+            placeable.place(IntOffset(x = 0, y = yOffset))
         }
     }
     BasicText(
         text = text,
-        modifier = slideModifier,
+        modifier = scrollModifier,
         style = textStyle,
         onTextLayout = onTextLayout,
         overflow = overflow,

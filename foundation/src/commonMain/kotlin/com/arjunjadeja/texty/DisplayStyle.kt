@@ -31,6 +31,24 @@ sealed interface DisplayStyle {
         override fun toString(): String = "Fading"
     }
 
+    data class Sliding(
+        val slidingDirection: SlidingDirection = SlidingDirection.TowardsStart,
+        val slideDuration: Long = 3000L,
+        val repeat: Repeat = Repeat.Continuous,
+        val onComplete: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString() = "Sliding"
+    }
+
+    data class Scrolling(
+        val scrollingDirection: ScrollingDirection = ScrollingDirection.TowardsTop,
+        val scrollDuration: Long = 3000L,
+        val repeat: Repeat = Repeat.Continuous,
+        val onComplete: () -> Unit = {}
+    ) : DisplayStyle {
+        override fun toString() = "Scrolling"
+    }
+
     data class Revealing(
         val delayBeforeRevealing: Long = 500L,
         val pattern: RevealPattern = RevealPattern.START_TO_END,
@@ -51,15 +69,6 @@ sealed interface DisplayStyle {
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString() = "Stick and Reveal"
-    }
-
-    data class Sliding(
-        val slidingDirection: SlidingDirection = SlidingDirection.TowardsStart,
-        val slideDuration: Long = 3000L,
-        val repeat: Repeat = Repeat.Continuous,
-        val onComplete: () -> Unit = {}
-    ) : DisplayStyle {
-        override fun toString() = "Sliding"
     }
 
 }

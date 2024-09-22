@@ -37,6 +37,7 @@ import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
 import com.arjunjadeja.texty.display_style_cards.MotionStyleCard
 import com.arjunjadeja.texty.display_style_cards.OneByOneStyleCard
 import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
+import com.arjunjadeja.texty.display_style_cards.ScrollingStyleCard
 import com.arjunjadeja.texty.display_style_cards.SlidingStyleCard
 import com.arjunjadeja.texty.display_style_cards.StickAndRevealStyleCard
 import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
@@ -66,8 +67,9 @@ class MainScreen : Screen {
                     DisplayStyle.Typing(),
                     DisplayStyle.Blinking(),
                     DisplayStyle.Fading(type = FadingType.IN),
-                    DisplayStyle.Revealing(),
                     DisplayStyle.Sliding(),
+                    DisplayStyle.Scrolling(),
+                    DisplayStyle.Revealing(),
                     DisplayStyle.StickAndReveal()
                 )
 
@@ -151,12 +153,17 @@ private fun DisplayStyle(
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Revealing -> RevealingStyleCard(
+    is DisplayStyle.Sliding -> SlidingStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Sliding -> SlidingStyleCard(
+    is DisplayStyle.Scrolling -> ScrollingStyleCard(
+        displayStyle = displayStyle,
+        onViewSampleClicked = onViewSampleClicked
+    )
+
+    is DisplayStyle.Revealing -> RevealingStyleCard(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )

@@ -12,6 +12,7 @@ import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Blinking
 import com.arjunjadeja.texty.internal.styles.normal.Fading
 import com.arjunjadeja.texty.internal.styles.normal.Revealing
+import com.arjunjadeja.texty.internal.styles.normal.Scrolling
 import com.arjunjadeja.texty.internal.styles.normal.Sliding
 import com.arjunjadeja.texty.internal.styles.normal.StickAndReveal
 import com.arjunjadeja.texty.internal.styles.normal.Typing
@@ -88,12 +89,11 @@ fun Texty(
         onComplete = displayStyle.onComplete
     )
 
-    is DisplayStyle.Revealing -> Revealing(
+    is DisplayStyle.Sliding -> Sliding(
         text = text,
-        delayBeforeRevealing = displayStyle.delayBeforeRevealing,
-        pattern = displayStyle.pattern,
-        type = displayStyle.type,
-        cover = displayStyle.cover,
+        slidingDirection = displayStyle.slidingDirection,
+        slideDuration = displayStyle.slideDuration,
+        repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,
@@ -105,11 +105,28 @@ fun Texty(
         onComplete = displayStyle.onComplete
     )
 
-    is DisplayStyle.Sliding -> Sliding(
+    is DisplayStyle.Scrolling -> Scrolling(
         text = text,
-        slidingDirection = displayStyle.slidingDirection,
-        slideDuration = displayStyle.slideDuration,
+        scrollingDirection = displayStyle.scrollingDirection,
+        scrollDuration = displayStyle.scrollDuration,
         repeat = displayStyle.repeat,
+        modifier = modifier,
+        textStyle = textStyle,
+        onTextLayout = onTextLayout,
+        overflow = overflow,
+        softWrap = softWrap,
+        maxLines = maxLines,
+        minLines = minLines,
+        color = color,
+        onComplete = displayStyle.onComplete
+    )
+
+    is DisplayStyle.Revealing -> Revealing(
+        text = text,
+        delayBeforeRevealing = displayStyle.delayBeforeRevealing,
+        pattern = displayStyle.pattern,
+        type = displayStyle.type,
+        cover = displayStyle.cover,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,
