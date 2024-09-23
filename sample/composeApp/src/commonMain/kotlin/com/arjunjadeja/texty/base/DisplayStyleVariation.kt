@@ -2,7 +2,7 @@ package com.arjunjadeja.texty.base
 
 import androidx.compose.runtime.Composable
 
-data class StyleVariation(
+data class DisplayStyleVariation(
     val name: String,
     val code: String,
     val demoContent: @Composable () -> Unit

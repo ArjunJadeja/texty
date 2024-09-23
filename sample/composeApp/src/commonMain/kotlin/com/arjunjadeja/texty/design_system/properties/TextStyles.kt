@@ -6,6 +6,19 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 
+enum class TextyStyle {
+    TOP_BAR_TITLE,
+    CLICKABLE_TEXT,
+    DISPLAY_STYLE_DEMO_TEXT,
+    CODE_LABEL,
+    COPY_BUTTON_STYLE,
+    DISPLAY_STYLE_VARIATION_NAME,
+    DISPLAY_CARD_TITLE,
+    DISPLAY_CARD_DESCRIPTION,
+    DISPLAY_CARD_BUTTON_TEXT,
+    FOOTER
+}
+
 @Composable
 fun TextyStyle.get() = when (this) {
 
@@ -49,17 +62,4 @@ fun TextyStyle.get() = when (this) {
         color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
         fontWeight = FontWeight.Light
     )
-}
-
-enum class TextyStyle {
-    TOP_BAR_TITLE,
-    CLICKABLE_TEXT,
-    DISPLAY_STYLE_DEMO_TEXT,
-    CODE_LABEL,
-    COPY_BUTTON_STYLE,
-    DISPLAY_STYLE_VARIATION_NAME,
-    DISPLAY_CARD_TITLE,
-    DISPLAY_CARD_DESCRIPTION,
-    DISPLAY_CARD_BUTTON_TEXT,
-    FOOTER
 }

@@ -4,6 +4,10 @@ import androidx.compose.ui.unit.dp
 import com.arjunjadeja.texty.design_system.theme.isDesktop
 
 object AppDimens {
+    val sampleDemoCardSize = 400.dp
+    val desktopSampleAspectRatio = 1f
+    val mobileSampleAspectRatio = 9f / 16f
+
     val maxWidth = 800.dp
     val borderStrokeWidth = 1.dp
 

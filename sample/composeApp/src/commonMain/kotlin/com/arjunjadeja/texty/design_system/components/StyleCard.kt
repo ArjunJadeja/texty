@@ -2,7 +2,6 @@ package com.arjunjadeja.texty.design_system.components
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,7 +22,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ClickHandler
-import com.arjunjadeja.texty.base.StyleVariation
+import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.design_system.components.core.CardElevationType
+import com.arjunjadeja.texty.design_system.components.core.TextyCard
+import com.arjunjadeja.texty.design_system.components.core.TextyCardDescription
+import com.arjunjadeja.texty.design_system.components.core.TextyCardTitle
+import com.arjunjadeja.texty.design_system.components.core.TextyClickableText
 import com.arjunjadeja.texty.design_system.properties.AppDimens.displayStyleCardMinHeight
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
@@ -33,10 +37,10 @@ import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
 
 @Composable
-fun TextyDisplayStyleCard(
+fun StyleCard(
     title: String,
     description: String,
-    variations: List<StyleVariation>,
+    variations: List<DisplayStyleVariation>,
     onViewSampleClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -47,22 +51,22 @@ fun TextyDisplayStyleCard(
         elevationType = CardElevationType.MEDIUM
     ) {
         Column(modifier = Modifier.padding(all = paddingBig).animateContentSize()) {
-            Title(title = title) { expanded = !expanded }
+            TextyCardTitle(title = title) { expanded = !expanded }
             Spacer(modifier = Modifier.height(height = mediumSpacer))
-            Description(description = description)
+            TextyCardDescription(description = description)
             Spacer(modifier = Modifier.height(height = bigSpacer))
             if (expanded) {
                 ShowStyleVariations(variations)
-                ClickableTextBottom(text = "View Samples") { onViewSampleClicked() }
+                TextyClickableText(text = "View Samples") { onViewSampleClicked() }
             } else {
-                ClickableTextBottom(text = "Show More") { expanded = !expanded }
+                TextyClickableText(text = "Show More") { expanded = !expanded }
             }
         }
     }
 }
 
 @Composable
-private fun ShowStyleVariations(variations: List<StyleVariation>) = variations
+private fun ShowStyleVariations(variations: List<DisplayStyleVariation>) = variations
     .forEachIndexed { index, variation ->
         var showDemo by remember { mutableStateOf(false) }
         if (variations.size > 1) {
@@ -73,7 +77,7 @@ private fun ShowStyleVariations(variations: List<StyleVariation>) = variations
         Spacer(modifier = Modifier.height(height = bigSpacer))
         DemoButton(showDemo = showDemo) { showDemo = !showDemo }
         Spacer(modifier = Modifier.height(height = bigSpacer))
-        CodeBlock(code = variation.code)
+        DemoCodeBlock(code = variation.code)
         Spacer(modifier = Modifier.height(height = bigSpacer))
     }
 
@@ -112,27 +116,7 @@ private fun DemoButton(showDemo: Boolean, onClick: ClickHandler) = Row(
 }
 
 @Composable
-private fun CodeBlock(code: String) = TextyCard(
+private fun DemoCodeBlock(code: String) = TextyCard(
     elevationType = CardElevationType.NIL,
     showBorder = true
 ) { CopyableCodeBlock(code = code, modifier = Modifier.fillMaxWidth()) }
-
-@Composable
-private fun Title(title: String, onClick: ClickHandler) = Texty(
-    text = title,
-    textStyle = TextyStyle.DISPLAY_CARD_TITLE.get(),
-    modifier = Modifier.clickable { onClick() }
-)
-
-@Composable
-private fun Description(description: String) = Texty(
-    text = description,
-    textStyle = TextyStyle.DISPLAY_CARD_DESCRIPTION.get()
-)
-
-@Composable
-private fun ClickableTextBottom(text: String, onClick: ClickHandler) = Texty(
-    text = text,
-    textStyle = TextyStyle.CLICKABLE_TEXT.get(),
-    modifier = Modifier.clickable { onClick() }
-)
