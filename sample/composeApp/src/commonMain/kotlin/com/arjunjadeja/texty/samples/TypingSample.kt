@@ -79,7 +79,7 @@ private fun ChatHeader() = Box(
         .padding(16.dp)
 ) {
     Texty(
-        text = "TypingSample",
+        text = "ChatApp",
         displayStyle = DisplayStyle.Basic(),
         color = { Color.White },
         textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold)
