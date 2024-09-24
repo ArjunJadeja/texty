@@ -44,7 +44,7 @@ import com.arjunjadeja.texty.design_system.components.SampleWrappingBox
 @Composable
 fun BasicSample(isDemo: Boolean) = SampleCard(
     title = "Neon Sign Generator",
-    description = "Sample demonstrating Basic display style with a neon sign generator."
+    description = "Sample demonstrating basic display style with a neon sign generator."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
         NeonSignGenerator()

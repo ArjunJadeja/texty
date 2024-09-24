@@ -25,7 +25,7 @@ import kotlin.time.Duration.Companion.seconds
 @Composable
 fun TimeKeepingSample(isDemo: Boolean) = SampleCard(
     title = "Time Keeping utilities",
-    description = "Sample demonstrating various time keeping formats and options."
+    description = "Sample demonstrating various time keeping utility formats and options."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
         Column(

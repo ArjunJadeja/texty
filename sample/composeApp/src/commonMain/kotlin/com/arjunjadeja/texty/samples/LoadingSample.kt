@@ -25,7 +25,7 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun LoadingSample(isDemo: Boolean) = SampleCard(
     title = "Loading utilities",
-    description = "Sample demonstrating various loading utilities."
+    description = "Sample demonstrating various loading utility options."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
         Column(
