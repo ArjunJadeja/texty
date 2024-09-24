@@ -5,7 +5,7 @@ import com.arjunjadeja.texty.ListDisplayStyle
 import com.arjunjadeja.texty.SlidingDirection
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ListDisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -18,7 +18,7 @@ fun SlidingListStyle(
     title = displayStyle.toString(),
     description = "A fluid display where list items gracefully slide in a chosen direction, creating a smooth, continuous flow that adds motion and elegance to your content.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Sliding List",
             code = """
                 Texty(
@@ -34,7 +34,7 @@ fun SlidingListStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Sliding Towards End Slowly with <-> as separator",
             code = """
                 Texty(

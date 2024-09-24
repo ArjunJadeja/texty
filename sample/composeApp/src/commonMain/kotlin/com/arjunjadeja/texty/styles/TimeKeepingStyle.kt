@@ -3,7 +3,7 @@ package com.arjunjadeja.texty.styles
 import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.Utility
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.base.UtilityHandler
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
@@ -18,7 +18,7 @@ fun TimeKeepingStyle(
     title = utility.toString(),
     description = "A utility style that displays time in a customizable format, with options for live updates and an adjustable update interval. Perfect for real-time time tracking.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Time Keeping",
             code = """
                 Texty(utility = Utility.TimeKeeping())
@@ -30,7 +30,7 @@ fun TimeKeepingStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Full Date Time Display",
             code = """
                 Texty(
@@ -50,7 +50,7 @@ fun TimeKeepingStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "High Precision Time Keeping",
             code = """
                 Texty(

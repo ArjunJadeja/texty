@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.dp
 import com.arjunjadeja.texty.ListDisplayStyle
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ListDisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -21,7 +21,7 @@ fun ScrollingListStyle(
     title = displayStyle.toString(),
     description = "A vertical display where list items scroll effortlessly, either upwards or downwards, offering a dynamic and engaging presentation of information.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Scrolling List",
             code = """
                 Box(modifier = Modifier.height(256.dp)) {

@@ -5,7 +5,7 @@ import com.arjunjadeja.texty.ListDisplayStyle
 import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ListDisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -18,7 +18,7 @@ fun MotionStyle(
     title = displayStyle.toString(),
     description = "A dynamic style that animates text or frames sequentially, creating a smooth flow. With customizable display delay and flexible repeat options, it delivers continuous motion, perfect for animations or creating a cinematic feel.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Motion",
             code = """
                 Texty(
@@ -40,7 +40,7 @@ fun MotionStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Little Slow Motion for 10 seconds",
             code = """
                 Texty(

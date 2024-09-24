@@ -31,7 +31,7 @@ data class Message(val text: String, val isUser: Boolean)
 @Composable
 fun TypingSample(isDemo: Boolean) = SampleCard(
     title = "Chat Interface",
-    description = "Sample demonstrating typing typing style using chat messages"
+    description = "Sample demonstrating typing typing style using chat messages."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
         var messages by remember {

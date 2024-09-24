@@ -17,6 +17,7 @@ import com.arjunjadeja.texty.design_system.components.core.TextyCard
 import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.mediumSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingMedium
+import com.arjunjadeja.texty.design_system.properties.AppDimens.sampleDemoCardSize
 import com.arjunjadeja.texty.design_system.properties.AppDimens.smallSpacer
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -24,12 +25,12 @@ import com.arjunjadeja.texty.design_system.properties.get
 @Composable
 fun LoadingSample(isDemo: Boolean) = SampleCard(
     title = "Loading utilities",
-    description = "Sample demonstrating various loading utilities"
+    description = "Sample demonstrating various loading utilities."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
         Column(
             modifier = Modifier
-                .fillMaxSize()
+                .size(sampleDemoCardSize)
                 .background(
                     brush = Brush.linearGradient(
                         colors = listOf(

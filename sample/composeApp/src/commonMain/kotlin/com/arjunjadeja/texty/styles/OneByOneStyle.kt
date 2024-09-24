@@ -6,7 +6,7 @@ import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.TransitionEffect
 import com.arjunjadeja.texty.base.ListDisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -19,7 +19,7 @@ fun OneByOneStyle(
     title = displayStyle.toString(),
     description = "A fluid, sequential text display where each word or character gracefully appears with customizable effects—Basic, Fading, or Typing. With tailored durations and repeat options, it brings rhythm and motion to storytelling, presentations, or interactive displays.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default One By One",
             code = """
                 Texty(
@@ -35,7 +35,7 @@ fun OneByOneStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Typing and Clearing",
             code = """
                 Texty(
@@ -61,7 +61,7 @@ fun OneByOneStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Fast Sequential Display",
             code = """
                 Texty(
@@ -85,7 +85,7 @@ fun OneByOneStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Fading In and Out 3 times",
             code = """
                 Texty(

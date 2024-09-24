@@ -9,7 +9,7 @@ import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.ScrollingDirection
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -22,7 +22,7 @@ fun ScrollingStyle(
     title = displayStyle.toString(),
     description = "A dynamic style where text flows smoothly in a selected direction—top or bottom. With adjustable duration and repeat options, it captivates and engages viewers effortlessly.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Scrolling",
             code = """
                 Box(modifier = Modifier.height(256.dp)) {
@@ -41,7 +41,7 @@ fun ScrollingStyle(
                     )
                 }
             }
-        ), DisplayStyleVariation(
+        ), StyleVariation(
             name = "Sliding Down",
             code = """
                 Box(modifier = Modifier.height(256.dp)) {

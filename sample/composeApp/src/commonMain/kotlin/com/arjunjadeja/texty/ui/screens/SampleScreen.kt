@@ -27,6 +27,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.samples.BasicSample
 import com.arjunjadeja.texty.samples.LoadingSample
+import com.arjunjadeja.texty.samples.TimeKeepingSample
 import com.arjunjadeja.texty.samples.TypingSample
 
 data class SampleScreen(val styleType: StyleType) : Screen {
@@ -48,11 +49,11 @@ data class SampleScreen(val styleType: StyleType) : Screen {
             ) {
                 item {
                     SampleScreenTopBar(
-                        title = "$styleType Samples",
+                        title = "$styleType Sample",
                         onBackClick = { navigator?.pop() }
                     )
                 }
-                item { ShowSample(styleType = styleType, isDemo = false) }
+                item { ShowSample(styleType = styleType, isDemo = true) }
                 item { MoreSamplesCard() }
             }
         }
@@ -101,5 +102,5 @@ private fun UtilitySample(
     isDemo: Boolean
 ) = when (utility) {
     is Utility.Loading -> LoadingSample(isDemo = isDemo)
-    is Utility.TimeKeeping -> {}
+    is Utility.TimeKeeping -> TimeKeepingSample(isDemo = isDemo)
 }

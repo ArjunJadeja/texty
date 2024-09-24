@@ -5,7 +5,7 @@ import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.SlidingDirection
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -18,7 +18,7 @@ fun SlidingStyle(
     title = displayStyle.toString(),
     description = "A captivating style where text glides smoothly in a chosen direction. With customizable duration and repeat options, it creates a rhythmic flow that enhances visual storytelling.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Sliding",
             code = """
                 Texty(
@@ -33,7 +33,7 @@ fun SlidingStyle(
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )
             }
-        ), DisplayStyleVariation(
+        ), StyleVariation(
             name = "Sliding Towards End",
             code = """
                 Texty(

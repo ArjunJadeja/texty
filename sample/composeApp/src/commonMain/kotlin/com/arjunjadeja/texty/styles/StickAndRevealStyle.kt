@@ -5,7 +5,7 @@ import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.TransitionDirection
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
@@ -18,7 +18,7 @@ fun StickAndRevealStyle(
     title = displayStyle.toString(),
     description = "A captivating style where a cover sticks to the surface before being revealed, simulating a realistic poster or banner effect. With adjustable delays and directions, it adds drama and depth to your animations.",
     variations = listOf(
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Default Stick and Reveal",
             code = """
                 Texty(
@@ -34,7 +34,7 @@ fun StickAndRevealStyle(
                 )
             }
         ),
-        DisplayStyleVariation(
+        StyleVariation(
             name = "Quick Sliding",
             code = """
                 Texty(

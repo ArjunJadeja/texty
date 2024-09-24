@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ClickHandler
-import com.arjunjadeja.texty.base.DisplayStyleVariation
+import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.core.CardElevationType
 import com.arjunjadeja.texty.design_system.components.core.TextyCard
 import com.arjunjadeja.texty.design_system.components.core.TextyCardDescription
@@ -48,7 +48,7 @@ import com.arjunjadeja.texty.design_system.properties.get
 fun StyleCard(
     title: String,
     description: String,
-    variations: List<DisplayStyleVariation>,
+    variations: List<StyleVariation>,
     onViewSampleClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -70,7 +70,7 @@ fun StyleCard(
                 Spacer(modifier = Modifier.height(height = mediumSpacer))
                 ShowVariationContent(variation = variations[selectedVariation])
                 Spacer(modifier = Modifier.height(height = bigSpacer))
-                TextyClickableText(text = "View Samples") { onViewSampleClicked() }
+                TextyClickableText(text = "View Sample") { onViewSampleClicked() }
             } else TextyClickableText(text = "Show More") { expanded = !expanded }
         }
     }
@@ -78,7 +78,7 @@ fun StyleCard(
 
 @Composable
 private fun VariationTabs(
-    variations: List<DisplayStyleVariation>,
+    variations: List<StyleVariation>,
     selectedIndex: Int,
     onSelect: (Int) -> Unit
 ) = LazyRow(
@@ -119,7 +119,7 @@ private fun VariationTabs(
 }
 
 @Composable
-private fun ShowVariationContent(variation: DisplayStyleVariation) {
+private fun ShowVariationContent(variation: StyleVariation) {
     var showDemo by remember { mutableStateOf(false) }
     Spacer(modifier = Modifier.height(height = mediumSpacer))
     VariationName(name = variation.name)
