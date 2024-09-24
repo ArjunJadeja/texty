@@ -22,6 +22,7 @@ object AppDimens {
     val minCardHeight = if (isDesktop()) 64.dp else 48.dp
     val displayStyleCardMinHeight = if (isDesktop()) 128.dp else 96.dp
 
+    val smallCardRadius = 4.dp
     val cardCornerRadius = 16.dp
     val squareCardCornerRadius = 0.dp
 

@@ -10,6 +10,9 @@ enum class TextyStyle {
     TOP_BAR_TITLE,
     CLICKABLE_TEXT,
     DISPLAY_STYLE_DEMO_TEXT,
+    DISPLAY_STYLE_SELECTED_TAB,
+    DISPLAY_STYLE_TAB,
+    DISPLAY_STYLE_TAB_NUMBER,
     CODE_LABEL,
     COPY_BUTTON_STYLE,
     DISPLAY_STYLE_VARIATION_NAME,
@@ -28,6 +31,19 @@ fun TextyStyle.get() = when (this) {
 
     TextyStyle.CLICKABLE_TEXT -> MaterialTheme.typography.bodyMedium.copy(
         brush = Brush.linearGradient(colors = Gradients.textGradient)
+    )
+
+    TextyStyle.DISPLAY_STYLE_SELECTED_TAB -> MaterialTheme.typography.labelLarge.copy(
+        color = MaterialTheme.colorScheme.primary,
+        fontWeight = FontWeight.Bold
+    )
+    TextyStyle.DISPLAY_STYLE_TAB -> MaterialTheme.typography.labelLarge.copy(
+        color = MaterialTheme.colorScheme.onSurface,
+        fontWeight = FontWeight.Normal
+    )
+
+    TextyStyle.DISPLAY_STYLE_TAB_NUMBER -> MaterialTheme.typography.labelMedium.copy(
+        fontWeight = FontWeight.Bold
     )
 
     TextyStyle.DISPLAY_STYLE_DEMO_TEXT -> MaterialTheme.typography.displayMedium.copy(

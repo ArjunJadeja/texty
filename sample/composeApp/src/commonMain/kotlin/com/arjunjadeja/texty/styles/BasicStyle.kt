@@ -18,7 +18,7 @@ fun BasicStyle(
     description = "A clean, minimalist style that focuses on readability with simple, unadorned typography. Ideal for clear and straightforward text presentation.",
     variations = listOf(
         DisplayStyleVariation(
-            name = "Basic",
+            name = "Default Basic Style",
             code = """
                 Texty(text = "Basic Text")
                 """.trimIndent(),
