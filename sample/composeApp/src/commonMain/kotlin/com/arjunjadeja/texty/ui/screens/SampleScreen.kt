@@ -26,6 +26,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.samples.BasicSample
+import com.arjunjadeja.texty.samples.LoadingSample
 import com.arjunjadeja.texty.samples.TypingSample
 
 data class SampleScreen(val styleType: StyleType) : Screen {
@@ -51,7 +52,7 @@ data class SampleScreen(val styleType: StyleType) : Screen {
                         onBackClick = { navigator?.pop() }
                     )
                 }
-                item { ShowSample(styleType = styleType, isDemo = true) }
+                item { ShowSample(styleType = styleType, isDemo = false) }
                 item { MoreSamplesCard() }
             }
         }
@@ -69,7 +70,10 @@ private fun ShowSample(
     )
 
     is StyleType.ListDisplayStyleType -> ListDisplayStyleSample(styleType.displayStyle)
-    is StyleType.UtilityType -> UtilitySample(styleType.utility)
+    is StyleType.UtilityType -> UtilitySample(
+        utility = styleType.utility,
+        isDemo = isDemo
+    )
 }
 
 @Composable
@@ -92,5 +96,10 @@ private fun ListDisplayStyleSample(listDisplayStyle: ListDisplayStyle) {
 }
 
 @Composable
-private fun UtilitySample(utility: Utility) {
+private fun UtilitySample(
+    utility: Utility,
+    isDemo: Boolean
+) = when (utility) {
+    is Utility.Loading -> LoadingSample(isDemo = isDemo)
+    is Utility.TimeKeeping -> {}
 }
