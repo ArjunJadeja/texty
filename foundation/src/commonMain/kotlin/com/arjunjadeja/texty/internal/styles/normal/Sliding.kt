@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.TextLayoutResult
@@ -92,7 +93,9 @@ internal fun Sliding(
         }
     }
 
-    val slideModifier = modifier.layout { measurable, constraints ->
+    val slideModifier = modifier
+        .clipToBounds()
+        .layout { measurable, constraints ->
         val placeable = measurable.measure(constraints)
         layout(constraints.maxWidth, placeable.height) {
             val xOffset = if (showFinalPosition) {
