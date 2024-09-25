@@ -29,6 +29,7 @@ import com.arjunjadeja.texty.samples.BasicSample
 import com.arjunjadeja.texty.samples.LoadingSample
 import com.arjunjadeja.texty.samples.RevealingSample
 import com.arjunjadeja.texty.samples.ScrollingSample
+import com.arjunjadeja.texty.samples.StickAndRevealSample
 import com.arjunjadeja.texty.samples.TimeKeepingSample
 import com.arjunjadeja.texty.samples.TypingSample
 
@@ -90,7 +91,7 @@ private fun NormalDisplayStyleSample(
     is DisplayStyle.Revealing -> RevealingSample(isDemo = isDemo)
     is DisplayStyle.Scrolling -> ScrollingSample(isDemo = isDemo)
     is DisplayStyle.Sliding -> {}
-    is DisplayStyle.StickAndReveal -> {}
+    is DisplayStyle.StickAndReveal -> StickAndRevealSample(isDemo = isDemo)
     is DisplayStyle.Typing -> TypingSample(isDemo = isDemo)
 }
 
