@@ -37,12 +37,15 @@ internal fun Revealing(
     val coverText = when (cover) {
         is RevealCover.Default -> "⣿".getFullCover(text.length)
         is RevealCover.Custom -> {
-            if (cover.cover.length == 1) cover.cover.getFullCover(text.length)
-            else {
-                 require(cover.cover.length == text.length) {
-                    "Custom cover text must either be a single character or the same length as the text."
-                 }
-                cover.cover
+            when (cover.cover.length) {
+                1 -> cover.cover.getFullCover(text.length)
+                text.length -> cover.cover
+                else -> cover.cover
+                    .firstOrNull()
+                    ?.takeIf { it != ' ' }
+                    ?.toString()
+                    ?.getFullCover(text.length)
+                    ?: "⣿".getFullCover(text.length)
             }
         }
     }
