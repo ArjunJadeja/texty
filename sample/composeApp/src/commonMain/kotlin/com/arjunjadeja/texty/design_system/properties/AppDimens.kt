@@ -24,6 +24,7 @@ object AppDimens {
 
     val smallCardRadius = 4.dp
     val cardCornerRadius = 16.dp
+    val cardCornerRadiusBig = 32.dp
     val squareCardCornerRadius = 0.dp
 
     val cardElevationNil = 0.dp
