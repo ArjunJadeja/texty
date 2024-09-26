@@ -30,20 +30,20 @@ import com.arjunjadeja.texty.design_system.components.MainScreenTopBar
 import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
-import com.arjunjadeja.texty.display_style_cards.BasicStyleCard
-import com.arjunjadeja.texty.display_style_cards.BlinkingStyleCard
-import com.arjunjadeja.texty.display_style_cards.FadingStyleCard
-import com.arjunjadeja.texty.display_style_cards.LoadingStyleCard
-import com.arjunjadeja.texty.display_style_cards.MotionStyleCard
-import com.arjunjadeja.texty.display_style_cards.OneByOneStyleCard
-import com.arjunjadeja.texty.display_style_cards.RevealingStyleCard
-import com.arjunjadeja.texty.display_style_cards.ScrollingListStyleCard
-import com.arjunjadeja.texty.display_style_cards.ScrollingStyleCard
-import com.arjunjadeja.texty.display_style_cards.SlidingListStyleCard
-import com.arjunjadeja.texty.display_style_cards.SlidingStyleCard
-import com.arjunjadeja.texty.display_style_cards.StickAndRevealStyleCard
-import com.arjunjadeja.texty.display_style_cards.TimeKeepingStyleCard
-import com.arjunjadeja.texty.display_style_cards.TypingStyleCard
+import com.arjunjadeja.texty.styles.BasicStyle
+import com.arjunjadeja.texty.styles.BlinkingStyle
+import com.arjunjadeja.texty.styles.FadingStyle
+import com.arjunjadeja.texty.styles.LoadingStyle
+import com.arjunjadeja.texty.styles.MotionStyle
+import com.arjunjadeja.texty.styles.OneByOneStyle
+import com.arjunjadeja.texty.styles.RevealingStyle
+import com.arjunjadeja.texty.styles.ScrollingListStyle
+import com.arjunjadeja.texty.styles.ScrollingStyle
+import com.arjunjadeja.texty.styles.SlidingListStyle
+import com.arjunjadeja.texty.styles.SlidingStyle
+import com.arjunjadeja.texty.styles.StickAndRevealStyle
+import com.arjunjadeja.texty.styles.TimeKeepingStyle
+import com.arjunjadeja.texty.styles.TypingStyle
 
 class MainScreen : Screen {
 
@@ -137,42 +137,42 @@ private fun DisplayStyle(
     displayStyle: DisplayStyle,
     onViewSampleClicked: DisplayStyleHandler
 ) = when (displayStyle) {
-    is DisplayStyle.Basic -> BasicStyleCard(
+    is DisplayStyle.Basic -> BasicStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Typing -> TypingStyleCard(
+    is DisplayStyle.Typing -> TypingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Blinking -> BlinkingStyleCard(
+    is DisplayStyle.Blinking -> BlinkingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Fading -> FadingStyleCard(
+    is DisplayStyle.Fading -> FadingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Sliding -> SlidingStyleCard(
+    is DisplayStyle.Sliding -> SlidingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Scrolling -> ScrollingStyleCard(
+    is DisplayStyle.Scrolling -> ScrollingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.Revealing -> RevealingStyleCard(
+    is DisplayStyle.Revealing -> RevealingStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is DisplayStyle.StickAndReveal -> StickAndRevealStyleCard(
+    is DisplayStyle.StickAndReveal -> StickAndRevealStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
@@ -183,22 +183,22 @@ private fun DisplayStyle(
     displayStyle: ListDisplayStyle,
     onViewSampleClicked: ListDisplayStyleHandler
 ) = when (displayStyle) {
-    is ListDisplayStyle.Motion -> MotionStyleCard(
+    is ListDisplayStyle.Motion -> MotionStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is ListDisplayStyle.OneByOne -> OneByOneStyleCard(
+    is ListDisplayStyle.OneByOne -> OneByOneStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is ListDisplayStyle.SlidingList -> SlidingListStyleCard(
+    is ListDisplayStyle.SlidingList -> SlidingListStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is ListDisplayStyle.ScrollingList -> ScrollingListStyleCard(
+    is ListDisplayStyle.ScrollingList -> ScrollingListStyle(
         displayStyle = displayStyle,
         onViewSampleClicked = onViewSampleClicked
     )
@@ -209,12 +209,12 @@ private fun DisplayUtility(
     utility: Utility,
     onViewSampleClicked: UtilityHandler
 ) = when (utility) {
-    is Utility.Loading -> LoadingStyleCard(
+    is Utility.Loading -> LoadingStyle(
         utility = utility,
         onViewSampleClicked = onViewSampleClicked
     )
 
-    is Utility.TimeKeeping -> TimeKeepingStyleCard(
+    is Utility.TimeKeeping -> TimeKeepingStyle(
         utility = utility,
         onViewSampleClicked = onViewSampleClicked
     )

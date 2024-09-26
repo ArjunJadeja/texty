@@ -1,4 +1,4 @@
-package com.arjunjadeja.texty.display_style_cards
+package com.arjunjadeja.texty.styles
 
 import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.LoadingType
@@ -6,12 +6,15 @@ import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.Utility
 import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.base.UtilityHandler
-import com.arjunjadeja.texty.design_system.components.TextyDisplayStyleCard
+import com.arjunjadeja.texty.design_system.components.StyleCard
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get
 
 @Composable
-fun LoadingStyleCard(utility: Utility, onViewSampleClicked: UtilityHandler) = TextyDisplayStyleCard(
+fun LoadingStyle(
+    utility: Utility,
+    onViewSampleClicked: UtilityHandler
+) = StyleCard(
     title = utility.toString(),
     description = "A versatile style offering various loading animations, including spinner, circular, box, and music bars. Each type features customizable cycle duration, with the music bar option allowing for adjustable bar count.",
     variations = listOf(

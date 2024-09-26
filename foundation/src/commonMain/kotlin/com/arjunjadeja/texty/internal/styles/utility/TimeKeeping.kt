@@ -59,6 +59,9 @@ private fun formatDateTime(dateTime: LocalDateTime, format: String): String {
     return try {
         if (!isValidFormat(format)) throw IllegalArgumentException("Invalid format string")
 
+        val dayOfWeekFull = dateTime.dayOfWeek.name.lowercase().replaceFirstChar { it.uppercase() }
+        val dayOfWeekShort = dayOfWeekFull.take(n = 3)
+
         format.replace(Regex("'[^']*'")) { it.value }  // Temporarily replace quoted sections
             .replace("yyyy", dateTime.year.toString().padStart(4, '0'))
             .replace("MM", dateTime.monthNumber.toString().padStart(2, '0'))
@@ -67,6 +70,8 @@ private fun formatDateTime(dateTime: LocalDateTime, format: String): String {
             .replace("mm", dateTime.minute.toString().padStart(2, '0'))
             .replace("ss", dateTime.second.toString().padStart(2, '0'))
             .replace("SSS", dateTime.nanosecond.toString().padStart(9, '0').substring(0, 3))
+            .replace("EEEE", dayOfWeekFull)
+            .replace("EEE", dayOfWeekShort)
             .replace(Regex("'([^']*)'")) { it.groupValues[1] }  // Restore quoted sections
     } catch (e: Exception) {
         "Invalid Format: $format"
@@ -74,7 +79,7 @@ private fun formatDateTime(dateTime: LocalDateTime, format: String): String {
 }
 
 private fun isValidFormat(format: String): Boolean {
-    val validPatterns = listOf("yyyy", "MM", "dd", "HH", "mm", "ss", "SSS")
+    val validPatterns = listOf("yyyy", "MM", "dd", "HH", "mm", "ss", "SSS", "EEEE", "EEE")
     val regex = Regex("'[^']*'|(" + validPatterns.joinToString("|") + ")")
 
     var remainingFormat = format

@@ -1,4 +1,4 @@
-package com.arjunjadeja.texty.design_system.components
+package com.arjunjadeja.texty.design_system.components.core
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton

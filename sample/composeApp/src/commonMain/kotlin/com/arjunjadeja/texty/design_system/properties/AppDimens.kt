@@ -4,6 +4,10 @@ import androidx.compose.ui.unit.dp
 import com.arjunjadeja.texty.design_system.theme.isDesktop
 
 object AppDimens {
+    val sampleDemoCardSize = 400.dp
+    val desktopSampleAspectRatio = 1f
+    val mobileSampleAspectRatio = 9f / 16f
+
     val maxWidth = 800.dp
     val borderStrokeWidth = 1.dp
 
@@ -18,7 +22,9 @@ object AppDimens {
     val minCardHeight = if (isDesktop()) 64.dp else 48.dp
     val displayStyleCardMinHeight = if (isDesktop()) 128.dp else 96.dp
 
+    val smallCardRadius = 4.dp
     val cardCornerRadius = 16.dp
+    val cardCornerRadiusBig = 32.dp
     val squareCardCornerRadius = 0.dp
 
     val cardElevationNil = 0.dp

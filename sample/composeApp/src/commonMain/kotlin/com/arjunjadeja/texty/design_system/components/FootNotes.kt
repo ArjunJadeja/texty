@@ -11,6 +11,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.Links
+import com.arjunjadeja.texty.design_system.components.core.CardElevationType
+import com.arjunjadeja.texty.design_system.components.core.ClickType
+import com.arjunjadeja.texty.design_system.components.core.TextyCard
+import com.arjunjadeja.texty.design_system.components.core.TextyIconButton
 import com.arjunjadeja.texty.design_system.properties.AppDimens
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
 import com.arjunjadeja.texty.design_system.properties.get

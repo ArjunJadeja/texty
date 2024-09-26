@@ -6,6 +6,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import com.arjunjadeja.texty.base.ClickHandler
 import com.arjunjadeja.texty.base.Links
+import com.arjunjadeja.texty.design_system.components.core.ClickType
+import com.arjunjadeja.texty.design_system.components.core.NavigationType
+import com.arjunjadeja.texty.design_system.components.core.TextyIconButton
+import com.arjunjadeja.texty.design_system.components.core.TextyTopBar
 import com.arjunjadeja.texty.design_system.theme.LocalThemeIsDark
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource

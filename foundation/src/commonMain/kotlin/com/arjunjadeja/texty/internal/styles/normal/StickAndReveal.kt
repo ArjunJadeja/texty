@@ -30,12 +30,21 @@ internal fun StickAndReveal(
     onComplete: () -> Unit = {}
 ) {
     val lines = frame.lines()
-    val coverChar = cover?.firstOrNull() ?: '⣿'
+    val coverText = when (cover?.length) {
+        1 -> cover.first().toString().repeat(frame.length)
+        frame.length -> cover
+        else -> cover?.firstOrNull()?.takeIf { it != ' ' }?.toString()?.repeat(frame.length)
+            ?: "⣿".repeat(frame.length)
+    }
+
     var displayedText by remember { mutableStateOf("") }
 
     LaunchedEffect(frame) {
         val coveredLines = lines.map { line ->
-            line.map { if (it.isWhitespace()) it else coverChar }.joinToString("")
+            line.map {
+                if (it.isWhitespace()) it
+                else coverText.getOrElse(lines.indexOf(line) % coverText.length) { '⣿' }
+            }.joinToString("")
         }
         val maxWidth = lines.maxOf { it.length }
 
@@ -152,10 +161,8 @@ internal fun StickAndReveal(
                 }
             }
         }
-
         onComplete()
     }
-
     BasicText(
         text = displayedText,
         modifier = modifier,

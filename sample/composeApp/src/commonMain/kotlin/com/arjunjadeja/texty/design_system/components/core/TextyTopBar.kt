@@ -1,4 +1,4 @@
-package com.arjunjadeja.texty.design_system.components
+package com.arjunjadeja.texty.design_system.components.core
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource

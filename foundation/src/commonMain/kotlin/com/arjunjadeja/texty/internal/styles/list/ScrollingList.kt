@@ -15,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.text.TextLayoutResult
@@ -97,7 +98,9 @@ internal fun ScrollingList(
         }
     }
 
-    val scrollModifier = modifier.layout { measurable, constraints ->
+    val scrollModifier = modifier
+        .clipToBounds()
+        .layout { measurable, constraints ->
         val placeable = measurable.measure(constraints)
         layout(placeable.width, constraints.maxHeight) {
             val yOffset = if (showFinalPosition) {
