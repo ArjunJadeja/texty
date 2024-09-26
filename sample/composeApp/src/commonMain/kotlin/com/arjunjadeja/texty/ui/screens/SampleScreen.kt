@@ -31,6 +31,7 @@ import com.arjunjadeja.texty.samples.FadingSample
 import com.arjunjadeja.texty.samples.LoadingSample
 import com.arjunjadeja.texty.samples.RevealingSample
 import com.arjunjadeja.texty.samples.ScrollingSample
+import com.arjunjadeja.texty.samples.SlidingSample
 import com.arjunjadeja.texty.samples.StickAndRevealSample
 import com.arjunjadeja.texty.samples.TimeKeepingSample
 import com.arjunjadeja.texty.samples.TypingSample
@@ -75,7 +76,11 @@ private fun ShowSample(
         isDemo = isDemo
     )
 
-    is StyleType.ListDisplayStyleType -> ListDisplayStyleSample(styleType.displayStyle)
+    is StyleType.ListDisplayStyleType -> ListDisplayStyleSample(
+        listDisplayStyle = styleType.displayStyle,
+        isDemo = isDemo
+    )
+
     is StyleType.UtilityType -> UtilitySample(
         utility = styleType.utility,
         isDemo = isDemo
@@ -92,13 +97,16 @@ private fun NormalDisplayStyleSample(
     is DisplayStyle.Fading -> FadingSample(isDemo = isDemo)
     is DisplayStyle.Revealing -> RevealingSample(isDemo = isDemo)
     is DisplayStyle.Scrolling -> ScrollingSample(isDemo = isDemo)
-    is DisplayStyle.Sliding -> {}
+    is DisplayStyle.Sliding -> SlidingSample(isDemo = isDemo)
     is DisplayStyle.StickAndReveal -> StickAndRevealSample(isDemo = isDemo)
     is DisplayStyle.Typing -> TypingSample(isDemo = isDemo)
 }
 
 @Composable
-private fun ListDisplayStyleSample(listDisplayStyle: ListDisplayStyle) {
+private fun ListDisplayStyleSample(
+    listDisplayStyle: ListDisplayStyle,
+    isDemo: Boolean
+) {
 }
 
 @Composable
