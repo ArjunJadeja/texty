@@ -50,8 +50,8 @@ fun ScrollingSample(isDemo: Boolean) = SampleCard(
                 Texty(
                     text = credits,
                     displayStyle = DisplayStyle.Scrolling(
-                        scrollingDirection = ScrollingDirection.TowardsTop,
-                        scrollDuration = 30_000L,
+                        direction = ScrollingDirection.TOWARDS_TOP,
+                        duration = 30_000L,
                         repeat = Repeat.Once,
                         onComplete = { showMovieName = true }
                     ),

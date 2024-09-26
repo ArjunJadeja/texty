@@ -41,8 +41,8 @@ fun SlidingListStyle(
                     textList = listOf("Inspire", "Innovate", "Impact"),
                     displayStyle = ListDisplayStyle.SlidingList(
                         separator = " <-> ",
-                        slidingDirection = SlidingDirection.TowardsStart,
-                        slideDuration = 4000L
+                        direction = SlidingDirection.TOWARDS_END,
+                        duration = 4000L
                     )
                 )
                 """.trimIndent(),
@@ -51,8 +51,8 @@ fun SlidingListStyle(
                     textList = listOf("Inspire", "Innovate", "Impact"),
                     displayStyle = ListDisplayStyle.SlidingList(
                         separator = " <-> ",
-                        slidingDirection = SlidingDirection.TowardsEnd,
-                        slideDuration = 4000L
+                        direction = SlidingDirection.TOWARDS_END,
+                        duration = 4000L
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )

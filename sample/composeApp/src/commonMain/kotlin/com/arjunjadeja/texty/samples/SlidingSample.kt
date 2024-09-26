@@ -58,7 +58,7 @@ private fun SuperAppInterface() {
         Spacer(modifier = Modifier.height(smallSpacer))
         SliderCard(
             message = "Special Offer: Get 10% off on all services today!",
-            direction = SlidingDirection.TowardsStart
+            direction = SlidingDirection.TOWARDS_START
         )
         Spacer(modifier = Modifier.height(smallSpacer))
         LazyVerticalGrid(
@@ -74,7 +74,7 @@ private fun SuperAppInterface() {
         Spacer(modifier = Modifier.height(smallSpacer))
         SliderCard(
             message = "Tech giant announces new smartphone launch!",
-            direction = SlidingDirection.TowardsEnd
+            direction = SlidingDirection.TOWARDS_END
         )
     }
 }
@@ -141,8 +141,8 @@ private fun SliderCard(message: String, direction: SlidingDirection) = Card(
         Texty(
             text = message,
             displayStyle = DisplayStyle.Sliding(
-                slidingDirection = direction,
-                slideDuration = 12_000L,
+                direction = direction,
+                duration = 12_000L,
                 repeat = Repeat.Continuous
             ),
             textStyle = TextStyle(fontSize = 12.sp, fontWeight = FontWeight.Medium),

@@ -2,9 +2,9 @@ package com.arjunjadeja.texty.styles
 
 import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.DisplayStyle
-import com.arjunjadeja.texty.RevealCover
-import com.arjunjadeja.texty.RevealPattern
-import com.arjunjadeja.texty.RevealType
+import com.arjunjadeja.texty.RevealingCover
+import com.arjunjadeja.texty.RevealingPattern
+import com.arjunjadeja.texty.RevealingType
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.DisplayStyleHandler
 import com.arjunjadeja.texty.base.StyleVariation
@@ -42,16 +42,14 @@ fun RevealingStyle(
                 Texty(
                     text = "Revealing Text",
                     displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.END_TO_START
+                        pattern = RevealingPattern.END_TO_START
                     )
                 )
                 """.trimIndent(),
             demoContent = {
                 Texty(
                     text = "Revealing Text",
-                    displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.END_TO_START
-                    ),
+                    displayStyle = DisplayStyle.Revealing(pattern = RevealingPattern.END_TO_START),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )
             }
@@ -62,8 +60,8 @@ fun RevealingStyle(
                 Texty(
                     text = "Revealing Text",
                     displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.CENTER_TO_SIDES,
-                        type = RevealType.ByTotalTime(durationInMillis = 1000L)
+                        pattern = RevealingPattern.CENTER_TO_SIDES,
+                        type = RevealingType.ByTotalTime(durationInMillis = 1000L)
                     )
                 )
                 """.trimIndent(),
@@ -71,8 +69,8 @@ fun RevealingStyle(
                 Texty(
                     text = "Revealing Text",
                     displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.CENTER_TO_SIDES,
-                        type = RevealType.ByTotalTime(durationInMillis = 1000L)
+                        pattern = RevealingPattern.CENTER_TO_SIDES,
+                        type = RevealingType.ByTotalTime(durationInMillis = 1000L)
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )
@@ -84,8 +82,8 @@ fun RevealingStyle(
                 Texty(
                     text = "Revealing Text",
                     displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.SIDES_TO_CENTER,
-                        cover = RevealCover.Custom(cover = "*")
+                        pattern = RevealingPattern.SIDES_TO_CENTER,
+                        cover = RevealingCover.Custom(cover = "*")
                     )
                 )
                 """.trimIndent(),
@@ -93,8 +91,8 @@ fun RevealingStyle(
                 Texty(
                     text = "Revealing Text",
                     displayStyle = DisplayStyle.Revealing(
-                        pattern = RevealPattern.SIDES_TO_CENTER,
-                        cover = RevealCover.Custom(cover = "*")
+                        pattern = RevealingPattern.SIDES_TO_CENTER,
+                        cover = RevealingCover.Custom(cover = "*")
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )

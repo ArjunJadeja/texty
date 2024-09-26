@@ -27,8 +27,8 @@ import kotlin.math.roundToInt
 @Composable
 internal fun Sliding(
     text: String,
-    slidingDirection: SlidingDirection,
-    slideDuration: Long,
+    direction: SlidingDirection,
+    duration: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -43,12 +43,12 @@ internal fun Sliding(
     val progress = remember { Animatable(initialValue = 0f) }
     var showFinalPosition by remember { mutableStateOf(false) }
 
-    LaunchedEffect(slidingDirection, repeat) {
+    LaunchedEffect(direction, repeat) {
         when (repeat) {
             Repeat.Once -> {
                 progress.animateTo(
                     targetValue = 1f,
-                    animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                    animationSpec = tween(duration.toInt(), easing = LinearEasing)
                 )
                 onComplete()
             }
@@ -57,7 +57,7 @@ internal fun Sliding(
                 progress.animateTo(
                     targetValue = 1f,
                     animationSpec = infiniteRepeatable(
-                        animation = tween(slideDuration.toInt(), easing = LinearEasing),
+                        animation = tween(duration.toInt(), easing = LinearEasing),
                         repeatMode = RepeatMode.Restart
                     )
                 )
@@ -65,12 +65,12 @@ internal fun Sliding(
             }
 
             is Repeat.TimeBound -> {
-                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.durationInMillis
+                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 do {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(duration.toInt(), easing = LinearEasing)
                     )
                     onComplete()
                 } while (Clock.System.now().toEpochMilliseconds() < endTime)
@@ -79,11 +79,11 @@ internal fun Sliding(
 
             is Repeat.CountBound -> {
                 var repeatCount = 0
-                while (repeatCount < repeat.repeatCount) {
+                while (repeatCount < repeat.count) {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(slideDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(duration.toInt(), easing = LinearEasing)
                     )
                     repeatCount++
                     onComplete()
@@ -99,17 +99,17 @@ internal fun Sliding(
         val placeable = measurable.measure(constraints)
         layout(constraints.maxWidth, placeable.height) {
             val xOffset = if (showFinalPosition) {
-                when (slidingDirection) {
-                    SlidingDirection.TowardsEnd -> constraints.maxWidth - placeable.width
-                    SlidingDirection.TowardsStart -> 0
+                when (direction) {
+                    SlidingDirection.TOWARDS_END -> constraints.maxWidth - placeable.width
+                    SlidingDirection.TOWARDS_START -> 0
                 }
             } else {
-                when (slidingDirection) {
-                    SlidingDirection.TowardsEnd -> {
+                when (direction) {
+                    SlidingDirection.TOWARDS_END -> {
                         ((progress.value * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
                     }
 
-                    SlidingDirection.TowardsStart -> {
+                    SlidingDirection.TOWARDS_START -> {
                         (((1f - progress.value) * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
                     }
                 }

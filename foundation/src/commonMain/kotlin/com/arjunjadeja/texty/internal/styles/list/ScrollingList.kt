@@ -70,7 +70,7 @@ internal fun ScrollingList(
             }
 
             is Repeat.TimeBound -> {
-                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.durationInMillis
+                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 do {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
@@ -84,7 +84,7 @@ internal fun ScrollingList(
 
             is Repeat.CountBound -> {
                 var repeatCount = 0
-                while (repeatCount < repeat.repeatCount) {
+                while (repeatCount < repeat.count) {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
@@ -105,16 +105,16 @@ internal fun ScrollingList(
         layout(placeable.width, constraints.maxHeight) {
             val yOffset = if (showFinalPosition) {
                 when (scrollingDirection) {
-                    ScrollingDirection.TowardsBottom -> constraints.maxHeight - placeable.height
-                    ScrollingDirection.TowardsTop -> 0
+                    ScrollingDirection.TOWARDS_BOTTOM -> constraints.maxHeight - placeable.height
+                    ScrollingDirection.TOWARDS_TOP -> 0
                 }
             } else {
                 when (scrollingDirection) {
-                    ScrollingDirection.TowardsBottom -> {
+                    ScrollingDirection.TOWARDS_BOTTOM -> {
                         ((progress.value * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
 
-                    ScrollingDirection.TowardsTop -> {
+                    ScrollingDirection.TOWARDS_TOP -> {
                         (((1f - progress.value) * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
                 }

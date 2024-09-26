@@ -39,7 +39,7 @@ fun SlidingStyle(
                 Texty(
                     text = "Sliding Text",
                     displayStyle = DisplayStyle.Sliding(
-                        slidingDirection = SlidingDirection.TowardsEnd
+                        direction = SlidingDirection.TOWARDS_END
                     )
                 )
                 """.trimIndent(),
@@ -47,7 +47,7 @@ fun SlidingStyle(
                 Texty(
                     text = "Sliding Text",
                     displayStyle = DisplayStyle.Sliding(
-                        slidingDirection = SlidingDirection.TowardsEnd
+                        direction = SlidingDirection.TOWARDS_END
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )

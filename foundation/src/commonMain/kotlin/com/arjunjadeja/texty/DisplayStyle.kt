@@ -16,7 +16,7 @@ sealed interface DisplayStyle {
     }
 
     data class Blinking(
-        val blinkInterval: Long = 500L,
+        val interval: Long = 500L,
         val repeat: Repeat = Repeat.Continuous,
         val onBlink: () -> Unit = {}
     ) : DisplayStyle {
@@ -25,15 +25,15 @@ sealed interface DisplayStyle {
 
     data class Fading(
         val type: FadingType,
-        val durationInMillis: Long = 1000L,
+        val duration: Long = 1000L,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString(): String = "Fading"
     }
 
     data class Sliding(
-        val slidingDirection: SlidingDirection = SlidingDirection.TowardsStart,
-        val slideDuration: Long = 3000L,
+        val direction: SlidingDirection = SlidingDirection.TOWARDS_START,
+        val duration: Long = 3000L,
         val repeat: Repeat = Repeat.Continuous,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
@@ -41,8 +41,8 @@ sealed interface DisplayStyle {
     }
 
     data class Scrolling(
-        val scrollingDirection: ScrollingDirection = ScrollingDirection.TowardsTop,
-        val scrollDuration: Long = 3000L,
+        val direction: ScrollingDirection = ScrollingDirection.TOWARDS_TOP,
+        val duration: Long = 3000L,
         val repeat: Repeat = Repeat.Continuous,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
@@ -50,22 +50,22 @@ sealed interface DisplayStyle {
     }
 
     data class Revealing(
+        val cover: RevealingCover = RevealingCover.Default,
+        val pattern: RevealingPattern = RevealingPattern.START_TO_END,
+        val type: RevealingType = RevealingType.ByEachCharacter(delayInMillis = 80L),
         val delayBeforeRevealing: Long = 500L,
-        val pattern: RevealPattern = RevealPattern.START_TO_END,
-        val type: RevealType = RevealType.ByEachCharacter(delayInMillis = 80L),
-        val cover: RevealCover = RevealCover.Default,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString(): String = "Revealing"
     }
 
     data class StickAndReveal(
-        val stickingDelay: Long = 80L,
-        val revealingDelay: Long = 70L,
-        val delayBeforeReveal: Long = 1000L,
-        val stickingDirection: TransitionDirection = TransitionDirection.TOP_TO_BOTTOM,
-        val revealingDirection: TransitionDirection = TransitionDirection.BOTTOM_TO_TOP,
         val cover: String? = null,
+        val coverStickingDirection: TransitionDirection = TransitionDirection.TOP_TO_BOTTOM,
+        val coverStickingDelay: Long = 80L,
+        val delayBeforeReveal: Long = 1000L,
+        val revealingDirection: TransitionDirection = TransitionDirection.BOTTOM_TO_TOP,
+        val revealingDelay: Long = 70L,
         val onComplete: () -> Unit = {}
     ) : DisplayStyle {
         override fun toString() = "Stick and Reveal"

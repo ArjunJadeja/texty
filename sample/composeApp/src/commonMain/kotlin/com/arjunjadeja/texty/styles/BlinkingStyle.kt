@@ -44,7 +44,7 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blink Once",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 1000L,
+                        interval = 1000L,
                         repeat = Repeat.Once
                     )
                 )
@@ -53,7 +53,7 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blink Once",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 1000L,
+                        interval = 1000L,
                         repeat = Repeat.Once
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
@@ -67,9 +67,9 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blink count ${'$'}count",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 500L,
+                        interval = 500L,
                         repeat = Repeat.CountBound(
-                            repeatCount = 10,
+                            count = 10,
                             showAfterComplete = true
                         ),
                         onBlink = { count++ }
@@ -81,9 +81,9 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blink count $count",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 500L,
+                        interval = 500L,
                         repeat = Repeat.CountBound(
-                            repeatCount = 10,
+                            count = 10,
                             showAfterComplete = true
                         ),
                         onBlink = { count++ }
@@ -98,9 +98,9 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blinking for 10 seconds",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 500L,
+                        interval = 500L,
                         repeat = Repeat.TimeBound(
-                            durationInMillis = 10_000L,
+                            duration = 10_000L,
                             showAfterComplete = true
                         )
                     )
@@ -110,9 +110,9 @@ fun BlinkingStyle(
                 Texty(
                     text = "Blinking for 10 seconds",
                     displayStyle = DisplayStyle.Blinking(
-                        blinkInterval = 500L,
+                        interval = 500L,
                         repeat = Repeat.TimeBound(
-                            durationInMillis = 10_000L,
+                            duration = 10_000L,
                             showAfterComplete = true
                         )
                     ),

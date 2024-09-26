@@ -63,7 +63,7 @@ fun Texty(
 
     is DisplayStyle.Blinking -> Blinking(
         text = text,
-        blinkInterval = displayStyle.blinkInterval,
+        interval = displayStyle.interval,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,
@@ -79,7 +79,7 @@ fun Texty(
     is DisplayStyle.Fading -> Fading(
         text = text,
         type = displayStyle.type,
-        durationInMillis = displayStyle.durationInMillis,
+        duration = displayStyle.duration,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,
@@ -93,8 +93,8 @@ fun Texty(
 
     is DisplayStyle.Sliding -> Sliding(
         text = text,
-        slidingDirection = displayStyle.slidingDirection,
-        slideDuration = displayStyle.slideDuration,
+        direction = displayStyle.direction,
+        duration = displayStyle.duration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,
@@ -109,8 +109,8 @@ fun Texty(
 
     is DisplayStyle.Scrolling -> Scrolling(
         text = text,
-        scrollingDirection = displayStyle.scrollingDirection,
-        scrollDuration = displayStyle.scrollDuration,
+        direction = displayStyle.direction,
+        duration = displayStyle.duration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,
@@ -125,10 +125,10 @@ fun Texty(
 
     is DisplayStyle.Revealing -> Revealing(
         text = text,
-        delayBeforeRevealing = displayStyle.delayBeforeRevealing,
+        cover = displayStyle.cover,
         pattern = displayStyle.pattern,
         type = displayStyle.type,
-        cover = displayStyle.cover,
+        delayBeforeRevealing = displayStyle.delayBeforeRevealing,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,
@@ -142,12 +142,12 @@ fun Texty(
 
     is DisplayStyle.StickAndReveal -> StickAndReveal(
         frame = text,
-        stickingDelay = displayStyle.stickingDelay,
-        revealingDelay = displayStyle.revealingDelay,
-        delayBeforeReveal = displayStyle.delayBeforeReveal,
-        stickingDirection = displayStyle.stickingDirection,
-        revealingDirection = displayStyle.revealingDirection,
         cover = displayStyle.cover,
+        coverStickingDirection = displayStyle.coverStickingDirection,
+        coverStickingDelay = displayStyle.coverStickingDelay,
+        delayBeforeReveal = displayStyle.delayBeforeReveal,
+        revealingDirection = displayStyle.revealingDirection,
+        revealingDelay = displayStyle.revealingDelay,
         modifier = modifier,
         textStyle = textStyle,
         onTextLayout = onTextLayout,
@@ -190,7 +190,7 @@ fun Texty(
 
     is ListDisplayStyle.OneByOne -> OneByOne(
         textList = textList,
-        transitionEffect = displayStyle.transitionEffect,
+        transitionStyle = displayStyle.transitionStyle,
         displayDuration = displayStyle.displayDuration,
         transitionInDuration = displayStyle.transitionInDuration,
         transitionOutDuration = displayStyle.transitionOutDuration,
@@ -209,8 +209,8 @@ fun Texty(
     is ListDisplayStyle.SlidingList -> SlidingList(
         textList = textList,
         separator = displayStyle.separator,
-        slidingDirection = displayStyle.slidingDirection,
-        slideDuration = displayStyle.slideDuration,
+        slidingDirection = displayStyle.direction,
+        slidingDuration = displayStyle.duration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,
@@ -226,8 +226,8 @@ fun Texty(
     is ListDisplayStyle.ScrollingList -> ScrollingList(
         textList = textList,
         spacing = displayStyle.spacing,
-        scrollingDirection = displayStyle.scrollingDirection,
-        scrollDuration = displayStyle.scrollDuration,
+        scrollingDirection = displayStyle.direction,
+        scrollDuration = displayStyle.duration,
         repeat = displayStyle.repeat,
         modifier = modifier,
         textStyle = textStyle,

@@ -23,7 +23,6 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.cardElevationSma
 import com.arjunjadeja.texty.design_system.properties.AppDimens.mediumSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingMedium
 import com.arjunjadeja.texty.design_system.properties.AppDimens.sampleDemoCardSize
-import com.arjunjadeja.texty.design_system.properties.AppDimens.smallSpacer
 
 @Composable
 fun BlinkingSample(isDemo: Boolean) = SampleCard(
@@ -170,7 +169,7 @@ private fun BlinkingText(
         Texty(
             text = text,
             displayStyle = DisplayStyle.Blinking(
-                blinkInterval = interval,
+                interval = interval,
                 repeat = Repeat.Continuous,
                 onBlink = {
                     currentColor = if (currentColor == color1) color2 else color1

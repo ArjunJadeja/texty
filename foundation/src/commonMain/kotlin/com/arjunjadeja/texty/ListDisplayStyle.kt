@@ -14,7 +14,7 @@ sealed interface ListDisplayStyle {
     }
 
     data class OneByOne(
-        val transitionEffect: TransitionEffect = TransitionEffect.BASIC,
+        val transitionStyle: TransitionStyle = TransitionStyle.BASIC,
         val displayDuration: Long = 200L,
         val transitionInDuration: Long = 100L,
         val transitionOutDuration: Long = 100L,
@@ -26,8 +26,8 @@ sealed interface ListDisplayStyle {
 
     data class SlidingList(
         val separator: String? = null,
-        val slidingDirection: SlidingDirection = SlidingDirection.TowardsStart,
-        val slideDuration: Long = 3000L,
+        val direction: SlidingDirection = SlidingDirection.TOWARDS_START,
+        val duration: Long = 3000L,
         val repeat: Repeat = Repeat.Continuous,
         val onComplete: () -> Unit = {}
     ) : ListDisplayStyle {
@@ -36,8 +36,8 @@ sealed interface ListDisplayStyle {
 
     data class ScrollingList(
         val spacing: Dp = 4.dp,
-        val scrollingDirection: ScrollingDirection = ScrollingDirection.TowardsTop,
-        val scrollDuration: Long = 3000L,
+        val direction: ScrollingDirection = ScrollingDirection.TOWARDS_TOP,
+        val duration: Long = 3000L,
         val repeat: Repeat = Repeat.Continuous,
         val onComplete: () -> Unit = {}
     ) : ListDisplayStyle {

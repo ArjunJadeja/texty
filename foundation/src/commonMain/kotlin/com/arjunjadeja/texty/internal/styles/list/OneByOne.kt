@@ -14,7 +14,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.FadingType
 import com.arjunjadeja.texty.Repeat
-import com.arjunjadeja.texty.TransitionEffect
+import com.arjunjadeja.texty.TransitionStyle
 import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Fading
 import kotlinx.coroutines.delay
@@ -24,7 +24,7 @@ import kotlinx.datetime.Clock
 @Composable
 internal fun OneByOne(
     textList: List<String>,
-    transitionEffect: TransitionEffect,
+    transitionStyle: TransitionStyle,
     displayDuration: Long,
     transitionInDuration: Long,
     transitionOutDuration: Long,
@@ -45,13 +45,13 @@ internal fun OneByOne(
 
     LaunchedEffect(Unit) {
         val startTime = Clock.System.now().toEpochMilliseconds()
-        var repeatCount = if (repeat is Repeat.CountBound) repeat.repeatCount else Int.MAX_VALUE
+        var repeatCount = if (repeat is Repeat.CountBound) repeat.count else Int.MAX_VALUE
 
         while (isActive && (when (repeat) {
                 Repeat.Continuous -> true
                 Repeat.Once -> repeatCount > 0
                 is Repeat.TimeBound -> Clock.System.now()
-                    .toEpochMilliseconds() - startTime < repeat.durationInMillis
+                    .toEpochMilliseconds() - startTime < repeat.duration
 
                 is Repeat.CountBound -> repeatCount > 0
             })
@@ -62,7 +62,7 @@ internal fun OneByOne(
 
                 // Display text
                 isDisplaying = true
-                if (transitionEffect == TransitionEffect.TYPING) {
+                if (transitionStyle == TransitionStyle.TYPING) {
                     for (i in 1..currentText.length) {
                         displayedText = currentText.substring(0, i)
                         delay(transitionInDuration / currentText.length)
@@ -83,7 +83,7 @@ internal fun OneByOne(
 
                 if (shouldTransitionOut) {
                     isDisplaying = false
-                    if (transitionEffect == TransitionEffect.TYPING) {
+                    if (transitionStyle == TransitionStyle.TYPING) {
                         for (i in currentText.length downTo 1) {
                             displayedText = currentText.substring(0, i)
                             delay(transitionOutDuration / currentText.length)
@@ -115,8 +115,8 @@ internal fun OneByOne(
         onComplete()
     }
 
-    when (transitionEffect) {
-        TransitionEffect.BASIC -> {
+    when (transitionStyle) {
+        TransitionStyle.BASIC -> {
             if (isDisplaying) {
                 Basic(
                     text = displayedText,
@@ -132,11 +132,11 @@ internal fun OneByOne(
             }
         }
 
-        TransitionEffect.FADING -> {
+        TransitionStyle.FADING -> {
             Fading(
                 text = displayedText,
                 type = if (isDisplaying) FadingType.IN else FadingType.OUT,
-                durationInMillis = if (isDisplaying) transitionInDuration else transitionOutDuration,
+                duration = if (isDisplaying) transitionInDuration else transitionOutDuration,
                 modifier = modifier,
                 textStyle = textStyle,
                 onTextLayout = onTextLayout,
@@ -148,7 +148,7 @@ internal fun OneByOne(
             )
         }
 
-        TransitionEffect.TYPING -> {
+        TransitionStyle.TYPING -> {
             Basic(
                 text = displayedText,
                 modifier = modifier,

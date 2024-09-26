@@ -15,7 +15,7 @@ internal fun SlidingList(
     textList: List<String>,
     separator: String?,
     slidingDirection: SlidingDirection,
-    slideDuration: Long,
+    slidingDuration: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -28,8 +28,8 @@ internal fun SlidingList(
     onComplete: () -> Unit = {}
 ) = Sliding(
     text = textList.joinToString(separator = separator ?: " "),
-    slidingDirection = slidingDirection,
-    slideDuration = slideDuration,
+    direction = slidingDirection,
+    duration = slidingDuration,
     repeat = repeat,
     modifier = modifier,
     textStyle = textStyle,

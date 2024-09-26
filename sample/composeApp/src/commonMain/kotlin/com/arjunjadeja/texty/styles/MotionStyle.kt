@@ -51,7 +51,7 @@ fun MotionStyle(
                     displayStyle = ListDisplayStyle.Motion(
                         delayBeforeNext = 500L,
                         repeat = Repeat.TimeBound(
-                            durationInMillis = 10_000L,
+                            duration = 10_000L,
                             showAfterComplete = true
                         )
                     )
@@ -66,7 +66,7 @@ fun MotionStyle(
                     displayStyle = ListDisplayStyle.Motion(
                         delayBeforeNext = 500L,
                         repeat = Repeat.TimeBound(
-                            durationInMillis = 10_000L,
+                            duration = 10_000L,
                             showAfterComplete = true
                         )
                     ),

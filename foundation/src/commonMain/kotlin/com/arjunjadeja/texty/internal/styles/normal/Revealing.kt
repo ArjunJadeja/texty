@@ -12,18 +12,18 @@ import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import com.arjunjadeja.texty.RevealCover
-import com.arjunjadeja.texty.RevealPattern
-import com.arjunjadeja.texty.RevealType
+import com.arjunjadeja.texty.RevealingCover
+import com.arjunjadeja.texty.RevealingPattern
+import com.arjunjadeja.texty.RevealingType
 import kotlinx.coroutines.delay
 
 @Composable
 internal fun Revealing(
     text: String,
+    cover: RevealingCover,
+    pattern: RevealingPattern,
+    type: RevealingType,
     delayBeforeRevealing: Long,
-    pattern: RevealPattern,
-    type: RevealType,
-    cover: RevealCover,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
@@ -35,8 +35,8 @@ internal fun Revealing(
     onComplete: () -> Unit = {}
 ) {
     val coverText = when (cover) {
-        is RevealCover.Default -> "⣿".getFullCover(text.length)
-        is RevealCover.Custom -> {
+        is RevealingCover.Default -> "⣿".getFullCover(text.length)
+        is RevealingCover.Custom -> {
             when (cover.cover.length) {
                 1 -> cover.cover.getFullCover(text.length)
                 text.length -> cover.cover
@@ -54,29 +54,29 @@ internal fun Revealing(
     val totalCharacters = text.length
 
     val calculatedDelay = when (type) {
-        is RevealType.ByEachCharacter -> type.delayInMillis
-        is RevealType.ByTotalTime -> type.durationInMillis / totalCharacters
+        is RevealingType.ByEachCharacter -> type.delayInMillis
+        is RevealingType.ByTotalTime -> type.durationInMillis / totalCharacters
     }
 
     LaunchedEffect(text, pattern, type) {
         delay(delayBeforeRevealing)
 
         when (pattern) {
-            RevealPattern.START_TO_END -> {
+            RevealingPattern.START_TO_END -> {
                 for (i in text.indices) {
                     delay(calculatedDelay)
                     displayedText = displayedText.replaceRange(i..i, text[i].toString())
                 }
             }
 
-            RevealPattern.END_TO_START -> {
+            RevealingPattern.END_TO_START -> {
                 for (i in text.indices.reversed()) {
                     delay(calculatedDelay)
                     displayedText = displayedText.replaceRange(i..i, text[i].toString())
                 }
             }
 
-            RevealPattern.CENTER_TO_SIDES -> {
+            RevealingPattern.CENTER_TO_SIDES -> {
                 val center = text.length / 2
                 for (i in 0..center) {
                     delay(calculatedDelay)
@@ -95,7 +95,7 @@ internal fun Revealing(
                 }
             }
 
-            RevealPattern.SIDES_TO_CENTER -> {
+            RevealingPattern.SIDES_TO_CENTER -> {
                 val center = text.length / 2
                 for (i in 0..center) {
                     delay(calculatedDelay)

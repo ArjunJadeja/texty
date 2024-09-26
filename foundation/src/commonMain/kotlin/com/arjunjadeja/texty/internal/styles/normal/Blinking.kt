@@ -19,7 +19,7 @@ import kotlinx.datetime.Clock
 @Composable
 internal fun Blinking(
     text: String,
-    blinkInterval: Long,
+    interval: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -36,23 +36,23 @@ internal fun Blinking(
     LaunchedEffect(Unit) {
         when (repeat) {
             Repeat.Once -> {
-                delay(timeMillis = blinkInterval / 2)
+                delay(timeMillis = interval / 2)
                 isVisible = !isVisible
                 if (isVisible) onBlink()
             }
 
             Repeat.Continuous -> {
                 do {
-                    delay(timeMillis = blinkInterval / 2)
+                    delay(timeMillis = interval / 2)
                     isVisible = !isVisible
                     if (isVisible) onBlink()
                 } while (true)
             }
 
             is Repeat.TimeBound -> {
-                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.durationInMillis
+                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 do {
-                    delay(timeMillis = blinkInterval / 2)
+                    delay(timeMillis = interval / 2)
                     isVisible = !isVisible
                     if (isVisible) onBlink()
                 } while (Clock.System.now().toEpochMilliseconds() < endTime)
@@ -61,8 +61,8 @@ internal fun Blinking(
 
             is Repeat.CountBound -> {
                 var repeatCount = 0
-                while (repeatCount < repeat.repeatCount) {
-                    delay(timeMillis = blinkInterval / 2)
+                while (repeatCount < repeat.count) {
+                    delay(timeMillis = interval / 2)
                     isVisible = !isVisible
                     if (isVisible) {
                         repeatCount++

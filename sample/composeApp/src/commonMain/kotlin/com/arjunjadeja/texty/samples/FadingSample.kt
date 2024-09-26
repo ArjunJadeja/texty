@@ -96,7 +96,7 @@ private fun FadingQuote(
         text = quote.text,
         displayStyle = DisplayStyle.Fading(
             type = if (isFadingIn) FadingType.IN else FadingType.OUT,
-            durationInMillis = 2000L,
+            duration = 2000L,
             onComplete = onFadeComplete
         ),
         color = { Color(0xFF37474F) },
@@ -112,7 +112,7 @@ private fun FadingQuote(
         text = "- ${quote.author}",
         displayStyle = DisplayStyle.Fading(
             type = if (isFadingIn) FadingType.IN else FadingType.OUT,
-            durationInMillis = 2000L
+            duration = 2000L
         ),
         color = { Color(0xFF546E7A) },
         textStyle = TextStyle(

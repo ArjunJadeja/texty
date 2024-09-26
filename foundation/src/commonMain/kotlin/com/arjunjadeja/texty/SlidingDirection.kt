@@ -1,6 +1,6 @@
 package com.arjunjadeja.texty
 
 enum class SlidingDirection {
-    TowardsStart,
-    TowardsEnd
+    TOWARDS_START,
+    TOWARDS_END
 }

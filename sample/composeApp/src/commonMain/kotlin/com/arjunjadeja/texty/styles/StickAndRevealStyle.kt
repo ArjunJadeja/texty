@@ -40,11 +40,11 @@ fun StickAndRevealStyle(
                 Texty(
                     text = frame,
                     displayStyle = DisplayStyle.StickAndReveal(
-                        stickingDelay = 30L,
+                        coverStickingDelay = 30L,
                         revealingDelay = 30L,
                         delayBeforeReveal = 100L,
-                        stickingDirection = SlidingDirection.LEFT_TO_RIGHT,
-                        revealingDirection = SlidingDirection.RIGHT_TO_LEFT
+                        coverStickingDirection = TransitionDirection.LEFT_TO_RIGHT,
+                        revealingDirection = TransitionDirection.RIGHT_TO_LEFT
                     )
                 )
                 """.trimIndent(),
@@ -52,10 +52,10 @@ fun StickAndRevealStyle(
                 Texty(
                     text = frame,
                     displayStyle = DisplayStyle.StickAndReveal(
-                        stickingDelay = 30L,
+                        coverStickingDelay = 30L,
                         revealingDelay = 30L,
                         delayBeforeReveal = 100L,
-                        stickingDirection = TransitionDirection.LEFT_TO_RIGHT,
+                        coverStickingDirection = TransitionDirection.LEFT_TO_RIGHT,
                         revealingDirection = TransitionDirection.RIGHT_TO_LEFT
                     ),
                     textStyle = TextyStyle.CODE_LABEL.get()

@@ -13,9 +13,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.Texty
-import com.arjunjadeja.texty.RevealPattern
-import com.arjunjadeja.texty.RevealType
-import com.arjunjadeja.texty.RevealCover
+import com.arjunjadeja.texty.RevealingPattern
+import com.arjunjadeja.texty.RevealingType
+import com.arjunjadeja.texty.RevealingCover
 import com.arjunjadeja.texty.design_system.components.SampleCard
 import com.arjunjadeja.texty.design_system.components.SampleWrappingBox
 import com.arjunjadeja.texty.design_system.properties.AppDimens.mediumSpacer
@@ -60,8 +60,8 @@ fun RevealingSample(isDemo: Boolean) = SampleCard(
                 text = wordOfTheDay.word,
                 displayStyle = DisplayStyle.Revealing(
                     delayBeforeRevealing = 500L,
-                    pattern = RevealPattern.CENTER_TO_SIDES,
-                    type = RevealType.ByEachCharacter(delayInMillis = 200L)
+                    pattern = RevealingPattern.CENTER_TO_SIDES,
+                    type = RevealingType.ByEachCharacter(delayInMillis = 200L)
                 ),
                 color = { Color(0xFF3F51B5) },
                 textStyle = TextStyle(
@@ -74,8 +74,8 @@ fun RevealingSample(isDemo: Boolean) = SampleCard(
                 text = wordOfTheDay.partOfSpeech,
                 displayStyle = DisplayStyle.Revealing(
                     delayBeforeRevealing = 1000L,
-                    pattern = RevealPattern.START_TO_END,
-                    type = RevealType.ByTotalTime(durationInMillis = 1000L)
+                    pattern = RevealingPattern.START_TO_END,
+                    type = RevealingType.ByTotalTime(durationInMillis = 1000L)
                 ),
                 color = { Color(0xFF7986CB) },
                 textStyle = TextStyle(
@@ -93,9 +93,9 @@ fun RevealingSample(isDemo: Boolean) = SampleCard(
             Texty(
                 text = wordOfTheDay.definition,
                 displayStyle = DisplayStyle.Revealing(
-                    pattern = RevealPattern.START_TO_END,
-                    type = RevealType.ByEachCharacter(delayInMillis = 30L),
-                    cover = RevealCover.Custom("_")
+                    pattern = RevealingPattern.START_TO_END,
+                    type = RevealingType.ByEachCharacter(delayInMillis = 30L),
+                    cover = RevealingCover.Custom("_")
                 ),
                 color = { Color(0xFF5C6BC0) },
                 textStyle = TextStyle(fontSize = 16.sp)
@@ -110,8 +110,8 @@ fun RevealingSample(isDemo: Boolean) = SampleCard(
             Texty(
                 text = wordOfTheDay.example,
                 displayStyle = DisplayStyle.Revealing(
-                    pattern = RevealPattern.END_TO_START,
-                    type = RevealType.ByTotalTime(durationInMillis = 2000L)
+                    pattern = RevealingPattern.END_TO_START,
+                    type = RevealingType.ByTotalTime(durationInMillis = 2000L)
                 ),
                 color = { Color(0xFF5C6BC0) },
                 textStyle = TextStyle(

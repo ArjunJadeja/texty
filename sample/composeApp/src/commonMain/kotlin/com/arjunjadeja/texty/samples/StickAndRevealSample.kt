@@ -60,10 +60,10 @@ fun StickAndRevealSample(isDemo: Boolean) = SampleCard(
             Texty(
                 text = frame,
                 displayStyle = DisplayStyle.StickAndReveal(
-                    stickingDelay = 40L,
+                    coverStickingDelay = 40L,
                     revealingDelay = 30L,
                     delayBeforeReveal = 500L,
-                    stickingDirection = TransitionDirection.TOP_TO_BOTTOM,
+                    coverStickingDirection = TransitionDirection.TOP_TO_BOTTOM,
                     revealingDirection = TransitionDirection.BOTTOM_TO_TOP,
                     cover = cover
                 ),

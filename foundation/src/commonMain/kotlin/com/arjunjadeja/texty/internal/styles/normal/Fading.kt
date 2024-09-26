@@ -20,7 +20,7 @@ import com.arjunjadeja.texty.FadingType
 internal fun Fading(
     text: String,
     type: FadingType,
-    durationInMillis: Long,
+    duration: Long,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
@@ -37,12 +37,12 @@ internal fun Fading(
         while (true) {
             withFrameNanos { currentTime ->
                 val elapsedTime = (currentTime - startTime) / 1_000_000
-                val progress = (elapsedTime.toFloat() / durationInMillis).coerceIn(0f, 1f)
+                val progress = (elapsedTime.toFloat() / duration).coerceIn(0f, 1f)
                 alpha = when (type) {
                     FadingType.IN -> progress
                     FadingType.OUT -> 1f - progress
                 }
-                if (elapsedTime >= durationInMillis) {
+                if (elapsedTime >= duration) {
                     onComplete()
                     return@withFrameNanos
                 }

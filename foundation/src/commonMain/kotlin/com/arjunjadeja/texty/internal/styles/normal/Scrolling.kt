@@ -28,8 +28,8 @@ import kotlin.math.roundToInt
 @Composable
 internal fun Scrolling(
     text: String,
-    scrollingDirection: ScrollingDirection,
-    scrollDuration: Long,
+    direction: ScrollingDirection,
+    duration: Long,
     repeat: Repeat,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
@@ -44,12 +44,12 @@ internal fun Scrolling(
     val progress = remember { Animatable(initialValue = 0f) }
     var showFinalPosition by remember { mutableStateOf(false) }
 
-    LaunchedEffect(scrollingDirection, repeat) {
+    LaunchedEffect(direction, repeat) {
         when (repeat) {
             Repeat.Once -> {
                 progress.animateTo(
                     targetValue = 1f,
-                    animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
+                    animationSpec = tween(duration.toInt(), easing = LinearEasing)
                 )
                 onComplete()
             }
@@ -58,7 +58,7 @@ internal fun Scrolling(
                 progress.animateTo(
                     targetValue = 1f,
                     animationSpec = infiniteRepeatable(
-                        animation = tween(scrollDuration.toInt(), easing = LinearEasing),
+                        animation = tween(duration.toInt(), easing = LinearEasing),
                         repeatMode = RepeatMode.Restart
                     )
                 )
@@ -66,12 +66,12 @@ internal fun Scrolling(
             }
 
             is Repeat.TimeBound -> {
-                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.durationInMillis
+                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 do {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(duration.toInt(), easing = LinearEasing)
                     )
                     onComplete()
                 } while (Clock.System.now().toEpochMilliseconds() < endTime)
@@ -80,11 +80,11 @@ internal fun Scrolling(
 
             is Repeat.CountBound -> {
                 var repeatCount = 0
-                while (repeatCount < repeat.repeatCount) {
+                while (repeatCount < repeat.count) {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
-                        animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
+                        animationSpec = tween(duration.toInt(), easing = LinearEasing)
                     )
                     repeatCount++
                     onComplete()
@@ -100,17 +100,17 @@ internal fun Scrolling(
         val placeable = measurable.measure(constraints)
         layout(placeable.width, constraints.maxHeight) {
             val yOffset = if (showFinalPosition) {
-                when (scrollingDirection) {
-                    ScrollingDirection.TowardsBottom -> constraints.maxHeight - placeable.height
-                    ScrollingDirection.TowardsTop -> 0
+                when (direction) {
+                    ScrollingDirection.TOWARDS_BOTTOM -> constraints.maxHeight - placeable.height
+                    ScrollingDirection.TOWARDS_TOP -> 0
                 }
             } else {
-                when (scrollingDirection) {
-                    ScrollingDirection.TowardsBottom -> {
+                when (direction) {
+                    ScrollingDirection.TOWARDS_BOTTOM -> {
                         ((progress.value * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
 
-                    ScrollingDirection.TowardsTop -> {
+                    ScrollingDirection.TOWARDS_TOP -> {
                         (((1f - progress.value) * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
                     }
                 }

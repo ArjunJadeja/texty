@@ -53,7 +53,7 @@ internal fun Motion(
             }
 
             is Repeat.TimeBound -> {
-                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.durationInMillis
+                val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 while (Clock.System.now().toEpochMilliseconds() < endTime) {
                     for (i in frames.indices) {
                         currentFrame = frames[i]
@@ -67,7 +67,7 @@ internal fun Motion(
 
             is Repeat.CountBound -> {
                 var repeatCount = 0
-                while (repeatCount < repeat.repeatCount) {
+                while (repeatCount < repeat.count) {
                     for (i in frames.indices) {
                         currentFrame = frames[i]
                         delay(delayBeforeNext)

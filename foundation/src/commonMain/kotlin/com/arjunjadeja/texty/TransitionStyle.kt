@@ -1,6 +1,6 @@
 package com.arjunjadeja.texty
 
-enum class TransitionEffect {
+enum class TransitionStyle {
     BASIC,
     FADING,
     TYPING

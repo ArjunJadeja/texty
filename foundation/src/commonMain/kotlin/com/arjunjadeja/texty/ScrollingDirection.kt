@@ -1,6 +1,6 @@
 package com.arjunjadeja.texty
 
 enum class ScrollingDirection {
-    TowardsTop,
-    TowardsBottom
+    TOWARDS_TOP,
+    TOWARDS_BOTTOM
 }

@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import com.arjunjadeja.texty.ListDisplayStyle
 import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.Texty
-import com.arjunjadeja.texty.TransitionEffect
+import com.arjunjadeja.texty.TransitionStyle
 import com.arjunjadeja.texty.base.ListDisplayStyleHandler
 import com.arjunjadeja.texty.base.StyleVariation
 import com.arjunjadeja.texty.design_system.components.StyleCard
@@ -41,7 +41,7 @@ fun OneByOneStyle(
                 Texty(
                     textList = listOf("Typing", "and", "Clearing"),
                     displayStyle = ListDisplayStyle.OneByOne(
-                        transitionEffect = TransitionEffect.TYPING,
+                        transitionStyle = TransitionStyle.TYPING,
                         transitionInDuration = 300L,
                         transitionOutDuration = 400L,
                         displayDuration = 500L
@@ -52,7 +52,7 @@ fun OneByOneStyle(
                 Texty(
                     textList = listOf("Typing", "and", "Clearing"),
                     displayStyle = ListDisplayStyle.OneByOne(
-                        transitionEffect = TransitionEffect.TYPING,
+                        transitionStyle = TransitionStyle.TYPING,
                         transitionInDuration = 300L,
                         transitionOutDuration = 400L,
                         displayDuration = 500L
@@ -91,11 +91,11 @@ fun OneByOneStyle(
                 Texty(
                     textList = listOf("breadth in...", "breadth out..."),
                     displayStyle = ListDisplayStyle.OneByOne(
-                        transitionEffect = TransitionEffect.FADING,
+                        transitionStyle = TransitionStyle.FADING,
                         transitionInDuration = 800L,
                         transitionOutDuration = 800L,
                         displayDuration = 800L,
-                        repeat = Repeat.CountBound(repeatCount = 3, showAfterComplete = true),
+                        repeat = Repeat.CountBound(count = 3, showAfterComplete = true),
                     )
                 )
                 """.trimIndent(),
@@ -103,11 +103,11 @@ fun OneByOneStyle(
                 Texty(
                     textList = listOf("breadth in...", "breadth out..."),
                     displayStyle = ListDisplayStyle.OneByOne(
-                        transitionEffect = TransitionEffect.FADING,
+                        transitionStyle = TransitionStyle.FADING,
                         transitionInDuration = 800L,
                         transitionOutDuration = 800L,
                         displayDuration = 800L,
-                        repeat = Repeat.CountBound(repeatCount = 3, showAfterComplete = true),
+                        repeat = Repeat.CountBound(count = 3, showAfterComplete = true),
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )

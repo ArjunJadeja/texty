@@ -48,7 +48,7 @@ fun ScrollingStyle(
                     Texty(
                         text = "Scrolling Text",
                         displayStyle = DisplayStyle.Scrolling(
-                            scrollingDirection = ScrollingDirection.TowardsBottom
+                            direction = ScrollingDirection.TOWARDS_BOTTOM
                         )
                     )
                 }
@@ -58,7 +58,7 @@ fun ScrollingStyle(
                     Texty(
                         text = "Scrolling Text",
                         displayStyle = DisplayStyle.Scrolling(
-                            scrollingDirection = ScrollingDirection.TowardsBottom
+                            direction = ScrollingDirection.TOWARDS_BOTTOM
                         ),
                         textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                     )

@@ -25,7 +25,7 @@ fun FadingStyle(
                     text = "Text Fading In",
                     displayStyle = DisplayStyle.Fading(
                         type = FadingType.IN,
-                        durationInMillis = 2000L
+                        duration = 2000L
                     )
                 )
                 """.trimIndent(),
@@ -34,7 +34,7 @@ fun FadingStyle(
                     text = "Text Fading In",
                     displayStyle = DisplayStyle.Fading(
                         type = FadingType.IN,
-                        durationInMillis = 2000L
+                        duration = 2000L
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )
@@ -47,7 +47,7 @@ fun FadingStyle(
                     text = "Text Fading Out",
                     displayStyle = DisplayStyle.Fading(
                         type = FadingType.OUT,
-                        durationInMillis = 2000L
+                        duration = 2000L
                     )
                 )
                 """.trimIndent(),
@@ -56,7 +56,7 @@ fun FadingStyle(
                     text = "Text Fading Out",
                     displayStyle = DisplayStyle.Fading(
                         type = FadingType.OUT,
-                        durationInMillis = 2000L
+                        duration = 2000L
                     ),
                     textStyle = TextyStyle.DISPLAY_STYLE_DEMO_TEXT.get()
                 )

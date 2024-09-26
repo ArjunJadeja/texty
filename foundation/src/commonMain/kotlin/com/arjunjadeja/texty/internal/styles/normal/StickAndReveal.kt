@@ -13,12 +13,12 @@ import kotlinx.coroutines.delay
 @Composable
 internal fun StickAndReveal(
     frame: String,
-    stickingDelay: Long,
-    revealingDelay: Long,
-    delayBeforeReveal: Long,
-    stickingDirection: TransitionDirection,
-    revealingDirection: TransitionDirection,
     cover: String? = null,
+    coverStickingDirection: TransitionDirection,
+    coverStickingDelay: Long,
+    delayBeforeReveal: Long,
+    revealingDirection: TransitionDirection,
+    revealingDelay: Long,
     modifier: Modifier = Modifier,
     textStyle: TextStyle = TextStyle.Default,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
@@ -49,22 +49,22 @@ internal fun StickAndReveal(
         val maxWidth = lines.maxOf { it.length }
 
         // Sticking phase
-        when (stickingDirection) {
+        when (coverStickingDirection) {
             TransitionDirection.TOP_TO_BOTTOM -> {
                 for (line in coveredLines) {
                     displayedText += line.padEnd(maxWidth) + "\n"
-                    delay(stickingDelay)
+                    delay(coverStickingDelay)
                 }
             }
 
             TransitionDirection.BOTTOM_TO_TOP -> {
                 displayedText = "\n".repeat(lines.size)
-                delay(stickingDelay)
+                delay(coverStickingDelay)
                 for (i in lines.indices.reversed()) {
                     val currentLines = displayedText.lines().toMutableList()
                     currentLines[i] = coveredLines[i].padEnd(maxWidth)
                     displayedText = currentLines.joinToString("\n")
-                    delay(stickingDelay)
+                    delay(coverStickingDelay)
                 }
             }
 
@@ -82,7 +82,7 @@ internal fun StickAndReveal(
                         }
                     }
                     displayedText = currentLines.joinToString("\n")
-                    delay(stickingDelay)
+                    delay(coverStickingDelay)
                 }
             }
 
@@ -100,7 +100,7 @@ internal fun StickAndReveal(
                         }
                     }
                     displayedText = currentLines.joinToString("\n")
-                    delay(stickingDelay)
+                    delay(coverStickingDelay)
                 }
             }
         }
