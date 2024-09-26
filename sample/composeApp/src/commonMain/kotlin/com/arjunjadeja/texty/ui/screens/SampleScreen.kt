@@ -27,6 +27,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
 import com.arjunjadeja.texty.samples.BasicSample
 import com.arjunjadeja.texty.samples.BlinkingSample
+import com.arjunjadeja.texty.samples.FadingSample
 import com.arjunjadeja.texty.samples.LoadingSample
 import com.arjunjadeja.texty.samples.RevealingSample
 import com.arjunjadeja.texty.samples.ScrollingSample
@@ -88,7 +89,7 @@ private fun NormalDisplayStyleSample(
 ) = when (displayStyle) {
     is DisplayStyle.Basic -> BasicSample(isDemo = isDemo)
     is DisplayStyle.Blinking -> BlinkingSample(isDemo = isDemo)
-    is DisplayStyle.Fading -> {}
+    is DisplayStyle.Fading -> FadingSample(isDemo = isDemo)
     is DisplayStyle.Revealing -> RevealingSample(isDemo = isDemo)
     is DisplayStyle.Scrolling -> ScrollingSample(isDemo = isDemo)
     is DisplayStyle.Sliding -> {}
