@@ -29,8 +29,11 @@ import com.arjunjadeja.texty.samples.BasicSample
 import com.arjunjadeja.texty.samples.BlinkingSample
 import com.arjunjadeja.texty.samples.FadingSample
 import com.arjunjadeja.texty.samples.LoadingSample
+import com.arjunjadeja.texty.samples.OneByOneSample
 import com.arjunjadeja.texty.samples.RevealingSample
+import com.arjunjadeja.texty.samples.ScrollingListSample
 import com.arjunjadeja.texty.samples.ScrollingSample
+import com.arjunjadeja.texty.samples.SlidingListSample
 import com.arjunjadeja.texty.samples.SlidingSample
 import com.arjunjadeja.texty.samples.StickAndRevealSample
 import com.arjunjadeja.texty.samples.TimeKeepingSample
@@ -108,9 +111,9 @@ private fun ListDisplayStyleSample(
     isDemo: Boolean
 ) = when (displayStyle) {
     is ListDisplayStyle.Motion -> {}
-    is ListDisplayStyle.OneByOne -> {}
-    is ListDisplayStyle.ScrollingList -> {}
-    is ListDisplayStyle.SlidingList -> {}
+    is ListDisplayStyle.OneByOne -> OneByOneSample(isDemo = isDemo)
+    is ListDisplayStyle.ScrollingList -> ScrollingListSample(isDemo = isDemo)
+    is ListDisplayStyle.SlidingList -> SlidingListSample(isDemo = isDemo)
 }
 
 @Composable
