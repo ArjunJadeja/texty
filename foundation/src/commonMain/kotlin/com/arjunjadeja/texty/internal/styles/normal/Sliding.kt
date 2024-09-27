@@ -129,25 +129,28 @@ internal fun Sliding(
     val slideModifier = modifier
         .clipToBounds()
         .layout { measurable, constraints ->
-            val placeable = measurable.measure(constraints)
-            layout(constraints.maxWidth, placeable.height) {
+            val placeable = measurable.measure(constraints.copy(maxWidth = Int.MAX_VALUE))
+            val width = constraints.maxWidth
+            val height = placeable.height
+
+            layout(width, height) {
                 val xOffset = if (showFinalPosition) {
                     when (direction) {
-                        SlidingDirection.TOWARDS_END -> constraints.maxWidth - placeable.width
+                        SlidingDirection.TOWARDS_END -> width - placeable.width
                         SlidingDirection.TOWARDS_START -> 0
                     }
                 } else {
                     when (direction) {
                         SlidingDirection.TOWARDS_END -> {
-                            ((progress.value * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
+                            ((progress.value * (width + placeable.width)) - placeable.width).roundToInt()
                         }
 
                         SlidingDirection.TOWARDS_START -> {
-                            (((1f - progress.value) * (constraints.maxWidth + placeable.width)) - placeable.width).roundToInt()
+                            (((1f - progress.value) * (width + placeable.width)) - placeable.width).roundToInt()
                         }
                     }
                 }
-                placeable.place(x = xOffset, y = 0)
+                placeable.placeRelative(x = xOffset, y = 0)
             }
         }
 

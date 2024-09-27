@@ -77,7 +77,7 @@ private fun ShowSample(
     )
 
     is StyleType.ListDisplayStyleType -> ListDisplayStyleSample(
-        listDisplayStyle = styleType.displayStyle,
+        displayStyle = styleType.displayStyle,
         isDemo = isDemo
     )
 
@@ -104,9 +104,13 @@ private fun NormalDisplayStyleSample(
 
 @Composable
 private fun ListDisplayStyleSample(
-    listDisplayStyle: ListDisplayStyle,
+    displayStyle: ListDisplayStyle,
     isDemo: Boolean
-) {
+) = when (displayStyle) {
+    is ListDisplayStyle.Motion -> {}
+    is ListDisplayStyle.OneByOne -> {}
+    is ListDisplayStyle.ScrollingList -> {}
+    is ListDisplayStyle.SlidingList -> {}
 }
 
 @Composable
