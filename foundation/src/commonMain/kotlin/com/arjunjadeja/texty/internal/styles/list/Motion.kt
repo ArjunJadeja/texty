@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty.internal.styles.list
 
 import androidx.compose.foundation.text.BasicText
@@ -16,6 +32,22 @@ import com.arjunjadeja.texty.Repeat
 import kotlinx.coroutines.delay
 import kotlinx.datetime.Clock
 
+/**
+ * Displays a list of text frames in motion, switching between them at specified intervals.
+ *
+ * @param frames List of strings to be displayed one after the other.
+ * @param delayBeforeNext The delay in milliseconds before showing the next frame.
+ * @param repeat Specifies how the frames should repeat: Once, Continuously, TimeBound, or CountBound.
+ * @param modifier The modifier to be applied to the text.
+ * @param textStyle Style configuration for the text.
+ * @param onTextLayout Optional callback for text layout information.
+ * @param overflow How text overflow should be handled.
+ * @param softWrap Whether text should wrap at soft line breaks.
+ * @param maxLines The maximum number of lines to display.
+ * @param minLines The minimum number of lines to display.
+ * @param color Optional producer for text color.
+ * @param onComplete A callback triggered when the motion sequence completes.
+ */
 @Composable
 internal fun Motion(
     frames: List<String>,
@@ -36,8 +68,8 @@ internal fun Motion(
     LaunchedEffect(frames, repeat) {
         when (repeat) {
             Repeat.Once -> {
-                for (i in frames.indices) {
-                    currentFrame = frames[i]
+                frames.forEach { frame ->
+                    currentFrame = frame
                     delay(delayBeforeNext)
                 }
                 onComplete()
@@ -45,8 +77,8 @@ internal fun Motion(
 
             Repeat.Continuous -> {
                 while (true) {
-                    for (i in frames.indices) {
-                        currentFrame = frames[i]
+                    frames.forEach { frame ->
+                        currentFrame = frame
                         delay(delayBeforeNext)
                     }
                 }
@@ -55,10 +87,12 @@ internal fun Motion(
             is Repeat.TimeBound -> {
                 val endTime = Clock.System.now().toEpochMilliseconds() + repeat.duration
                 while (Clock.System.now().toEpochMilliseconds() < endTime) {
-                    for (i in frames.indices) {
-                        currentFrame = frames[i]
+                    frames.forEach { frame ->
+                        currentFrame = frame
                         delay(delayBeforeNext)
-                        if (Clock.System.now().toEpochMilliseconds() >= endTime) break
+                        if (Clock.System.now()
+                                .toEpochMilliseconds() >= endTime
+                        ) return@LaunchedEffect
                     }
                 }
                 currentFrame = if (repeat.showAfterComplete) frames.last() else ""
@@ -66,19 +100,18 @@ internal fun Motion(
             }
 
             is Repeat.CountBound -> {
-                var repeatCount = 0
-                while (repeatCount < repeat.count) {
-                    for (i in frames.indices) {
-                        currentFrame = frames[i]
+                repeat(repeat.count) {
+                    frames.forEach { frame ->
+                        currentFrame = frame
                         delay(delayBeforeNext)
                     }
-                    repeatCount++
                 }
                 currentFrame = if (repeat.showAfterComplete) frames.last() else ""
                 onComplete()
             }
         }
     }
+
     BasicText(
         text = currentFrame,
         modifier = modifier,

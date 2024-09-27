@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty.internal.styles.normal
 
 import androidx.compose.foundation.text.BasicText
@@ -14,6 +30,21 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.delay
 
+/**
+ * A composable function that simulates typing of the text with a delay between each character.
+ *
+ * @param text The text to be displayed with typing animation.
+ * @param typingDelayPerChar The delay between each character typed, in milliseconds.
+ * @param modifier The modifier to be applied to the text.
+ * @param textStyle Style configuration for the text.
+ * @param onTextLayout Optional callback for text layout information.
+ * @param overflow How text overflow should be handled.
+ * @param softWrap Whether text should wrap at soft line breaks.
+ * @param maxLines The maximum number of lines to display.
+ * @param minLines The minimum number of lines to display.
+ * @param color Optional producer for text color.
+ * @param onTextDisplayed A callback triggered when the text is fully displayed.
+ */
 @Composable
 internal fun Typing(
     text: String,
@@ -29,16 +60,18 @@ internal fun Typing(
     onTextDisplayed: () -> Unit = {}
 ) {
     var displayedText by remember { mutableStateOf("") }
+
     LaunchedEffect(text) {
         val stringBuilder = StringBuilder()
-        text.forEach {
-            stringBuilder.append(it)
+        text.forEach { char ->
+            stringBuilder.append(char)
             displayedText = stringBuilder.toString()
             delay(typingDelayPerChar)
         }
         delay(typingDelayPerChar)
         onTextDisplayed()
     }
+
     BasicText(
         text = displayedText,
         modifier = modifier,
