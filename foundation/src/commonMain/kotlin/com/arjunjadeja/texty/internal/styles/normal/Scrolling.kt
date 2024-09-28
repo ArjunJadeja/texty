@@ -130,21 +130,24 @@ internal fun Scrolling(
     val scrollModifier = modifier
         .clipToBounds()
         .layout { measurable, constraints ->
-            val placeable = measurable.measure(constraints)
-            layout(placeable.width, constraints.maxHeight) {
+            val placeable = measurable.measure(constraints.copy(maxHeight = Int.MAX_VALUE))
+            val width = placeable.width
+            val height = constraints.maxHeight
+
+            layout(width, height) {
                 val yOffset = if (showFinalPosition) {
                     when (direction) {
-                        ScrollingDirection.TOWARDS_BOTTOM -> constraints.maxHeight - placeable.height
+                        ScrollingDirection.TOWARDS_BOTTOM -> height - placeable.height
                         ScrollingDirection.TOWARDS_TOP -> 0
                     }
                 } else {
                     when (direction) {
                         ScrollingDirection.TOWARDS_BOTTOM -> {
-                            ((progress.value * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
+                            ((progress.value * (height + placeable.height)) - placeable.height).roundToInt()
                         }
 
                         ScrollingDirection.TOWARDS_TOP -> {
-                            (((1f - progress.value) * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
+                            (((1f - progress.value) * (height + placeable.height)) - placeable.height).roundToInt()
                         }
                     }
                 }

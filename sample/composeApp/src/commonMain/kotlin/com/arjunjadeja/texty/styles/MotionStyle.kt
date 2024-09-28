@@ -32,8 +32,8 @@ fun MotionStyle(
             demoContent = {
                 Texty(
                     textList = listOf(
-                        frame_one, frame_two, frame_three, frame_four, frame_five,
-                        frame_six, frame_seven, frame_eight
+                        pikachu_frame_one, pikachu_frame_two, pikachu_frame_three, pikachu_frame_four, pikachu_frame_five,
+                        pikachu_frame_six, pikachu_frame_seven, pikachu_frame_eight
                     ),
                     displayStyle = ListDisplayStyle.Motion(),
                     textStyle = TextyStyle.CODE_LABEL.get()
@@ -45,8 +45,9 @@ fun MotionStyle(
             code = """
                 Texty(
                     textList = listOf(
-                        frame_one, frame_two, frame_three, frame_four, frame_five,
-                        frame_six, frame_seven, frame_eight
+                        pikachu_frame_one, pikachu_frame_two, pikachu_frame_three, 
+                        pikachu_frame_four, pikachu_frame_five, pikachu_frame_six, 
+                        pikachu_frame_seven, pikachu_frame_eight
                     ),
                     displayStyle = ListDisplayStyle.Motion(
                         delayBeforeNext = 500L,
@@ -60,8 +61,9 @@ fun MotionStyle(
             demoContent = {
                 Texty(
                     textList = listOf(
-                        frame_one, frame_two, frame_three, frame_four, frame_five,
-                        frame_six, frame_seven, frame_eight
+                        pikachu_frame_one, pikachu_frame_two, pikachu_frame_three,
+                        pikachu_frame_four, pikachu_frame_five, pikachu_frame_six,
+                        pikachu_frame_seven, pikachu_frame_eight
                     ),
                     displayStyle = ListDisplayStyle.Motion(
                         delayBeforeNext = 500L,
@@ -78,7 +80,11 @@ fun MotionStyle(
     onViewSampleClicked = { onViewSampleClicked(displayStyle) }
 )
 
-private val frame_one by lazy {
+/*
+   Pro tip: You can easily generate these ascii art from any image.
+   visit -> https://emojicombos.com/dot-art-generator
+ */
+val pikachu_frame_one by lazy {
     """
     ⢤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡄⠀⠀⠀⠀⠀
     ⠘⣿⠏⠒⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠒⠙⣿⡟⠀⠀⠀⠀⠀⠀
@@ -98,7 +104,7 @@ private val frame_one by lazy {
     """.trimIndent()
 }
 
-private val frame_two by lazy {
+val pikachu_frame_two by lazy {
     """
     ⢤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡄⠀⠀⠀⠀⠀
     ⠘⣿⠏⠒⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠒⠙⣿⡟⠀⠀⠀⠀⠀⠀
@@ -118,7 +124,7 @@ private val frame_two by lazy {
     """.trimIndent()
 }
 
-private val frame_three by lazy {
+val pikachu_frame_three by lazy {
     """
     ⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⠇⠀⠀
     ⠀⢻⣿⠒⠤⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠤⠊⠸⡟⠀⠀⠀
@@ -138,7 +144,7 @@ private val frame_three by lazy {
     """.trimIndent()
 }
 
-private val frame_four by lazy {
+val pikachu_frame_four by lazy {
     """
     ⢀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⠇⠀⠀
     ⠀⢻⣿⠒⠤⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠤⠊⠸⡟⠀⠀⠀
@@ -158,7 +164,7 @@ private val frame_four by lazy {
     """.trimIndent()
 }
 
-private val frame_five by lazy {
+val pikachu_frame_five by lazy {
     """
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⡇⠀
     ⢰⣶⣦⡤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠉⢿⠃⠀
@@ -180,7 +186,7 @@ private val frame_five by lazy {
     """.trimIndent()
 }
 
-private val frame_six by lazy {
+val pikachu_frame_six by lazy {
     """
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣶⡇⠀
     ⢰⣶⣦⡤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠔⠉⢿⠃⠀
@@ -202,7 +208,7 @@ private val frame_six by lazy {
     """.trimIndent()
 }
 
-private val frame_seven by lazy {
+val pikachu_frame_seven by lazy {
     """
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣞⠃⠀⠀
     ⢻⣿⡖⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠔⠁⣿⠇⠀⠀⠀
@@ -223,7 +229,7 @@ private val frame_seven by lazy {
     """.trimIndent()
 }
 
-private val frame_eight by lazy {
+val pikachu_frame_eight by lazy {
     """
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣞⠃⠀⠀
     ⢻⣿⡖⠤⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡠⠔⠁⣿⠇⠀⠀⠀

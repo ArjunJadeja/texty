@@ -67,11 +67,10 @@ internal fun StickAndReveal(
     onComplete: () -> Unit = {}
 ) {
     val lines = frame.lines()
-    val coverText = when (cover?.length) {
-        1 -> cover.first().toString().repeat(frame.length)
-        frame.length -> cover
-        else -> cover?.firstOrNull()?.takeIf { it != ' ' }?.toString()?.repeat(frame.length)
-            ?: "⣿".repeat(frame.length)
+    val coverText = when {
+        cover.isNullOrEmpty() -> "⣿".repeat(frame.length)
+        cover.length == frame.length -> cover
+        else -> cover.first().toString().repeat(frame.length)
     }
 
     var displayedText by remember { mutableStateOf("") }
