@@ -80,6 +80,10 @@ fun MotionStyle(
     onViewSampleClicked = { onViewSampleClicked(displayStyle) }
 )
 
+/*
+   Pro tip: You can easily generate these ascii art from any image.
+   visit -> https://emojicombos.com/dot-art-generator
+ */
 val pikachu_frame_one by lazy {
     """
     ⢤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡄⠀⠀⠀⠀⠀
