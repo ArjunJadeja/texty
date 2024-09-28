@@ -18,13 +18,18 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import com.arjunjadeja.texty.DisplayStyle
 import com.arjunjadeja.texty.ListDisplayStyle
+import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.Utility
 import com.arjunjadeja.texty.base.StyleType
-import com.arjunjadeja.texty.design_system.components.MoreSamplesCard
 import com.arjunjadeja.texty.design_system.components.SampleScreenTopBar
+import com.arjunjadeja.texty.design_system.components.core.CardElevationType
+import com.arjunjadeja.texty.design_system.components.core.TextyCard
 import com.arjunjadeja.texty.design_system.properties.AppDimens.bigSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.maxWidth
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
+import com.arjunjadeja.texty.design_system.properties.TextyStyle
+import com.arjunjadeja.texty.design_system.properties.get
+import com.arjunjadeja.texty.design_system.theme.isDesktop
 import com.arjunjadeja.texty.samples.BasicSample
 import com.arjunjadeja.texty.samples.BlinkingSample
 import com.arjunjadeja.texty.samples.FadingSample
@@ -64,7 +69,7 @@ data class SampleScreen(val styleType: StyleType) : Screen {
                     )
                 }
                 item { ShowSample(styleType = styleType, isDemo = true) }
-                item { MoreSamplesCard() }
+                if (!isDesktop()) item { ProTipForMobileScreenType() }
             }
         }
     }
@@ -124,4 +129,15 @@ private fun UtilitySample(
 ) = when (utility) {
     is Utility.Loading -> LoadingSample(isDemo = isDemo)
     is Utility.TimeKeeping -> TimeKeepingSample(isDemo = isDemo)
+}
+
+@Composable
+private fun ProTipForMobileScreenType() = TextyCard(
+    elevationType = CardElevationType.MEDIUM,
+) {
+    Texty(
+        text = "If the sample doesn't show correctly try rotating device",
+        textStyle = TextyStyle.FOOTER.get(),
+        modifier = Modifier.padding(all = paddingBig)
+    )
 }

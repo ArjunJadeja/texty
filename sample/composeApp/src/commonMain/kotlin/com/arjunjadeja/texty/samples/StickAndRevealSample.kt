@@ -20,7 +20,7 @@ import com.arjunjadeja.texty.design_system.properties.AppDimens
 
 @Composable
 fun StickAndRevealSample(isDemo: Boolean) = SampleCard(
-    title = "Stick and Reveal",
+    title = "The Dark Knight Poster",
     description = "Sample demonstrating Stick and Reveal display style using ASCII art."
 ) {
     SampleWrappingBox(isDemo = isDemo) {
@@ -48,7 +48,7 @@ fun StickAndRevealSample(isDemo: Boolean) = SampleCard(
                     ),
                     textStyle = TextStyle(
                         fontFamily = FontFamily.Monospace,
-                        fontSize = 14.sp
+                        fontSize = 11.sp
                     ),
                     color = { Color.Yellow }
                 )
