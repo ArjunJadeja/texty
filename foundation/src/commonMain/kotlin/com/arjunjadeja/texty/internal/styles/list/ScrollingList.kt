@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty.internal.styles.list
 
 import androidx.compose.animation.core.Animatable
@@ -28,6 +44,24 @@ import com.arjunjadeja.texty.ScrollingDirection
 import kotlinx.datetime.Clock
 import kotlin.math.roundToInt
 
+/**
+ * Creates a scrolling list of text items with the specified direction and duration.
+ *
+ * @param textList List of strings to be displayed and scrolled.
+ * @param spacing The spacing between text items.
+ * @param scrollingDirection Direction of the scroll (up or down).
+ * @param scrollDuration Duration for the scroll animation.
+ * @param repeat Specifies how the scrolling should repeat: Once, Continuously, TimeBound, or CountBound.
+ * @param modifier The modifier to be applied to the scrolling list.
+ * @param textStyle Style configuration for the text.
+ * @param onTextLayout Optional callback for text layout information.
+ * @param overflow How text overflow should be handled.
+ * @param softWrap Whether text should wrap at soft line breaks.
+ * @param maxLines The maximum number of lines to display.
+ * @param minLines The minimum number of lines to display.
+ * @param color Optional producer for text color.
+ * @param onComplete A callback triggered when the scroll sequence completes.
+ */
 @Composable
 internal fun ScrollingList(
     textList: List<String>,
@@ -83,14 +117,12 @@ internal fun ScrollingList(
             }
 
             is Repeat.CountBound -> {
-                var repeatCount = 0
-                while (repeatCount < repeat.count) {
+                repeat(repeat.count) {
                     progress.snapTo(targetValue = 0f)
                     progress.animateTo(
                         targetValue = 1f,
                         animationSpec = tween(scrollDuration.toInt(), easing = LinearEasing)
                     )
-                    repeatCount++
                     onComplete()
                 }
                 if (repeat.showAfterComplete) showFinalPosition = true
@@ -101,27 +133,30 @@ internal fun ScrollingList(
     val scrollModifier = modifier
         .clipToBounds()
         .layout { measurable, constraints ->
-        val placeable = measurable.measure(constraints)
-        layout(placeable.width, constraints.maxHeight) {
-            val yOffset = if (showFinalPosition) {
-                when (scrollingDirection) {
-                    ScrollingDirection.TOWARDS_BOTTOM -> constraints.maxHeight - placeable.height
-                    ScrollingDirection.TOWARDS_TOP -> 0
-                }
-            } else {
-                when (scrollingDirection) {
-                    ScrollingDirection.TOWARDS_BOTTOM -> {
-                        ((progress.value * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
-                    }
+            val placeable = measurable.measure(constraints.copy(maxHeight = Int.MAX_VALUE))
+            val width = placeable.width
+            val height = constraints.maxHeight
 
-                    ScrollingDirection.TOWARDS_TOP -> {
-                        (((1f - progress.value) * (constraints.maxHeight + placeable.height)) - placeable.height).roundToInt()
+            layout(width, height) {
+                val yOffset = if (showFinalPosition) {
+                    when (scrollingDirection) {
+                        ScrollingDirection.TOWARDS_BOTTOM -> height - placeable.height
+                        ScrollingDirection.TOWARDS_TOP -> 0
+                    }
+                } else {
+                    when (scrollingDirection) {
+                        ScrollingDirection.TOWARDS_BOTTOM -> {
+                            ((progress.value * (height + placeable.height)) - placeable.height).roundToInt()
+                        }
+
+                        ScrollingDirection.TOWARDS_TOP -> {
+                            (((1f - progress.value) * (height + placeable.height)) - placeable.height).roundToInt()
+                        }
                     }
                 }
+                placeable.place(IntOffset(x = 0, y = yOffset))
             }
-            placeable.place(IntOffset(x = 0, y = yOffset))
         }
-    }
 
     Column(
         modifier = scrollModifier,
@@ -141,4 +176,3 @@ internal fun ScrollingList(
         }
     }
 }
-

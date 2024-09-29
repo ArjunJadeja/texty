@@ -15,7 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.arjunjadeja.texty.Texty
 import com.arjunjadeja.texty.base.ClickHandler
-import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingBig
+import com.arjunjadeja.texty.design_system.properties.AppDimens.mediumSpacer
 import com.arjunjadeja.texty.design_system.properties.AppDimens.paddingMedium
 import com.arjunjadeja.texty.design_system.properties.AppDimens.smallSpacer
 import com.arjunjadeja.texty.design_system.properties.TextyStyle
@@ -38,7 +38,7 @@ fun TextyTopBar(
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = paddingMedium, horizontal = paddingBig)
+            .padding(vertical = paddingMedium, horizontal = paddingMedium)
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -50,9 +50,7 @@ fun TextyTopBar(
                     Spacer(Modifier.width(smallSpacer))
                 }
 
-                NavigationType.Null -> {
-                    /* no navigation option */
-                }
+                NavigationType.Null -> Spacer(Modifier.width(mediumSpacer))
             }
             Title(title = title, onTitleClick = onTitleClick)
         }

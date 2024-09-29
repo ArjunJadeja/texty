@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty.internal.styles.normal
 
 import androidx.compose.foundation.text.BasicText
@@ -17,6 +33,24 @@ import com.arjunjadeja.texty.RevealingPattern
 import com.arjunjadeja.texty.RevealingType
 import kotlinx.coroutines.delay
 
+/**
+ * Displays text that reveals itself character by character based on the specified pattern and type.
+ *
+ * @param text The text to display.
+ * @param cover The cover pattern used initially (default or custom).
+ * @param pattern The revealing pattern (start to end, end to start, etc.).
+ * @param type The type of revealing (by each character or total time).
+ * @param delayBeforeRevealing Delay before the revealing starts.
+ * @param modifier Modifier for the text composable.
+ * @param textStyle Style to apply to the text.
+ * @param onTextLayout Callback when text layout is complete.
+ * @param overflow How to handle text overflow.
+ * @param softWrap Whether to wrap text at soft breaks.
+ * @param maxLines Maximum number of lines to display.
+ * @param minLines Minimum number of lines to display.
+ * @param color Optional color producer for text color.
+ * @param onComplete Callback triggered when the revealing is complete.
+ */
 @Composable
 internal fun Revealing(
     text: String,
@@ -111,6 +145,7 @@ internal fun Revealing(
         }
         onComplete()
     }
+
     BasicText(
         text = displayedText,
         modifier = modifier,
@@ -124,4 +159,10 @@ internal fun Revealing(
     )
 }
 
+/**
+ * Repeats the string to fill the specified length.
+ *
+ * @param length The total length to cover.
+ * @return A string repeated to cover the given length.
+ */
 private fun String.getFullCover(length: Int) = this.repeat(length)

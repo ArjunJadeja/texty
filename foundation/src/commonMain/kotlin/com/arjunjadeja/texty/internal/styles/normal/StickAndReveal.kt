@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty.internal.styles.normal
 
 import androidx.compose.foundation.text.BasicText
@@ -10,6 +26,27 @@ import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.TransitionDirection
 import kotlinx.coroutines.delay
 
+/**
+ * A composable function that sticks text to a cover and reveals it based on the provided direction
+ * and delays.
+ *
+ * @param frame The text frame to reveal.
+ * @param cover The cover character to overlay on the text frame.
+ * @param coverStickingDirection The direction to stick the cover.
+ * @param coverStickingDelay The delay between sticking actions.
+ * @param delayBeforeReveal Delay before the reveal starts.
+ * @param revealingDirection The direction to reveal the text.
+ * @param revealingDelay The delay between each revealing step.
+ * @param modifier The modifier to be applied to the text.
+ * @param textStyle Style configuration for the text.
+ * @param onTextLayout Optional callback for text layout information.
+ * @param overflow How text overflow should be handled.
+ * @param softWrap Whether text should wrap at soft line breaks.
+ * @param maxLines The maximum number of lines to display.
+ * @param minLines The minimum number of lines to display.
+ * @param color Optional producer for text color.
+ * @param onComplete A callback triggered when the animation completes.
+ */
 @Composable
 internal fun StickAndReveal(
     frame: String,
@@ -30,11 +67,10 @@ internal fun StickAndReveal(
     onComplete: () -> Unit = {}
 ) {
     val lines = frame.lines()
-    val coverText = when (cover?.length) {
-        1 -> cover.first().toString().repeat(frame.length)
-        frame.length -> cover
-        else -> cover?.firstOrNull()?.takeIf { it != ' ' }?.toString()?.repeat(frame.length)
-            ?: "⣿".repeat(frame.length)
+    val coverText = when {
+        cover.isNullOrEmpty() -> "⣿".repeat(frame.length)
+        cover.length == frame.length -> cover
+        else -> cover.first().toString().repeat(frame.length)
     }
 
     var displayedText by remember { mutableStateOf("") }
@@ -163,6 +199,7 @@ internal fun StickAndReveal(
         }
         onComplete()
     }
+
     BasicText(
         text = displayedText,
         modifier = modifier,

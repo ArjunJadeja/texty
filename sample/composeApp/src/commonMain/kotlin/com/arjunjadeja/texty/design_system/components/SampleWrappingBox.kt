@@ -4,7 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -22,7 +22,8 @@ fun SampleWrappingBox(
     modifier = Modifier
         .then(
             if (isDemo) Modifier
-                .size(sampleDemoCardSize)
+                .width(sampleDemoCardSize)
+                .aspectRatio(desktopSampleAspectRatio)
                 .background(Color.White)
             else if (isDesktop()) Modifier
                 .fillMaxWidth()

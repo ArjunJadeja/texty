@@ -1,3 +1,19 @@
+/*
+ * Copyright (C) 2024 Arjun Jadeja (arjunjadeja.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.arjunjadeja.texty
 
 import androidx.compose.runtime.Composable
@@ -6,21 +22,36 @@ import androidx.compose.ui.graphics.ColorProducer
 import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
-import com.arjunjadeja.texty.internal.styles.list.Motion
-import com.arjunjadeja.texty.internal.styles.list.OneByOne
-import com.arjunjadeja.texty.internal.styles.list.ScrollingList
-import com.arjunjadeja.texty.internal.styles.list.SlidingList
-import com.arjunjadeja.texty.internal.styles.normal.Basic
-import com.arjunjadeja.texty.internal.styles.normal.Blinking
-import com.arjunjadeja.texty.internal.styles.normal.Fading
-import com.arjunjadeja.texty.internal.styles.normal.Revealing
-import com.arjunjadeja.texty.internal.styles.normal.Scrolling
-import com.arjunjadeja.texty.internal.styles.normal.Sliding
-import com.arjunjadeja.texty.internal.styles.normal.StickAndReveal
-import com.arjunjadeja.texty.internal.styles.normal.Typing
+import com.arjunjadeja.texty.internal.styles.list.*
+import com.arjunjadeja.texty.internal.styles.normal.*
 import com.arjunjadeja.texty.internal.styles.utility.Loading
 import com.arjunjadeja.texty.internal.styles.utility.TimeKeeping
 
+/**
+ * Displays text with various display styles, including normal, list, and utility styles.
+ *
+ * Built on top of Compose Foundation, this composable extends `BasicText` with additional display
+ * capabilities such as typing effects, animations, and other unique text behaviors.
+ *
+ * @param text The text to be displayed.
+ * @param displayStyle The display style to be applied to the text.
+ * Defaults to [DisplayStyle.Basic].
+ * @param modifier Modifier used to adjust the composable's appearance and layout behavior.
+ * @param textStyle Specifies the style of the text, including font size, weight, and color.
+ * Defaults to [TextStyle.Default].
+ * @param onTextLayout Callback invoked with the [TextLayoutResult] when the text is measured and
+ * laid out.
+ * Useful for observing text measurements and layout details.
+ * @param overflow How to handle text overflow when content exceeds the available space.
+ * Uses [TextOverflow.Clip] by default.
+ * @param softWrap Determines if the text should wrap at line breaks. Defaults to true,
+ * consistent with Compose behavior.
+ * @param maxLines The maximum number of lines allowed for the text. Defaults to unlimited lines.
+ * @param minLines The minimum number of lines required for the text layout, even if less content
+ * is present.
+ * @param color Optional [ColorProducer] to dynamically set the text color, aligning with
+ * Compose’s color configuration.
+ */
 @Composable
 fun Texty(
     text: String,
@@ -160,6 +191,20 @@ fun Texty(
     )
 }
 
+/**
+ * Displays a list of texts with various display styles.
+ *
+ * @param textList A list of strings to be displayed.
+ * @param displayStyle The display style to be applied to the list of text.
+ * @param modifier Modifier applied to adjust the composable's appearance and layout behavior.
+ * @param textStyle The style to apply to the displayed text, including font and color configurations.
+ * @param onTextLayout Callback invoked with the layout results when the text is measured and laid out.
+ * @param overflow Specifies how text content behaves when exceeding the available space.
+ * @param softWrap If true, text wraps at soft line breaks. Defaults to true.
+ * @param maxLines The maximum number of lines allowed for the text. Defaults to unlimited.
+ * @param minLines The minimum number of lines required for the text layout.
+ * @param color Optional [ColorProducer] for dynamically setting the text color.
+ */
 @Composable
 fun Texty(
     textList: List<String>,
@@ -241,6 +286,19 @@ fun Texty(
     )
 }
 
+/**
+ * Displays utility-based text styles, such as loading and timekeeping.
+ *
+ * @param utility The utility to apply.
+ * @param modifier Modifier applied to adjust the composable's appearance and layout behavior.
+ * @param textStyle The style to apply to the displayed text, including font and color configurations.
+ * @param onTextLayout Callback invoked with the layout results when the text is measured and laid out.
+ * @param overflow Specifies how text content behaves when exceeding the available space.
+ * @param softWrap If true, text wraps at soft line breaks. Defaults to true.
+ * @param maxLines The maximum number of lines allowed for the text. Defaults to unlimited.
+ * @param minLines The minimum number of lines required for the text layout.
+ * @param color Optional [ColorProducer] for dynamically setting the text color.
+ */
 @Composable
 fun Texty(
     utility: Utility,
