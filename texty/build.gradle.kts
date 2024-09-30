@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -8,15 +9,18 @@ plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.maven.publishing)
 }
 
 kotlin {
+
     jvmToolchain(22)
+
     androidTarget {
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+        publishLibraryVariants("release", "debug")
     }
 
     jvm()
@@ -38,45 +42,24 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "texty"
             isStatic = true
         }
     }
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":texty"))
             implementation(compose.runtime)
             implementation(compose.foundation)
-            implementation(compose.material3)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
-            implementation(libs.voyager.navigator)
-            implementation(libs.voyager.transitions)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
         }
-
         commonTest.dependencies {
             implementation(kotlin("test"))
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
-            implementation(libs.kotlinx.coroutines.test)
-        }
-
-        androidMain.dependencies {
-            implementation(compose.uiTooling)
-            implementation(libs.androidx.activityCompose)
-            implementation(libs.kotlinx.coroutines.android)
-        }
-
-        jvmMain.dependencies {
-            implementation(compose.desktop.currentOs)
-            implementation(libs.kotlinx.coroutines.swing)
-        }
-
-        jsMain.dependencies {
-            implementation(compose.html.core)
         }
     }
 }
@@ -87,42 +70,10 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
-
-        applicationId = "com.arjunjadeja.texty.androidApp"
-        versionCode = 1
-        versionName = "1.0.0"
-
-        buildTypes {
-            debug {
-                isMinifyEnabled = false
-                signingConfig = signingConfigs.getByName("debug")
-            }
-            release {
-                isMinifyEnabled = true
-                isShrinkResources = true
-            }
-            applicationVariants.all {
-                val variant = this
-                variant.outputs
-                    .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-                    .forEach { output ->
-                        val outputFileName = "texty-${variant.baseName}.apk"
-                        output.outputFileName = outputFileName
-                    }
-            }
-        }
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
-        }
     }
 }
 
-//https://developer.android.com/develop/ui/compose/testing#setup
 dependencies {
     androidTestImplementation(libs.androidx.uitest.junit4)
     debugImplementation(libs.androidx.uitest.testManifest)
@@ -143,3 +94,43 @@ compose.desktop {
         }
     }
 }
+
+mavenPublishing {
+    coordinates(
+        groupId = "com.arjunjadeja",
+        artifactId = "texty",
+        version = "1.0.0-alpha"
+    )
+
+    pom {
+        name.set("Texty")
+        description.set("A Jetpack Compose Multiplatform Library to display text with various styles, effects and animations")
+        inceptionYear.set("2024")
+        url.set("https://github.com/arjunjadeja/texty/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("arjunjadeja")
+                name.set("Arjun Jadeja")
+                url.set("https://github.com/arjunjadeja/")
+            }
+        }
+        scm {
+            url.set("https://github.com/arjunjadeja/texty/")
+            connection.set("scm:git:git://github.com/arjunjadeja/texty.git")
+            developerConnection.set("scm:git:ssh://git@github.com/arjunjadeja/texty.git")
+        }
+    }
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+}
+
+task("testClasses") {}
