@@ -32,57 +32,32 @@ application, it provides a unified API to create dynamic and visually appealing 
 
 ## 🎭 Styles Overview
 
-| Typing                                                                                                                      |
-|:----------------------------------------------------------------------------------------------------------------------------|
-| A typewriter-inspired style that mimics the appearance of text being typed. Ideal for creating a dynamic, real-time effect. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Typing())`                                      |
-| **Configuration:** `DisplayStyle.Typing(typingDelayPerChar: Long, onTextDisplayed: () -> Unit)`                             |
+Texty offers a variety of styles to create dynamic and engaging text displays. Here's a quick overview of the available styles:
 
-<table>
-<tr>
-<td width="40%">
+### Normal Styles
+[Sliding](#1-sliding) | [Scrolling](#2-scrolling) | [Blinking](#3-blinking) | [Fading](#4-fading) | [Revealing](#5-revealing) | [StickAndReveal](#6-stickandreveal) | [Typing](#7-typing) | [Basic](#8-basic)
 
-<video src="https://github.com/user-attachments/assets/13052e62-fb41-4de4-8268-59e95ca0153c" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+### List Styles
+[Motion](#1-motion) | [OneByOne](#2-onebyone) | [Sliding List](#3-sliding-list) | [Scrolling List](#4-scrolling-list)
+
+### Utility Styles
+[Loading](#1-loading) | [Time Keeping](#2-time-keeping)
+
+## Normal Styles
+
+### 1. Sliding
+
+A fluid display style where text gracefully slides in a chosen direction, creating a smooth, continuous flow that adds motion and elegance to your content.
+
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Sliding())`
+
+**Configuration:**
+`DisplayStyle.Sliding(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/32305fd9-f75c-4bba-9b45-9ea8694537df" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
-
-```kotlin
-@Composable
-fun ChatBubble(message: String) {
-    Texty(
-        text = message,
-        displayStyle = DisplayStyle.Typing(typingDelayPerChar = 50L)
-    )
-}
-```
-
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
-
-| Sliding                                                                                                                                                     |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A fluid display style where text gracefully slides in a chosen direction, creating a smooth, continuous flow that adds motion and elegance to your content. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Sliding())`                                                                     |
-| **Configuration:** `DisplayStyle.Sliding(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`                              |
-
-<table>
-<tr>
-<td width="40%">
-
-<video src="https://github.com/user-attachments/assets/32305fd9-f75c-4bba-9b45-9ea8694537df" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
-</video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -98,30 +73,21 @@ fun Message(message: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Scrolling                                                                                                                                                                       |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A dynamic style where text flows smoothly in a selected direction - top or bottom. With adjustable duration and repeat options, it captivates and engages viewers effortlessly. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Scrolling())`                                                                                       |
-| **Configuration:** `DisplayStyle.Scrolling(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`                                                |
+### 2. Scrolling
 
-<table>
-<tr>
-<td width="40%">
+A dynamic style where text flows smoothly in a selected direction - top or bottom. With adjustable duration and repeat options, it captivates and engages viewers effortlessly.
 
-<video src="https://github.com/user-attachments/assets/e17f3ae0-a542-448c-bb9e-8226fd0939eb" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Scrolling())`
+
+**Configuration:**
+`DisplayStyle.Scrolling(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/e17f3ae0-a542-448c-bb9e-8226fd0939eb" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -142,30 +108,21 @@ fun EndCredits(credits: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Blinking                                                                                                                                                                           |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A dynamic style that makes text blink with versatile options: blink once, infinitely, for a set time, or a specified count. The blink delay is customizable for added flexibility. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Blinking())`                                                                                           |
-| **Configuration:** `DisplayStyle.Blinking(interval: Long, repeat: Repeat, onBlink: () -> Unit)`                                                                                    |
+### 3. Blinking
 
-<table>
-<tr>
-<td width="40%">
+A dynamic style that makes text blink with versatile options: blink once, infinitely, for a set time, or a specified count. The blink delay is customizable for added flexibility.
 
-<video src="https://github.com/user-attachments/assets/44cb65c1-f586-4189-b5fb-1f0f6fa1e975" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Blinking())`
+
+**Configuration:**
+`DisplayStyle.Blinking(interval: Long, repeat: Repeat, onBlink: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/44cb65c1-f586-4189-b5fb-1f0f6fa1e975" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -182,30 +139,21 @@ fun Offer(message: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Fading                                                                                                                                                                                                               |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A smooth transition style where text fades in and out. Configurable options include fade duration and fade type, with a callback when the fade completes, allowing for seamless integration into various animations. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Fading(type = FadingType.IN))`                                                                                                           |
-| **Configuration:** `DisplayStyle.Fading(type: FadingType, duration: Long, onComplete: () -> Unit)`                                                                                                                   |
+### 4. Fading
 
-<table>
-<tr>
-<td width="40%">
+A smooth transition style where text fades in and out. Configurable options include fade duration and fade type, with a callback when the fade completes, allowing for seamless integration into various animations.
 
-<video src="https://github.com/user-attachments/assets/06162da5-c5b4-45a4-a4a5-3a3e523c32b0" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Fading(type = FadingType.IN))`
+
+**Configuration:**
+`DisplayStyle.Fading(type: FadingType, duration: Long, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/06162da5-c5b4-45a4-a4a5-3a3e523c32b0" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -225,30 +173,21 @@ fun ShowQuote(
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Revealing                                                                                                                                                                                                                                                        |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| An engaging style where text is revealed character by character or by total time. Offers configurable options for reveal patterns, delays, and cover text, with a callback when the animation completes. Perfect for adding suspense or a gradual reveal effect. |
-| **Default Implementation:** `Texty(text = text, displayStyle = DisplayStyle.Revealing())`                                                                                                                                                                        |
-| **Configuration:** `DisplayStyle.Revealing(cover: RevealingCover, pattern: RevealingPattern, type: RevealingType, delayBeforeRevealing: Long, onComplete: () -> Unit)`                                                                                           |
+### 5. Revealing
 
-<table>
-<tr>
-<td width="40%">
+An engaging style where text is revealed character by character or by total time. Offers configurable options for reveal patterns, delays, and cover text, with a callback when the animation completes. Perfect for adding suspense or a gradual reveal effect.
 
-<video src="https://github.com/user-attachments/assets/dcabf180-b3ee-418f-ad74-13dcc6639297" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Revealing())`
+
+**Configuration:**
+`DisplayStyle.Revealing(cover: RevealingCover, pattern: RevealingPattern, type: RevealingType, delayBeforeRevealing: Long, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/dcabf180-b3ee-418f-ad74-13dcc6639297" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -264,30 +203,21 @@ fun ShowWord(wordOfTheDay: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| StickAndReveal                                                                                                                                                                                                                                          |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A captivating style where a cover sticks to the surface before being revealed, simulating a realistic poster or banner effect. With adjustable delays and directions, it adds drama and depth to your animations.                                       |
-| **Default Implementation:** `Texty(text = content, displayStyle = DisplayStyle.StickAndReveal())`                                                                                                                                                       |
-| **Configuration:** `DisplayStyle.StickAndReveal(cover: String?, coverStickingDirection: TransitionDirection, coverStickingDelay: Long, delayBeforeReveal: Long, revealingDirection: TransitionDirection, revealingDelay: Long, onComplete: () -> Unit)` |
+### 6. StickAndReveal
 
-<table>
-<tr>
-<td width="40%">
+A captivating style where a cover sticks to the surface before being revealed, simulating a realistic poster or banner effect. With adjustable delays and directions, it adds drama and depth to your animations.
 
-<video src="https://github.com/user-attachments/assets/ccb476ff-d647-4b12-a0cd-8841a1c8f81b" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = content, displayStyle = DisplayStyle.StickAndReveal())`
+
+**Configuration:**
+`DisplayStyle.StickAndReveal(cover: String?, coverStickingDirection: TransitionDirection, coverStickingDelay: Long, delayBeforeReveal: Long, revealingDirection: TransitionDirection, revealingDelay: Long, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/ccb476ff-d647-4b12-a0cd-8841a1c8f81b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -306,30 +236,47 @@ fun ShowPoster(content: String, cover: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Basic                                                                                                                                                     |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| The classic one without any effects that focuses on readability with simple, unadorned typography. Ideal for clear and straightforward text presentation. |
-| **Default Implementation:** `Texty(text = text)`                                                                                                          |
-| **Configuration:** `DisplayStyle.Basic(onTextDisplayed: () -> Unit)`                                                                                      |
+### 7. Typing
 
-<table>
-<tr>
-<td width="40%">
+A typewriter-inspired style that mimics the appearance of text being typed. Ideal for creating a dynamic, real-time effect.
 
-<video src="https://github.com/user-attachments/assets/a904f2e9-cc36-44a1-8c50-0b9b0d85411b" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(text = text, displayStyle = DisplayStyle.Typing())`
+
+**Configuration:**
+`DisplayStyle.Typing(typingDelayPerChar: Long, onTextDisplayed: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/13052e62-fb41-4de4-8268-59e95ca0153c" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
 
-</td>
-<td width="60%">
+```kotlin
+@Composable
+fun ChatBubble(message: String) {
+    Texty(
+        text = message,
+        displayStyle = DisplayStyle.Typing(typingDelayPerChar = 50L)
+    )
+}
+```
+
+---
+
+### 8. Basic
+
+The classic one without any effects that focuses on readability with simple, unadorned typography. Ideal for clear and straightforward text presentation.
+
+**Default Implementation:**
+`Texty(text = text)`
+
+**Configuration:**
+`DisplayStyle.Basic(onTextDisplayed: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/a904f2e9-cc36-44a1-8c50-0b9b0d85411b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
+</video>
 
 ```kotlin
 @Composable
@@ -341,30 +288,23 @@ fun NeonSign(signText: String) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Motion                                                                                                                                                                                                                              |
-|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A dynamic style that animates text or frames sequentially, creating a smooth flow. With customizable display delay and flexible repeat options, it delivers continuous motion, perfect for animations or creating a cinematic feel. |
-| **Default Implementation:** `Texty(textList = frames, displayStyle = ListDisplayStyle.Motion())`                                                                                                                                    |
-| **Configuration:** `ListDisplayStyle.Motion(delayBeforeNext: Long, repeat: Repeat, onComplete: () -> Unit)`                                                                                                                         |
+## List Styles
 
-<table>
-<tr>
-<td width="40%">
+### 1. Motion
 
-<video src="https://github.com/user-attachments/assets/3140ed8d-e9b4-42e2-96e1-c301cc93c985" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+A dynamic style that animates text or frames sequentially, creating a smooth flow. With customizable display delay and flexible repeat options, it delivers continuous motion, perfect for animations or creating a cinematic feel.
+
+**Default Implementation:**
+`Texty(textList = frames, displayStyle = ListDisplayStyle.Motion())`
+
+**Configuration:**
+`ListDisplayStyle.Motion(delayBeforeNext: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/3140ed8d-e9b4-42e2-96e1-c301cc93c985" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -379,30 +319,21 @@ fun PikachuAnimation(pikachuFrames: List<String>) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| OneByOne                                                                                                                                                                                                 |
-|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A fluid, sequential text display where each word or character gracefully appears with customizable effects—Basic, Fading, or Typing.                                                                     |
-| **Default Implementation:** `Texty(textList = textList, displayStyle = ListDisplayStyle.OneByOne())`                                                                                                     |
-| **Configuration:** `ListDisplayStyle.OneByOne(transitionStyle: TransitionStyle, displayDuration: Long, transitionInDuration: Long, transitionOutDuration: Long, repeat: Repeat, onComplete: () -> Unit)` |
+### 2. OneByOne
 
-<table>
-<tr>
-<td width="40%">
+A fluid, sequential text display where each word or character gracefully appears with customizable effects—Basic, Fading, or Typing.
 
-<video src="https://github.com/user-attachments/assets/316096fc-35f8-49a6-93bb-18961a4a24fa" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(textList = textList, displayStyle = ListDisplayStyle.OneByOne())`
+
+**Configuration:**
+`ListDisplayStyle.OneByOne(transitionStyle: TransitionStyle, displayDuration: Long, transitionInDuration: Long, transitionOutDuration: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/316096fc-35f8-49a6-93bb-18961a4a24fa" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -420,30 +351,21 @@ fun NewsHeadlines(headlines: List<String>) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Sliding List                                                                                                                                               |
-|:-----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Same like Sliding but here you can pass list of strings and can add seperator for displaying the items in the list.                                        |
-| **Default Implementation:** `Texty(textList = textList, displayStyle = ListDisplayStyle.SlidingList())`                                                    |
-| **Configuration:** `ListDisplayStyle.SlidingList(separator: String?, direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)` |
+### 3. Sliding List
 
-<table>
-<tr>
-<td width="40%">
+Same like Sliding but here you can pass list of strings and can add separator for displaying the items in the list.
 
-<video src="https://github.com/user-attachments/assets/d5059f1a-4b47-4674-9786-b0108886aa88" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(textList = textList, displayStyle = ListDisplayStyle.SlidingList())`
+
+**Configuration:**
+`ListDisplayStyle.SlidingList(separator: String?, direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/d5059f1a-4b47-4674-9786-b0108886aa88" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -460,65 +382,54 @@ fun PresentStudents(students: List<String>) {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Scrolling List                                                                                                                                          |
-|:--------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Same like normal Scrolling but here you can pass list of strings.                                                                                       |
-| **Default Implementation:** `Texty(textList = frames, displayStyle = ListDisplayStyle.ScrollingList())`                                                 |
-| **Configuration:** `ListDisplayStyle.ScrollingList(spacing: Dp, direction: ScrollingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)` |
+### 4. Scrolling List
 
-<table>
-<tr>
-<td width="40%">
+Same like normal Scrolling but here you can pass list of strings.
 
-<video src="https://github.com/user-attachments/assets/5fe8cac3-ba56-4953-b013-b736a44c672b" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(textList = frames, displayStyle = ListDisplayStyle.ScrollingList())`
+
+**Configuration:**
+`ListDisplayStyle.ScrollingList(spacing: Dp, direction: ScrollingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
+
+<video src="https://github.com/user-attachments/assets/5fe8cac3-ba56-4953-b013-b736a44c672b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
-fun NeonSign(signText: String) {
+fun ScrollingCredits(credits: List<String>) {
     Texty(
-        text = signText,
-        displayStyle = DisplayStyle.Basic()
+        textList = credits,
+        displayStyle = ListDisplayStyle.ScrollingList(
+            spacing = 16.dp,
+            direction = ScrollingDirection.TOWARDS_TOP,
+            duration = 30000L,
+            repeat = Repeat.Once
+        )
     )
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Loading                                                                                                                                                                                                               |
-|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A versatile style offering various loading animations, including spinner, circular, box, and music bars. Each type features customizable cycle duration, with the music bar option allowing for adjustable bar count. |
-| **Default Implementation:** `Texty(utility = Utility.Loading())`                                                                                                                                                      |
-| **Configuration:** `Utility.Loading(type: LoadingType)`                                                                                                                                                               |
+## Utility Styles
 
-<table>
-<tr>
-<td width="40%">
+### 1. Loading
 
-<video src="https://github.com/user-attachments/assets/d4fc3234-543c-45e2-b136-4c0f4566dd1a" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+A versatile style offering various loading animations, including spinner, circular, box, and music bars. Each type features customizable cycle duration, with the music bar option allowing for adjustable bar count.
+
+**Default Implementation:**
+`Texty(utility = Utility.Loading())`
+
+**Configuration:**
+`Utility.Loading(type: LoadingType)`
+
+<video src="https://github.com/user-attachments/assets/d4fc3234-543c-45e2-b136-4c0f4566dd1a" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -541,30 +452,21 @@ fun ShowLoading() {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
-| Time Keeping                                                                                                                                                       |
-|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| A utility style that displays time in a customizable format, with options for live updates and an adjustable update interval. Perfect for real-time time tracking. |
-| **Default Implementation:** `Texty(utility = Utility.TimeKeeping())`                                                                                               |
-| **Configuration:** `Utility.TimeKeeping(format: String, liveUpdate: Boolean, updateInterval: kotlin.time.Duration)`                                                |
+### 2. Time Keeping
 
-<table>
-<tr>
-<td width="40%">
+A utility style that displays time in a customizable format, with options for live updates and an adjustable update interval. Perfect for real-time time tracking.
 
-<video src="https://github.com/user-attachments/assets/66c7e27d-02d4-4646-b98e-6107343d6e4d" width="100%" autoplay loop muted playsinline>
-  Your browser does not support the video tag.
+**Default Implementation:**
+`Texty(utility = Utility.TimeKeeping())`
+
+**Configuration:**
+`Utility.TimeKeeping(format: String, liveUpdate: Boolean, updateInterval: kotlin.time.Duration)`
+
+<video src="https://github.com/user-attachments/assets/66c7e27d-02d4-4646-b98e-6107343d6e4d" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
+Your browser does not support the video tag.
 </video>
-
-</td>
-<td width="60%">
 
 ```kotlin
 @Composable
@@ -585,13 +487,7 @@ fun ShowTimeKeeping() {
 }
 ```
 
-</td>
-</tr>
-<tr>
-<td>Sample Video</td>
-<td>Sample Code</td>
-</tr>
-</table>
+---
 
 ## 🛠️ Installation
 
@@ -601,7 +497,7 @@ To use Texty in your project, add the following dependency to your module's `bui
 
 ```kotlin
 dependencies {
-    implementation("com.arjunjadeja:texty:0.1.0-alpha")
+    implementation("com.arjunjadeja:texty-android:1.0.0-alpha")
 }
 ```
 
@@ -612,7 +508,7 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                implementation("com.arjunjadeja:texty:0.1.0-alpha")
+                implementation("com.arjunjadeja:texty:1.0.0-alpha")
             }
         }
     }
@@ -624,8 +520,7 @@ Make sure you have `mavenCentral()` in your list of repositories.
 ### For setting up the project locally:
 
 If you want to set up the Texty project in your local development environment, please refer to
-the [Project Setup Guide](SetUpGuide.md). This guide provides detailed instructions for setting up
-the Kotlin Multiplatform project structure.
+the [Project Setup Guide](SetUpGuide.md).
 
 ## 🚀 How to Use
 
@@ -678,8 +573,8 @@ styles and customization options to create engaging text effects.
 ## 📦 Samples
 
 - Check out [Releases](https://github.com/ArjunJadeja/texty/releases) to download the latest android
-  sample APK (3.1 MB).
-- Check the `sample` module for various sample implementations.
+  sample APK (3.1 MB) and dmg file for running on macOS.
+- Check the `sample` module for multiple variations and sample implementations of each style.
 
 ## ❤️ Support
 
@@ -711,11 +606,11 @@ Feel free to connect with me for discussing open-source, projects, or anything t
 
 ## 🙏 Credits
 
-- [Amit Shekhar](https://github.com/amitshekhariitbhu) for guidance and constant support 😇
+- [Amit Shekhar](https://github.com/amitshekhariitbhu) for guidance and support 😇
 - [How to write a Compose Multiplatform Library](https://medium.com/@shubhamsinghshubham777/how-to-write-a-compose-multiplatform-library-66ae1b7edb81)
-  by Shubham Singh
 - [Compose Multiplatform Wizard](https://terrakok.github.io/Compose-Multiplatform-Wizard/) for easy
   setup from [terrakok](https://github.com/terrakok)
+- [Publishing KMP Library to Maven central](https://www.youtube.com/watch?v=NPUehp4KpSs)
 - [Darshana Jadeja](https://www.linkedin.com/in/darshanajadeja/) for helping out with designs 🤗
 
 ## 📄 License

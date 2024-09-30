@@ -1,7 +1,7 @@
 rootProject.name = "Texty"
 
 include(":sample:composeApp")
-include(":foundation")
+include(":texty")
 
 pluginManagement {
     repositories {

@@ -1,3 +1,4 @@
+import com.vanniktech.maven.publish.SonatypeHost
 import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
@@ -9,6 +10,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
     alias(libs.plugins.android.library)
+    alias(libs.plugins.maven.publishing)
 }
 
 kotlin {
@@ -18,6 +20,7 @@ kotlin {
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+        publishLibraryVariants("release", "debug")
     }
 
     jvm()
@@ -39,7 +42,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach {
         it.binaries.framework {
-            baseName = "ComposeApp"
+            baseName = "texty"
             isStatic = true
         }
     }
@@ -91,3 +94,43 @@ compose.desktop {
         }
     }
 }
+
+mavenPublishing {
+    coordinates(
+        groupId = "com.arjunjadeja",
+        artifactId = "texty",
+        version = "1.0.0-alpha"
+    )
+
+    pom {
+        name.set("Texty")
+        description.set("A Jetpack Compose Multiplatform Library to display text with various styles, effects and animations")
+        inceptionYear.set("2024")
+        url.set("https://github.com/arjunjadeja/texty/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("arjunjadeja")
+                name.set("Arjun Jadeja")
+                url.set("https://github.com/arjunjadeja/")
+            }
+        }
+        scm {
+            url.set("https://github.com/arjunjadeja/texty/")
+            connection.set("scm:git:git://github.com/arjunjadeja/texty.git")
+            developerConnection.set("scm:git:ssh://git@github.com/arjunjadeja/texty.git")
+        }
+    }
+
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    signAllPublications()
+}
+
+task("testClasses") {}

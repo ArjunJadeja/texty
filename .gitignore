@@ -11,6 +11,7 @@ captures
 .externalNativeBuild
 .cxx
 local.properties
+gradle.properties
 xcuserdata/
 Pods/
 *.jks

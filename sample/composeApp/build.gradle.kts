@@ -32,10 +32,6 @@ kotlin {
         binaries.executable()
     }
 
-    iosX64()
-    iosArm64()
-    iosSimulatorArm64()
-
     listOf(
         iosX64(),
         iosArm64(),
@@ -49,7 +45,7 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            implementation(project(":foundation"))
+            implementation(project(":texty"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
