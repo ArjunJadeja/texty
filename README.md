@@ -55,9 +55,7 @@ A fluid display style where text gracefully slides in a chosen direction, creati
 **Configuration:**
 `DisplayStyle.Sliding(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/32305fd9-f75c-4bba-9b45-9ea8694537df" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/eb01098b-7405-489a-8b00-57c938219e36
 
 ```kotlin
 @Composable
@@ -85,9 +83,7 @@ A dynamic style where text flows smoothly in a selected direction - top or botto
 **Configuration:**
 `DisplayStyle.Scrolling(direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/e17f3ae0-a542-448c-bb9e-8226fd0939eb" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/bc755287-2d6b-4a87-80c5-2772a347770f
 
 ```kotlin
 @Composable
@@ -120,9 +116,7 @@ A dynamic style that makes text blink with versatile options: blink once, infini
 **Configuration:**
 `DisplayStyle.Blinking(interval: Long, repeat: Repeat, onBlink: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/44cb65c1-f586-4189-b5fb-1f0f6fa1e975" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/dc488e05-a8ee-4eca-b635-c36a573fc943
 
 ```kotlin
 @Composable
@@ -151,9 +145,7 @@ A smooth transition style where text fades in and out. Configurable options incl
 **Configuration:**
 `DisplayStyle.Fading(type: FadingType, duration: Long, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/06162da5-c5b4-45a4-a4a5-3a3e523c32b0" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/5bcadf41-34a8-481b-af8c-b868f21099a4
 
 ```kotlin
 @Composable
@@ -185,9 +177,7 @@ An engaging style where text is revealed character by character or by total time
 **Configuration:**
 `DisplayStyle.Revealing(cover: RevealingCover, pattern: RevealingPattern, type: RevealingType, delayBeforeRevealing: Long, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/dcabf180-b3ee-418f-ad74-13dcc6639297" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/2b353c80-a182-48f7-aa59-9af370ec2170
 
 ```kotlin
 @Composable
@@ -215,9 +205,7 @@ A captivating style where a cover sticks to the surface before being revealed, s
 **Configuration:**
 `DisplayStyle.StickAndReveal(cover: String?, coverStickingDirection: TransitionDirection, coverStickingDelay: Long, delayBeforeReveal: Long, revealingDirection: TransitionDirection, revealingDelay: Long, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/ccb476ff-d647-4b12-a0cd-8841a1c8f81b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/2f40c850-8336-4e73-8347-c7a0e2f4cb50
 
 ```kotlin
 @Composable
@@ -248,9 +236,7 @@ A typewriter-inspired style that mimics the appearance of text being typed. Idea
 **Configuration:**
 `DisplayStyle.Typing(typingDelayPerChar: Long, onTextDisplayed: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/13052e62-fb41-4de4-8268-59e95ca0153c" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/382bce41-b8cd-4140-ba86-a64fd75f67d4
 
 ```kotlin
 @Composable
@@ -274,9 +260,7 @@ The classic one without any effects that focuses on readability with simple, una
 **Configuration:**
 `DisplayStyle.Basic(onTextDisplayed: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/a904f2e9-cc36-44a1-8c50-0b9b0d85411b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/d7d07619-3f84-4044-802a-7d4ba7ccb499
 
 ```kotlin
 @Composable
@@ -302,9 +286,7 @@ A dynamic style that animates text or frames sequentially, creating a smooth flo
 **Configuration:**
 `ListDisplayStyle.Motion(delayBeforeNext: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/3140ed8d-e9b4-42e2-96e1-c301cc93c985" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/5d42c010-0c8e-4c7d-8185-92dfdc70c789
 
 ```kotlin
 @Composable
@@ -331,9 +313,7 @@ A fluid, sequential text display where each word or character gracefully appears
 **Configuration:**
 `ListDisplayStyle.OneByOne(transitionStyle: TransitionStyle, displayDuration: Long, transitionInDuration: Long, transitionOutDuration: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/316096fc-35f8-49a6-93bb-18961a4a24fa" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/050f75d5-3377-4a12-bf9b-e5a7ed3da58e
 
 ```kotlin
 @Composable
@@ -363,9 +343,7 @@ Same like Sliding but here you can pass list of strings and can add separator fo
 **Configuration:**
 `ListDisplayStyle.SlidingList(separator: String?, direction: SlidingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/d5059f1a-4b47-4674-9786-b0108886aa88" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/1a92d6fd-14c0-4de1-aad8-03a5ead5b7d1
 
 ```kotlin
 @Composable
@@ -394,9 +372,7 @@ Same like normal Scrolling but here you can pass list of strings.
 **Configuration:**
 `ListDisplayStyle.ScrollingList(spacing: Dp, direction: ScrollingDirection, duration: Long, repeat: Repeat, onComplete: () -> Unit)`
 
-<video src="https://github.com/user-attachments/assets/5fe8cac3-ba56-4953-b013-b736a44c672b" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/b1895ccb-44ab-46a4-81d7-805d9fac9d7d
 
 ```kotlin
 @Composable
@@ -427,9 +403,7 @@ A versatile style offering various loading animations, including spinner, circul
 **Configuration:**
 `Utility.Loading(type: LoadingType)`
 
-<video src="https://github.com/user-attachments/assets/d4fc3234-543c-45e2-b136-4c0f4566dd1a" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/a149d96e-adfe-42d1-a428-489a149cf9ac
 
 ```kotlin
 @Composable
@@ -464,9 +438,7 @@ A utility style that displays time in a customizable format, with options for li
 **Configuration:**
 `Utility.TimeKeeping(format: String, liveUpdate: Boolean, updateInterval: kotlin.time.Duration)`
 
-<video src="https://github.com/user-attachments/assets/66c7e27d-02d4-4646-b98e-6107343d6e4d" width="100%" style="min-width: 400px;" autoplay loop muted playsinline>
-Your browser does not support the video tag.
-</video>
+https://github.com/user-attachments/assets/cf44c323-366a-49c4-8d10-6bd735004907
 
 ```kotlin
 @Composable
@@ -573,7 +545,7 @@ styles and customization options to create engaging text effects.
 ## 📦 Samples
 
 - Check out [Releases](https://github.com/ArjunJadeja/texty/releases) to download the latest android
-  sample APK (3.1 MB) and dmg file for running on macOS.
+  sample APK (3 MB) and macOS dmg file.
 - Check the `sample` module for multiple variations and sample implementations of each style.
 
 ## ❤️ Support
