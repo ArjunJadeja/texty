@@ -32,6 +32,7 @@ application, it provides a unified API to create dynamic and visually appealing 
 
 ## 📣 Mentions
 [![Android Weekly](https://img.shields.io/badge/Android%20Weekly-Issue%20643-orange.svg)](https://androidweekly.net/issues/issue-643)
+[![Android Stack Weekly](https://img.shields.io/badge/Android%20Stack%20Weekly-Issue%20145-blue.svg)](https://blog.canopas.com/android-stack-weekly-issue-145-d96b6bfdf850)
 
 ## 🎭 Styles Overview
 
