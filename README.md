@@ -11,8 +11,8 @@
 </div>
 
 ## 📚 Table of Contents
-
 - [💡 About](#-about)
+- [📣 Mentions](#-mentions)
 - [🎭 Styles Overview](#-styles-overview)
 - [🛠️ Installation](#-installation)
 - [🚀 How to Use](#-how-to-use)
@@ -29,6 +29,9 @@ Texty is built on top of Jetpack Compose Foundation's Basic Text. It is a highly
 Compose Multiplatform library that allows you to display text in various styles and has utility
 functions like loading and time keeping. Whether you're building an Android, iOS, desktop, or web
 application, it provides a unified API to create dynamic and visually appealing text displays.
+
+## 📣 Mentions
+[![Android Weekly](https://img.shields.io/badge/Android%20Weekly-Issue%20643-orange.svg)](https://androidweekly.net/issues/issue-643)
 
 ## 🎭 Styles Overview
 
