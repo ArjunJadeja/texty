@@ -1,26 +1,35 @@
-import com.vanniktech.maven.publish.SonatypeHost
-import org.jetbrains.compose.ExperimentalComposeLibrary
+@file:Suppress("DEPRECATION_ERROR")
+@file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
-    alias(libs.plugins.android.library)
+    alias(libs.plugins.android.kmp.library)
     alias(libs.plugins.maven.publishing)
 }
 
 kotlin {
+    jvmToolchain(21)
 
-    jvmToolchain(22)
+    compilerOptions {
+        optIn.add("kotlin.time.ExperimentalTime")
+    }
 
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
-        publishLibraryVariants("release", "debug")
+    android {
+        namespace = "com.arjunjadeja.texty"
+        compileSdk = 37
+        minSdk = 23
+        androidResources {
+            enable = true
+        }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
 
     jvm()
@@ -37,7 +46,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -58,28 +66,8 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
         }
-    }
-}
-
-android {
-    namespace = "com.arjunjadeja.texty"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 21
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-}
-
-dependencies {
-    androidTestImplementation(libs.androidx.uitest.junit4)
-    debugImplementation(libs.androidx.uitest.testManifest)
-    //temporary fix: https://youtrack.jetbrains.com/issue/CMP-5864
-    androidTestImplementation("androidx.test:monitor") {
-        version { strictly("1.6.1") }
     }
 }
 
@@ -128,9 +116,10 @@ mavenPublishing {
         }
     }
 
-    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
-
-    signAllPublications()
+    val secretKeyRingFile = providers.gradleProperty("signing.secretKeyRingFile")
+        .orNull
+        ?.let(::file)
+    if (secretKeyRingFile != null && secretKeyRingFile.isFile) {
+        signAllPublications()
+    }
 }
-
-task("testClasses") {}

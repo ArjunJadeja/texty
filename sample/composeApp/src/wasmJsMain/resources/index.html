@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Texty</title>
-        <script src="composeApp.js"></script>
         <style>
             html,
             body {
@@ -16,5 +15,8 @@
             }
         </style>
     </head>
-    <body></body>
+    <body>
+        <!-- Load after body exists. Production webpack emits hashed .wasm next to this file. -->
+        <script src="composeApp.js"></script>
+    </body>
 </html>

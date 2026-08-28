@@ -35,7 +35,7 @@ import com.arjunjadeja.texty.internal.styles.normal.Basic
 import com.arjunjadeja.texty.internal.styles.normal.Fading
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 /**
  * Displays each text from a list one by one with transitions.

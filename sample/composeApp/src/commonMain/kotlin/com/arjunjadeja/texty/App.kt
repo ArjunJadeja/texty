@@ -22,7 +22,7 @@ import com.arjunjadeja.texty.design_system.properties.Gradients.backgroundGradie
 import com.arjunjadeja.texty.ui.screens.MainScreen
 
 @Composable
-internal fun App() = AppTheme {
+fun App() = AppTheme {
     Box(
         modifier = Modifier
             .fillMaxSize()

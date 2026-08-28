@@ -37,7 +37,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.SlidingDirection
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 import kotlin.math.roundToInt
 
 /**

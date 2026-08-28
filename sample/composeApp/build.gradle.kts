@@ -1,22 +1,30 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
+@file:Suppress("DEPRECATION_ERROR")
+@file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
-import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.multiplatform)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.compose)
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.kmp.library)
 }
 
 kotlin {
-    jvmToolchain(22)
-    androidTarget {
-        //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
+    jvmToolchain(21)
+
+    android {
+        namespace = "com.arjunjadeja.texty.shared"
+        compileSdk = 37
+        minSdk = 23
+        androidResources {
+            enable = true
+        }
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
 
     jvm()
@@ -33,7 +41,6 @@ kotlin {
     }
 
     listOf(
-        iosX64(),
         iosArm64(),
         iosSimulatorArm64()
     ).forEach {
@@ -49,24 +56,22 @@ kotlin {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.voyager.navigator)
             implementation(libs.voyager.transitions)
             implementation(libs.kotlinx.coroutines.core)
-            implementation(libs.kotlinx.datetime)
         }
 
         commonTest.dependencies {
             implementation(kotlin("test"))
-            @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.uiTest)
             implementation(libs.kotlinx.coroutines.test)
         }
 
         androidMain.dependencies {
-            implementation(compose.uiTooling)
-            implementation(libs.androidx.activityCompose)
+            implementation(libs.androidx.core.ktx)
             implementation(libs.kotlinx.coroutines.android)
         }
 
@@ -78,57 +83,6 @@ kotlin {
         jsMain.dependencies {
             implementation(compose.html.core)
         }
-    }
-}
-
-android {
-    namespace = "com.arjunjadeja.texty"
-    compileSdk = 34
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 34
-
-        applicationId = "com.arjunjadeja.texty.androidApp"
-        versionCode = 1
-        versionName = "1.0.0"
-
-        buildTypes {
-            debug {
-                isMinifyEnabled = false
-                signingConfig = signingConfigs.getByName("debug")
-            }
-            release {
-                isMinifyEnabled = true
-                isShrinkResources = true
-            }
-            applicationVariants.all {
-                val variant = this
-                variant.outputs
-                    .map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-                    .forEach { output ->
-                        val outputFileName = "texty-${variant.baseName}.apk"
-                        output.outputFileName = outputFileName
-                    }
-            }
-        }
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
-    buildTypes {
-        getByName("release") {
-            signingConfig = signingConfigs.getByName("debug")
-        }
-    }
-}
-
-//https://developer.android.com/develop/ui/compose/testing#setup
-dependencies {
-    androidTestImplementation(libs.androidx.uitest.junit4)
-    debugImplementation(libs.androidx.uitest.testManifest)
-    //temporary fix: https://youtrack.jetbrains.com/issue/CMP-5864
-    androidTestImplementation("androidx.test:monitor") {
-        version { strictly("1.6.1") }
     }
 }
 
