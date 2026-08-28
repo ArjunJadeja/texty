@@ -24,7 +24,11 @@ import androidx.compose.ui.text.TextLayoutResult
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import kotlinx.coroutines.delay
-import kotlinx.datetime.*
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.number
+import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.seconds
 
 /**
@@ -109,8 +113,8 @@ private fun formatDateTime(dateTime: LocalDateTime, format: String): String {
 
         format.replace(Regex("'[^']*'")) { it.value } // Temporarily preserve quoted sections
             .replace("yyyy", dateTime.year.toString().padStart(4, '0'))
-            .replace("MM", dateTime.monthNumber.toString().padStart(2, '0'))
-            .replace("dd", dateTime.dayOfMonth.toString().padStart(2, '0'))
+            .replace("MM", dateTime.month.number.toString().padStart(2, '0'))
+            .replace("dd", dateTime.day.toString().padStart(2, '0'))
             .replace("HH", dateTime.hour.toString().padStart(2, '0'))
             .replace("mm", dateTime.minute.toString().padStart(2, '0'))
             .replace("ss", dateTime.second.toString().padStart(2, '0'))

@@ -30,7 +30,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextOverflow
 import com.arjunjadeja.texty.Repeat
 import kotlinx.coroutines.delay
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 
 /**
  * Displays blinking text based on the specified interval and repeat pattern.

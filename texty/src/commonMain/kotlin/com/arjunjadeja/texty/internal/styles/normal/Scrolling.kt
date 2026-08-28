@@ -38,7 +38,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import com.arjunjadeja.texty.Repeat
 import com.arjunjadeja.texty.ScrollingDirection
-import kotlinx.datetime.Clock
+import kotlin.time.Clock
 import kotlin.math.roundToInt
 
 /**

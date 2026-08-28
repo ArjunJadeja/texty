@@ -7,7 +7,7 @@
         android:roundIcon="@android:drawable/sym_def_app_icon"
         android:theme="@android:style/Theme.Material.NoActionBar">
         <activity
-            android:name=".AppActivity"
+            android:name="com.arjunjadeja.texty.AppActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
             android:exported="true"
             android:launchMode="singleInstance"
