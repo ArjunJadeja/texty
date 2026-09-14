@@ -51,7 +51,7 @@ sample/composeApp/src/jvmTest/         # Sample demos + navigation
 
 ## CI/CD
 
-PRs and pushes to `master` / `dev` run `./gradlew testAll`. Pushes to `master` deploy GitHub Pages after tests pass. See [`.github/workflows/ci.yml`](../.github/workflows/ci.yml).
+PRs and pushes to `master` / `dev` run `./gradlew testAll`. Pushes to `master` deploy GitHub Pages (Wasm sample + [API docs](DOCUMENTATION.md)) after tests pass. See [`.github/workflows/ci.yml`](../.github/workflows/ci.yml).
 
 ## Manual release checklist
 

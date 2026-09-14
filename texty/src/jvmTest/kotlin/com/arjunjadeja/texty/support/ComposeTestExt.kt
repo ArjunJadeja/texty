@@ -59,6 +59,9 @@ fun typingTotalMillis(text: String, delayPerChar: Long): Long {
     return delayPerChar * chars + delayPerChar
 }
 
+/**
+ * Asserts that the node with [tag] (default [TextyTestTags.ROOT]) shows [expected] text.
+ */
 @OptIn(ExperimentalTestApi::class)
 fun ComposeUiTest.assertTextyTagEquals(expected: String, tag: String = TextyTestTags.ROOT) {
     onNodeWithTag(tag).assertTextEquals(expected)

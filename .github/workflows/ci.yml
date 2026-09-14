@@ -61,8 +61,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: Build WASM distribution
-        run: ./gradlew :sample:composeApp:wasmJsBrowserDistribution --no-daemon
+      - name: Build GitHub Pages site (sample + API docs)
+        run: ./gradlew assembleGitHubPages --no-daemon
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -70,7 +70,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: sample/composeApp/build/dist/wasmJs/productionExecutable
+          path: build/github-pages
 
       - name: Deploy to GitHub Pages
         id: deployment

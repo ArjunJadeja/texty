@@ -23,6 +23,7 @@ Thank you for considering contributing to Texty! Here are a few guidelines to fo
 ## Documentation
 
 - Public library API and shared test helpers under `jvmTest/.../support/` must have KDoc.
+- API reference is generated with Dokka; see [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md).
 - Testing commands and CI are documented in [docs/TESTING.md](docs/TESTING.md).
 
 ## Testing
