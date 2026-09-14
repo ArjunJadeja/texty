@@ -64,10 +64,17 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
         }
 
-        commonTest.dependencies {
+        jvmTest.dependencies {
             implementation(kotlin("test"))
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material3)
+            implementation(compose.ui)
             implementation(compose.uiTest)
             implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
+            implementation(compose.desktop.currentOs)
         }
 
         androidMain.dependencies {

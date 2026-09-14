@@ -64,9 +64,14 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlinx.datetime)
         }
-        commonTest.dependencies {
+        jvmTest.dependencies {
             implementation(kotlin("test"))
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.ui)
             implementation(compose.uiTest)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(compose.desktop.currentOs)
         }
     }
 }

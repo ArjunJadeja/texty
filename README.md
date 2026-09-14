@@ -571,7 +571,7 @@ You can get involved by:
 - Contributing code or documentation
 - Assisting with testing and bug fixes
 
-Check [Roadmap](Roadmap.md) and [Contribution Guidelines](Guidelines.md) for more info. All
+Check [Roadmap](Roadmap.md), [Contribution Guidelines](Guidelines.md), and [Testing guide](docs/TESTING.md) for more info. All
 contributions are welcomed and appreciated.
 
 ## 🔗 Connect

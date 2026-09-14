@@ -1,26 +1,53 @@
-name: Deploy Texty Demo to GitHub Pages
+name: CI
 
 on:
   push:
-    branches: [ master ]
-  workflow_dispatch:
+    branches: [master]
+  pull_request:
+    branches: [master, dev]
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  test:
+    name: test
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: "21"
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Run tests
+        run: ./gradlew testAll --no-daemon
+
+  deploy-pages:
+    name: deploy-pages
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     steps:
       - name: Checkout
         uses: actions/checkout@v4
