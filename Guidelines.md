@@ -20,10 +20,15 @@ Thank you for considering contributing to Texty! Here are a few guidelines to fo
 - Follow the coding standards used in the project.
 - Ensure code is clean, well-documented, and adheres to best practices.
 
+## Documentation
+
+- Public library API and shared test helpers under `jvmTest/.../support/` must have KDoc.
+- Testing commands and CI are documented in [docs/TESTING.md](docs/TESTING.md).
+
 ## Testing
 
-- Ensure all changes pass the existing tests(will be added soon).
-- Add new tests if applicable.
+- Run `./gradlew testAll` before opening a pull request (same gate as CI).
+- Add or update tests when changing behavior; see [docs/TESTING.md](docs/TESTING.md) for layout and style checklist.
 
 ## Additional Notes
 

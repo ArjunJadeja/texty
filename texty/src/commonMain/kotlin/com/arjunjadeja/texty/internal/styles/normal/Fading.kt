@@ -67,7 +67,8 @@ internal fun Fading(
 
     LaunchedEffect(type) {
         val startTime = withFrameNanos { it }
-        while (true) {
+        var finished = false
+        while (!finished) {
             withFrameNanos { currentTime ->
                 val elapsedTime = (currentTime - startTime) / 1_000_000
                 val progress = (elapsedTime.toFloat() / duration).coerceIn(0f, 1f)
@@ -77,7 +78,7 @@ internal fun Fading(
                 }
                 if (elapsedTime >= duration) {
                     onComplete()
-                    return@withFrameNanos
+                    finished = true
                 }
             }
         }

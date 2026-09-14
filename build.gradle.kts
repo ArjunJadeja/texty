@@ -10,6 +10,15 @@ plugins {
     alias(libs.plugins.android.kmp.library).apply(false)
 }
 
+tasks.register("testAll") {
+    group = "verification"
+    description = "Runs JVM unit/UI tests for library and sample (CI-equivalent gate)."
+    dependsOn(
+        ":texty:jvmTest",
+        ":sample:composeApp:jvmTest",
+    )
+}
+
 tasks.register("runDesktop") {
     group = "run"
     description = "Run the sample as a JVM desktop window"

@@ -8,7 +8,9 @@ then [check Android Gradle plugin and Android Studio compatibility](https://deve
 ## Before running!
 
 - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
-- install JDK 17 or higher on your machine(Mine has 22)
+- install JDK 17 or higher on your machine (the project toolchain uses JDK 21)
+
+See [docs/TESTING.md](docs/TESTING.md) for the full testing stack, CI/CD flow, and Gradle command reference.
 
 ### Android
 
@@ -18,31 +20,36 @@ To run the application on android device/emulator:
 
 To build the application bundle:
 
-- run `./gradlew :composeApp:assembleDebug`
-- find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
-  Run android UI tests on the connected device: `./gradlew :composeApp:connectedDebugAndroidTest`
+- run `./gradlew :sample:androidApp:assembleDebug`
+- find `.apk` under `sample/androidApp/build/outputs/apk/debug/`
+
+Instrumented UI tests are not configured yet; use JVM `commonTest` (see Testing doc).
 
 ### Desktop
 
-Run the desktop application: `./gradlew :composeApp:run`
-Run desktop UI tests: `./gradlew :composeApp:jvmTest`
+Run the desktop application: `./gradlew runDesktop` or `./gradlew :sample:composeApp:run`
+
+Run desktop UI tests: `./gradlew :sample:composeApp:jvmTest`
+
+Run all CI-equivalent tests: `./gradlew testAll`
 
 ### iOS (I am yet to try this, if it is working fine please let me know)
 
 To run the application on iPhone device/simulator:
 
-- Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
-- Or
-  use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)
-  for Android Studio
-  Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
+- Open `sample/iosApp/iosApp.xcodeproj` in Xcode and run standard configuration
+- Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
+
+Run iOS simulator UI tests: `./gradlew :sample:composeApp:iosSimulatorArm64Test`
 
 ### JS Browser (Experimental)
 
 Run the browser application: `./gradlew :sample:composeApp:jsBrowserDevelopmentRun --continue`
-Run browser UI tests: `./gradlew :composeApp:jsBrowserTest`
+
+Run browser UI tests: `./gradlew :sample:composeApp:jsBrowserTest`
 
 ### Wasm Browser (Alpha)
 
 Run the browser application: `./gradlew :sample:composeApp:wasmJsBrowserDevelopmentRun --continue`
-Run browser UI tests: `./gradlew :composeApp:wasmJsBrowserTest`
+
+Run browser UI tests: `./gradlew :sample:composeApp:wasmJsBrowserTest`
