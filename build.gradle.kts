@@ -8,6 +8,23 @@ plugins {
     alias(libs.plugins.compose).apply(false)
     alias(libs.plugins.android.application).apply(false)
     alias(libs.plugins.android.kmp.library).apply(false)
+    alias(libs.plugins.dokka).apply(false)
+}
+
+tasks.register<Sync>("assembleGitHubPages") {
+    group = "documentation"
+    description = "Wasm sample at site root and Dokka API docs under api/."
+    dependsOn(
+        ":sample:composeApp:wasmJsBrowserDistribution",
+        ":texty:dokkaGeneratePublicationHtml",
+    )
+    val wasmDist = layout.projectDirectory.dir("sample/composeApp/build/dist/wasmJs/productionExecutable")
+    val dokkaHtml = project(":texty").layout.buildDirectory.dir("dokka/html")
+    into(layout.buildDirectory.dir("github-pages"))
+    from(wasmDist)
+    into("api") {
+        from(dokkaHtml)
+    }
 }
 
 tasks.register("testAll") {

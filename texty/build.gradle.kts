@@ -2,6 +2,7 @@
 @file:OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
 
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+import org.jetbrains.dokka.gradle.engine.parameters.VisibilityModifier
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -11,6 +12,7 @@ plugins {
     alias(libs.plugins.compose)
     alias(libs.plugins.android.kmp.library)
     alias(libs.plugins.maven.publishing)
+    alias(libs.plugins.dokka)
 }
 
 kotlin {
@@ -72,6 +74,31 @@ kotlin {
             implementation(compose.uiTest)
             implementation(libs.kotlinx.coroutines.test)
             implementation(compose.desktop.currentOs)
+        }
+    }
+}
+
+dokka {
+    moduleName.set("Texty")
+    dokkaPublications.html {
+        outputDirectory.set(layout.buildDirectory.dir("dokka/html"))
+        includes.from("Module.md")
+    }
+    pluginsConfiguration.html {
+        footerMessage.set("Texty — https://github.com/ArjunJadeja/texty")
+    }
+    dokkaSourceSets.configureEach {
+        documentedVisibilities.set(setOf(VisibilityModifier.Public))
+        reportUndocumented.set(false)
+        skipEmptyPackages.set(true)
+        perPackageOption {
+            matchingRegex.set(""".*\.internal(\..*)?""")
+            suppress.set(true)
+        }
+        sourceLink {
+            localDirectory.set(file("src/commonMain/kotlin"))
+            remoteUrl.set(uri("https://github.com/ArjunJadeja/texty/tree/master/texty/src/commonMain/kotlin"))
+            remoteLineSuffix.set("#L")
         }
     }
 }

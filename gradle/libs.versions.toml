@@ -9,6 +9,7 @@ voyager = "2.2.21-1.10.3"
 kotlinx-coroutines = "1.11.0"
 kotlinx-datetime = "0.8.0"
 maven-publishing = "0.37.0"
+dokka = "2.2.0"
 
 [libraries]
 
@@ -34,3 +35,4 @@ compose = { id = "org.jetbrains.compose", version.ref = "compose" }
 android-application = { id = "com.android.application", version.ref = "agp" }
 android-kmp-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
 maven-publishing = { id = "com.vanniktech.maven.publish", version.ref = "maven-publishing" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

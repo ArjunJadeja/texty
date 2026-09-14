@@ -15,6 +15,7 @@
 - [📣 Mentions](#-mentions)
 - [🎭 Styles Overview](#-styles-overview)
 - [🛠️ Installation](#-installation)
+- [📖 API reference](#-api-reference)
 - [🚀 How to Use](#-how-to-use)
 - [📦 Samples](#-samples)
 - [❤️ Support](#-support)
@@ -497,6 +498,15 @@ Make sure you have `mavenCentral()` in your list of repositories.
 
 If you want to set up the Texty project in your local development environment, please refer to
 the [Project Setup Guide](SetUpGuide.md).
+
+## 📖 API reference
+
+Generated KDoc (Dokka) is published on GitHub Pages:
+
+- **[API reference](https://arjunjadeja.github.io/texty/api/)** — `Texty`, `DisplayStyle`, list and utility types
+- **[Live sample](https://arjunjadeja.github.io/texty/)** — Wasm demo of all styles
+
+To build docs locally, see [docs/DOCUMENTATION.md](docs/DOCUMENTATION.md).
 
 ## 🚀 How to Use
 

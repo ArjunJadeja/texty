@@ -7,7 +7,7 @@
 ## Beta release
 
 - [x] Write test cases with good coverage.
-- [ ] Generate and Add documentation to github pages.
+- [x] Generate and Add documentation to github pages.
 - [ ] Fix any reported issues, errors and Api inconsistencies.
 
 ## Stable Release
